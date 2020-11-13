@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 name: duszamobile2020
 description: A new Flutter application.
 
@@ -91,3 +92,66 @@ flutter:
     - assets/
     - assets/langs/en.json
     - assets/langs/hu.json
+=======
+name: duszamobile2020
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  animator: 2.0.1
+  auto_size_text: 2.1.0
+  connectivity: 2.0.1
+  cookie_jar: 1.0.1
+  cupertino_icons: 0.1.3
+  dio: 3.0.10
+  dynamic_theme: 1.0.1
+  equatable: 1.2.5
+  fluro: 1.7.7
+  flushbar: 1.10.4
+  flutter_bloc: 6.1.1
+  flutter_localizations:
+        sdk: flutter
+  flutter_styled_toast: 1.4.0+1
+  font_awesome_flutter: 8.10.0
+  get_it: 5.0.1
+  http: 0.12.2
+  intl: 0.16.1
+  json_annotation: 3.1.0
+  logcat: 1.0.2
+  logger: 0.9.4
+  package_info: 0.4.3+2
+  permission_handler: 5.0.1+1
+  progress_dialog: 1.2.4
+  shared_preferences: ^0.5.12+4
+
+dev_dependencies:
+  flutter_driver:
+    sdk: flutter
+  flutter_test:
+    sdk: flutter
+  test: ^1.16.0-nullsafety.5
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/Icon.png"
+  adaptive_icon_background: "#4AD9D9"
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/langs/en.json
+    - assets/langs/hu.json
+flutter_intl:
+  enabled: true,
+  class_name: S,
+  main_locale: en
+>>>>>>> b86911e162572438d53aafeedc8c837740734ab7
