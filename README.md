@@ -8,13 +8,13 @@ Made for Dusza Árpád 2020 mobile hackathon in 60 hours timespan.
 
 ### To to run the project yourself:
 ##### To download:
-* `git clone https://github.com/skornel02/`
+* `git clone https://github.com/skornel02/duszamobile2020`
 ##### To run it:
 * `cd duszamobile2020`
 * `flutter run` or `flutter build apk`
 
 
-## Documentation
+## Documentation WIP
 For users: [Hungarian (pdf)](Felhasznaloi_kezikonyv.pdf)
 For developers: [Hungarian (docx)](Fejlesztoi_dokumentacio.docx)
 
@@ -27,4 +27,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ![alt text][end]
 
-[end]: assets/images/ember_ul-7.png "FelElek end"
+[logo]: logo "TBD
+[end]: end "TBD"
