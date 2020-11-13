@@ -1,16 +1,30 @@
-# duszamobile2020
+# Dusza mobile 2020
 
-A new Flutter project.
+![alt text][logo]
+
+Made for Dusza Árpád 2020 mobile hackathon in 60 hours timespan.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### To to run the project yourself:
+##### To download:
+* `git clone https://github.com/skornel02/`
+##### To run it:
+* `cd duszamobile2020`
+* `flutter run` or `flutter build apk`
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Documentation
+For users: [Hungarian (pdf)](Felhasznaloi_kezikonyv.pdf)
+For developers: [Hungarian (docx)](Fejlesztoi_dokumentacio.docx)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Third party sources used:
+### See the [pubspec.yaml](pubspec.yaml) for used packages
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
+![alt text][end]
+
+[end]: assets/images/ember_ul-7.png "FelElek end"
