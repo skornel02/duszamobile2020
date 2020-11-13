@@ -6,7 +6,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 
 String startPage;
@@ -38,6 +37,8 @@ void main() async {
   } else {
     startPage = "login";
   }
+
+  startPage = "/cars";
 
   runApp(App());
 }
@@ -74,7 +75,11 @@ class _App extends State<App> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return DynamicTheme(
-        data: (brightness) => themeData,
+        data: (brightness) => new ThemeData(
+              appBarTheme: AppBarTheme(centerTitle: true, textTheme: null),
+              floatingActionButtonTheme: null,
+              brightness: brightness,
+            ),
         themedWidgetBuilder: (context, theme) {
           return StyledToast(
             locale: Locale.fromSubtags(languageCode: "en"),
@@ -91,7 +96,7 @@ class _App extends State<App> with WidgetsBindingObserver {
             child: MaterialApp(
               initialRoute: startPage,
               onGenerateRoute: router.generator,
-              title: S.of(context).title,
+              title: S.current?.title ?? "Duszamobile2020",
               showPerformanceOverlay: false,
               theme: theme,
               localizationsDelegates: [
