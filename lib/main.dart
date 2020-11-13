@@ -6,7 +6,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
 String startPage;
@@ -98,7 +97,7 @@ class _App extends State<App> with WidgetsBindingObserver {
             child: MaterialApp(
               initialRoute: startPage,
               onGenerateRoute: router.generator,
-              title: S.of(context).title,
+              title: S.current?.title ?? "Duszamobile2020",
               showPerformanceOverlay: false,
               theme: theme,
               localizationsDelegates: [

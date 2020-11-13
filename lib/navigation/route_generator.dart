@@ -21,7 +21,6 @@ void defineRoutes(FluroRouter router) {
 		return Center(child: Text("/cars/${params["car_id"]}/statistics"),);
 	}));
 
-
   // it is also possible to define the route transition to use
   // router.define("users/:id", handler: usersHandler, transitionType: TransitionType.inFromLeft);
 }
