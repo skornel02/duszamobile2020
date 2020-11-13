@@ -43,6 +43,9 @@ void main() async{
     startPage = "login";
   }
 
+
+  startPage = "/cars";
+
   runApp(EasyLocalization(
       preloaderWidget: Center(
         child: Image.asset(
@@ -96,7 +99,11 @@ class _App extends State<App> with WidgetsBindingObserver{
   @override
   Widget build(BuildContext context) {
     return DynamicTheme(
-        data: (brightness) => themeData,
+        data: (brightness) => new ThemeData(
+          appBarTheme: AppBarTheme(centerTitle: true, textTheme: null),
+          floatingActionButtonTheme: null,
+          brightness: brightness,
+        ),
         themedWidgetBuilder: (context, theme) {
           return StyledToast(
               locale: context.locale,
@@ -124,22 +131,6 @@ class _App extends State<App> with WidgetsBindingObserver{
                 ],
                 supportedLocales: supportedLocals,
 
-                localeResolutionCallback: (locale, supportedLocales) {
-                  print("prCode1: ${preferredLocale.toString()}");
-                  if(preferredLocale != null){
-                    return preferredLocale;
-                  }
-                  for(var supportedLocale in supportedLocales) {
-                    if(supportedLocale.languageCode == locale?.languageCode &&
-                        supportedLocale.countryCode == locale.countryCode) {
-                      setPreferredLocale(supportedLocale);
-                      preferredLocale = supportedLocale;
-                      return supportedLocale;
-                    }
-                  }
-                  preferredLocale = supportedLocales.first;
-                  return supportedLocales.first;
-                },
               ),
           );
         }
