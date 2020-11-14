@@ -356,50 +356,50 @@ class S {
   }
 
   /// `Tyre type`
-  String get tyre_type {
+  String get tire_type {
     return Intl.message(
       'Tyre type',
-      name: 'tyre_type',
+      name: 'tire_type',
       desc: '',
       args: [],
     );
   }
 
   /// `Winter`
-  String get tyre_type_winter {
+  String get tire_type_winter {
     return Intl.message(
       'Winter',
-      name: 'tyre_type_winter',
+      name: 'tire_type_winter',
       desc: '',
       args: [],
     );
   }
 
   /// `Summer`
-  String get tyre_type_summer {
+  String get tire_type_summer {
     return Intl.message(
       'Summer',
-      name: 'tyre_type_summer',
+      name: 'tire_type_summer',
       desc: '',
       args: [],
     );
   }
 
   /// `All year`
-  String get tyre_type_all_year {
+  String get tire_type_all_year {
     return Intl.message(
       'All year',
-      name: 'tyre_type_all_year',
+      name: 'tire_type_all_year',
       desc: '',
       args: [],
     );
   }
 
   /// `Other`
-  String get tyre_type_other {
+  String get tire_type_other {
     return Intl.message(
       'Other',
-      name: 'tyre_type_other',
+      name: 'tire_type_other',
       desc: '',
       args: [],
     );

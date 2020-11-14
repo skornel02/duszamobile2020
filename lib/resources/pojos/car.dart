@@ -59,14 +59,14 @@ class Car extends Equatable {
         settings: settings ?? car.settings);
   }
 
-  Car.fromName(this.name, {CarSettings settings})
+  Car.fromName(this.name, {CarSettings settings, TireType tire})
       : id = Uuid().v4(),
         repairs = List(),
         refuels = List(),
         reminds = List(),
         eVignettes = List(),
-        tire = TireType.NOT_SPECIFIED,
-        settings = CarSettings.basic();
+        tire = tire ?? TireType.NOT_SPECIFIED,
+        settings = settings ?? CarSettings.basic();
 
   int get totalMilage {
     if (refuels.isEmpty) {

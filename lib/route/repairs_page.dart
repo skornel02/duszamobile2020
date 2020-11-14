@@ -2,10 +2,7 @@ import 'package:duszamobile2020/resources/pojos/repair.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math';
-
-import 'package:duszamobile2020/resources/pojos/refuel.dart';
 import 'package:duszamobile2020/widgets/listitems/repair_item.dart';
-import 'package:flutter/material.dart';
 
 class RepairsPage extends StatelessWidget {
 	RepairsPage({Key key}) : super(key: key){

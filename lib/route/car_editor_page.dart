@@ -29,7 +29,7 @@ class _CarEditorPageState extends State<CarEditorPage> {
 
   final _picker = ImagePicker();
   File file;
-  String tyreType;
+  String tireType;
 
   @override
   Widget build(BuildContext context) {
@@ -195,18 +195,18 @@ class _CarEditorPageState extends State<CarEditorPage> {
                         ),
                         Row(
                           children: [
-                            Text("${S.of(context).tyre_type}:"),
+                            Text("${S.of(context).tire_type}:"),
                             DropdownButton(
-                                value: tyreType,
+                                value: tireType,
                                 items: [
-                                  DropdownMenuItem(child: Text(S.of(context).tyre_type_winter), value: "tyre_type_winter"),
-                                  DropdownMenuItem(child: Text(S.of(context).tyre_type_summer), value: "tyre_type_summer"),
-                                  DropdownMenuItem(child: Text(S.of(context).tyre_type_all_year), value: "tyre_type_all_year"),
-                                  DropdownMenuItem(child: Text(S.of(context).tyre_type_other), value: "tyre_type_other"),
+                                  DropdownMenuItem(child: Text(S.of(context).tire_type_winter), value: "tire_type_winter"),
+                                  DropdownMenuItem(child: Text(S.of(context).tire_type_summer), value: "tire_type_summer"),
+                                  DropdownMenuItem(child: Text(S.of(context).tire_type_all_year), value: "tire_type_all_year"),
+                                  DropdownMenuItem(child: Text(S.of(context).tire_type_other), value: "tire_type_other"),
                                 ],
                                 onChanged: (val){
                                   setState(() {
-                                    tyreType = val;
+                                    tireType = val;
                                   });
                                 }
                             )

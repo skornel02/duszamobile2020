@@ -59,9 +59,9 @@ View settings
 View EVignette
 /cars/:id/evignette
 
-#### - **/cars/*:id/tyretype***
-View tyre type
-/cars/:id/tyretype
+#### - **/cars/*:id/tiretype***
+View tire type
+/cars/:id/tiretype
 
 #### - **/cars/*:id/settings***
 Redirects to default page of cars
