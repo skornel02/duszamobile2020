@@ -23,6 +23,10 @@ Locale preferredLocale;
 final router = FluroRouter();
 
 void main() async {
+<<<<<<< HEAD
+=======
+  //enableFlutterDriverExtension();
+>>>>>>> 5f2aff444d8569805e0704b73da71d8ee9ad3bcb
   defineRoutes(router);
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
