@@ -8,6 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  expandable: 4.1.4
   image_picker: 0.6.7+14
   persistent_bottom_nav_bar: 2.1.0
   animator: 2.0.1

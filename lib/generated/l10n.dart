@@ -95,6 +95,16 @@ class S {
     );
   }
 
+  /// `Car editor`
+  String get car_editor {
+    return Intl.message(
+      'Car editor',
+      name: 'car_editor',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Car name`
   String get car_name {
     return Intl.message(
@@ -105,10 +115,10 @@ class S {
     );
   }
 
-  /// `{item} can't be empty!`
+  /// `{item} can't be empty`
   String cant_be_empty(Object item) {
     return Intl.message(
-      '$item can\'t be empty!',
+      '$item can\'t be empty',
       name: 'cant_be_empty',
       desc: '',
       args: [item],
@@ -350,6 +360,176 @@ class S {
     return Intl.message(
       'Bought',
       name: 'bought',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Year`
+  String get year {
+    return Intl.message(
+      'Year',
+      name: 'year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit car`
+  String get edit_car {
+    return Intl.message(
+      'Edit car',
+      name: 'edit_car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tyre type`
+  String get tyre_type {
+    return Intl.message(
+      'Tyre type',
+      name: 'tyre_type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Winter`
+  String get tyre_type_winter {
+    return Intl.message(
+      'Winter',
+      name: 'tyre_type_winter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Summer`
+  String get tyre_type_summer {
+    return Intl.message(
+      'Summer',
+      name: 'tyre_type_summer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All year`
+  String get tyre_type_all_year {
+    return Intl.message(
+      'All year',
+      name: 'tyre_type_all_year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other`
+  String get tyre_type_other {
+    return Intl.message(
+      'Other',
+      name: 'tyre_type_other',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statistics`
+  String get statistics {
+    return Intl.message(
+      'Statistics',
+      name: 'statistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refuels`
+  String get refuels {
+    return Intl.message(
+      'Refuels',
+      name: 'refuels',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminders`
+  String get reminders {
+    return Intl.message(
+      'Reminders',
+      name: 'reminders',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `EVignettes`
+  String get evignettes {
+    return Intl.message(
+      'EVignettes',
+      name: 'evignettes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repairs`
+  String get repairs {
+    return Intl.message(
+      'Repairs',
+      name: 'repairs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change car`
+  String get change_car {
+    return Intl.message(
+      'Change car',
+      name: 'change_car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add refuel`
+  String get add_refuel {
+    return Intl.message(
+      'Add refuel',
+      name: 'add_refuel',
       desc: '',
       args: [],
     );

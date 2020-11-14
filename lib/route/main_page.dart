@@ -1,10 +1,10 @@
+import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/route/reminder_page.dart';
 import 'package:duszamobile2020/route/repairs_page.dart';
 import 'package:duszamobile2020/route/statistics_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'evignettes_page.dart';
 
 class MainPage extends StatelessWidget {
@@ -14,10 +14,27 @@ class MainPage extends StatelessWidget {
 		debugPrint("Created Mainpage");
 	}
 
+
+	String getCurrentPageTitle(context){
+		switch(path){
+			case "statistics":
+				return S.of(context).statistics + ": ";
+			case "repairs":
+				return S.of(context).repairs + ": ";
+			case "refuels":
+				return S.of(context).refuels + ": ";
+			case "reminders":
+				return S.of(context).reminders  + ": ";
+			case "evignettes":
+				return S.of(context).evignettes + ": ";
+		}
+		return "";
+  }
+
 	@override
 	Widget build(BuildContext context){
 		return Scaffold(
-			appBar: AppBar( title: Text("auto"),),
+			appBar: AppBar( title: Text(getCurrentPageTitle(context) + "current_car_name"),),
 			drawer: SafeArea(
 			  child: Drawer(
 			  	child: Column(
@@ -25,7 +42,7 @@ class MainPage extends StatelessWidget {
 			  			ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("tankolás"),
 			  			onTap: (){
 			  				Navigator.pop(context);
-			  				Navigator.pushNamedAndRemoveUntil(context, "/cars/1/refuel", (a) => false);
+			  				Navigator.pushNamedAndRemoveUntil(context, "/cars/1/refuels", (a) => false);
 			  			},
 			  			),
 			  			ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Szervizek"),
@@ -37,13 +54,13 @@ class MainPage extends StatelessWidget {
 							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Értesitők"),
 								onTap: (){
 									Navigator.pop(context);
-									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/reminder", (a) => false);
+									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/reminders", (a) => false);
 								},
 							),
 							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Autópálya matricák"),
 								onTap: (){
 									Navigator.pop(context);
-									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/evignette", (a) => false);
+									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/evignettes", (a) => false);
 								},
 							),
 							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Statisztikák"),
@@ -55,13 +72,13 @@ class MainPage extends StatelessWidget {
 							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Felhasználói beállitás"),
 								onTap: (){
 									Navigator.pop(context);
-									Navigator.pushNamedAndRemoveUntil(context, "/settings", (a) => false);
+									Navigator.pushNamed(context, "/settings");
 								},
 							),
 							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Autó beállítások"),
 								onTap: (){
 									Navigator.pop(context);
-									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/settings", (a) => false);
+									Navigator.pushNamed(context, "/cars/1/settings");
 								},
 							),
 			  		],
@@ -70,58 +87,22 @@ class MainPage extends StatelessWidget {
 			),
 			body: Builder(
 				builder: (c){
+					debugPrint("asdsadsad: " + path);
 					switch(path){
 						case "statistics":
 							return StatisticsPage();
 						case "repairs":
 							return RepairsPage();
-						case "refuel":
+						case "refuels":
 							return RepairsPage();//RefuelsPage();
-						case "reminder":
+						case "reminders":
 							return RemindersPage();
-						case "evignette":
+						case "evignettes":
 							return EVignettesPage();
 					}
 					return null;
 				},
 			),
-			/*
-				bottomNavigationBar: BottomNavigationBar(
-				backgroundColor: Colors.red,
-				currentIndex: getIndex(context),
-			//	currentIndex: 0, // this will be set when a new tab is tapped
-				onTap: (index){
-					switch(index){
-						case 0:
-							Navigator.pushNamedAndRemoveUntil(context, "/cars/1/settings", (a) => false);
-							break;
-						case 1:
-							Navigator.pushNamedAndRemoveUntil(context, "/cars/1/statistics", (a) => false);
-							break;
-					}
-				},
-				items: [
-					BottomNavigationBarItem(
-						icon: new Icon(FontAwesomeIcons.gasPump, color: Colors.black,),
-						label: "gaspump",
-					),
-					BottomNavigationBarItem(
-						icon: new Icon(FontAwesomeIcons.chartBar, color: Colors.black,),
-						label: "chartbar",
-					),
-		/*
-					BottomNavigationBarItem(
-							icon: Icon(FontAwesomeIcons.home, color: Colors.black,),
-							label: "home"
-					),
-					BottomNavigationBarItem(
-							icon: Icon(FontAwesomeIcons.calendar, color: Colors.black,),
-							label: "calendar"
-					)
-					*/
-				],
-			),
-			*/
 		);
 	}
 }
