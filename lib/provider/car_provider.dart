@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class CarProvider {
   Future<List<Car>> loadCars();
@@ -66,15 +67,27 @@ class WebCarProvider extends CarProvider {
   @override
   Future<List<Car>> loadCars() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    String data = prefs.getString("Cars") ?? "";
+    if (data.isEmpty) data = "[]";
+    return this.parseStringToCars(data);
   }
 
   @override
   Future<void> saveCars(List<Car> cars) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("Cars", json.encode(cars));
+    prefs.setString("LastModified", json.encode(DateTime.now()));
   }
 
   @override
   Future<DateTime> lastModified() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    try {
+      String lastModified = prefs.getString("LastModified");
+      return json.decode(lastModified);
+    } catch (err) {
+      printError("Couldn't load last modification date: $err");
+      return DateTime.parse("1999-01-01T00:00:01Z");
+    }
   }
 }
