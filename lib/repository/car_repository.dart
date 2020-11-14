@@ -28,6 +28,10 @@ class CarRepository {
     return null;
   }
 
+  Future<DateTime> lastModified() {
+    return _provider.lastModified();
+  }
+
   Future<void> updateCar(Car car) async {
     var cars = await getCars();
     int index = -1;
@@ -45,7 +49,7 @@ class CarRepository {
       newCars = List<Car>.from(cars)..insert(index, car);
     }
 
-    await _updateCacheAndSave(newCars);
+    await updateCacheAndSave(newCars);
   }
 
   Future<void> removeCar(Car car) async {
@@ -55,10 +59,10 @@ class CarRepository {
       if (matching.id != car.id) newCars.add(matching);
     }
 
-    await _updateCacheAndSave(newCars);
+    await updateCacheAndSave(newCars);
   }
 
-  Future<void> _updateCacheAndSave(List<Car> cars) async {
+  Future<void> updateCacheAndSave(List<Car> cars) async {
     _carsCache = cars;
     await _provider.saveCars(cars);
   }

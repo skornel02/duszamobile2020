@@ -1,7 +1,6 @@
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_driver/driver_extension.dart';
 import 'dart:async';
 import 'package:duszamobile2020/navigation/route_generator.dart';
 import 'package:fluro/fluro.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 String startPage;
 
@@ -26,7 +26,7 @@ void main() async {
   //enableFlutterDriverExtension();
   defineRoutes(router);
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   if (isLoggedIn) {
     if (!isFromNotification) {

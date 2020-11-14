@@ -16,19 +16,10 @@ class CarCreateForm extends StatefulWidget {
 
 class _CarCreateFormState extends State<CarCreateForm> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameTextEditController =
-      TextEditingController(text: "Sajt" + Random().nextInt(10).toString());
+  final TextEditingController _nameTextEditController = TextEditingController();
 
   final _picker = ImagePicker();
   File file;
-
-  @override
-  void initState() {
-    _nameTextEditController.addListener(() {
-      print("CONTROLLER: $_nameTextEditController");
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +67,6 @@ class _CarCreateFormState extends State<CarCreateForm> {
                 return S.of(context).cant_be_over(S.of(context).car_name, 30);
               }
               return null;
-            },
-            onChanged: (String val) {
-              print(val);
             },
           ),
           Spacer(),
