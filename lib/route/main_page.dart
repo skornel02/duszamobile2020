@@ -14,49 +14,6 @@ class MainPage extends StatelessWidget {
 		debugPrint("Created Mainpage");
 	}
 
-	List<PersistentBottomNavBarItem> _navBarsItems() {
-		return [
-			PersistentBottomNavBarItem(
-				icon: Icon(FontAwesomeIcons.gasPump),
-				title: ("Home"),
-				activeColor: CupertinoColors.activeBlue,
-				inactiveColor: CupertinoColors.systemGrey,
-			),
-			PersistentBottomNavBarItem(
-				icon: Icon(CupertinoIcons.chart_bar),
-				title: ("Settings"),
-				activeColor: CupertinoColors.activeBlue,
-				inactiveColor: CupertinoColors.systemGrey,
-			),
-			PersistentBottomNavBarItem(
-				icon: Icon(FontAwesomeIcons.home),
-				title: ("Home"),
-				activeColor: CupertinoColors.activeBlue,
-				inactiveColor: CupertinoColors.systemGrey,
-			),
-			PersistentBottomNavBarItem(
-				icon: Icon(FontAwesomeIcons.calendar),
-				title: ("Home"),
-				activeColor: CupertinoColors.activeBlue,
-				inactiveColor: CupertinoColors.systemGrey,
-			),
-		];
-	}
-
-	int getIndex(context){
-		if(path == "settings"){
-			return 0;
-		}else if(path == "statistics"){
-			return 1;
-		}else if(path == "repairs"){
-			return 2;
-		}else if(path == "tyretype"){
-			return 3;
-		}else if(path == "evignette"){
-			return 4;
-		}
-	}
-
 	@override
 	Widget build(BuildContext context){
 		return Scaffold(
@@ -107,7 +64,6 @@ class MainPage extends StatelessWidget {
 									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/settings", (a) => false);
 								},
 							),
-
 			  		],
 			  	),
 			  ),
@@ -119,6 +75,8 @@ class MainPage extends StatelessWidget {
 							return StatisticsPage();
 						case "repairs":
 							return RepairsPage();
+						case "refuel":
+							return RepairsPage();//RefuelsPage();
 						case "reminder":
 							return RemindersPage();
 						case "evignette":

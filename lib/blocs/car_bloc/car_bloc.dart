@@ -19,5 +19,8 @@ class CarBloc extends Bloc<CarEvent, CarState> {
   @override
   Stream<CarState> mapEventToState(
     CarEvent event,
-  ) async* {}
+  ) async* {
+
+
+  }
 }

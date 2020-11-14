@@ -46,7 +46,7 @@ class _AddCarPageState extends State<AddCarPage> {
 										}
 									});
 							}),
-				  		
+
 				  		Padding(
 				  		  padding: const EdgeInsets.only(top: 10),
 				  		  child: TextField(
@@ -60,7 +60,7 @@ class _AddCarPageState extends State<AddCarPage> {
 				  		  	controller: textEditingControllerName,
 				  		  	textInputAction: TextInputAction.next,
 				  		  	decoration:
-				  		  	InputDecoration(labelText: "Név",// helperText: "Oktatási azonositó",
+				  		  	InputDecoration(labelText: "Név",
 				  		  		alignLabelWithHint: true,
 				  		  		labelStyle: TextStyle(
 

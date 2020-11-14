@@ -52,9 +52,9 @@ void defineRoutes(FluroRouter router) {
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("repairs");
   }), transitionType: TransitionType.none);
-  router.define("/cars/:car_id/refuel", handler:
+  router.define("/cars/:car_id/refuels", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return MainPage("refuel");
+    return MainPage("refuels");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/reminder", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
