@@ -26,14 +26,13 @@ void defineRoutes(FluroRouter router) {
     );
   }));
   router.define("/cars/add", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return AddCarPage();
   }));
   router.define("/cars/:id", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("settings");
   }));
-
   router.define("/cars/:car_id", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return Center(
@@ -42,34 +41,33 @@ void defineRoutes(FluroRouter router) {
   }));
 
   router.define("/cars/:car_id/statistics", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("statistics");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/settings", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return CarSettingsPage();
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/repairs", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("repairs");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/refuel", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("refuel");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/reminder", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("reminder");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/evignette", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("evignette");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/evignette/add", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return AddEVignettePage();
   }), transitionType: TransitionType.none);
-
 
   // it is also possible to define the route transition to use
   // router.define("users/:id", handler: usersHandler, transitionType: TransitionType.inFromLeft);

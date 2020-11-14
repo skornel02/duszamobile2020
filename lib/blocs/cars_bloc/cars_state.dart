@@ -10,11 +10,10 @@ class InitialState extends CarsState {
 }
 
 class ReadyState extends CarsState {
-  final Car car;
+  final List<Car> cars;
 
-  ReadyState(this.car);
+  ReadyState(this.cars);
 
   @override
-  List<Object> get props => [car];
+  List<Object> get props => [cars];
 }
-

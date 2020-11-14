@@ -35,6 +35,7 @@ class FileCarProvider extends CarProvider {
     final directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
     final file = File('$path/cars.json');
+    if (!(await file.exists())) await saveCars([]);
     String fileData = await file.readAsString();
     return this.parseStringToCars(fileData);
   }

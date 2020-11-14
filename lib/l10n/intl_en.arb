@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "title": "Dusza mobile 2020",
     "cheese": "Cheese",
     "main_page": "Main page",
@@ -27,3 +28,28 @@
     "bought": "Bought"
 
 }
+=======
+  "title": "Dusza mobile 2020",
+  "cheese": "Cheese",
+  "main_page": "Main page",
+  "welcome": "Welcome {name}!",
+  "my_cars": "My cars",
+  "add_car": "Add car",
+  "car_name": "Car name",
+  "cant_be_empty": "{item} can't be empty!",
+  "cant_be_over": "{item} can't be over {amount} of characters",
+  "create": "Create",
+  "export": "Export",
+  "add": "Add",
+  "user_settings": "User settings",
+  "google_login": "Google login",
+  "synchronise": "Synchronise",
+  "calendar_synchronisation": "Calendar synchronisation",
+  "dark_theme": "Dark theme",
+  "price": "Price",
+  "milometer": "Milometer",
+  "last_refuel_was_recorded": "Last refuel was recorded",
+  "liter_price": "Liter price",
+  "consumption": "Consumption"
+}
+>>>>>>> 62e00ba2f83228752794f8d5659cc533c8f855ff

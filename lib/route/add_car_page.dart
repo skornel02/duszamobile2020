@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -47,8 +46,7 @@ class _AddCarPageState extends State<AddCarPage> {
 										}
 									});
 							}),
-
-
+				  		
 				  		Padding(
 				  		  padding: const EdgeInsets.only(top: 10),
 				  		  child: TextField(

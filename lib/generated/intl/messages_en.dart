@@ -19,15 +19,24 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static m0(name) => "Welcome ${name}!";
+  static m0(item) => "${item} can\'t be empty!";
+
+  static m1(item, amount) => "${item} can\'t be over ${amount} of characters";
+
+  static m2(name) => "Welcome ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add" : MessageLookupByLibrary.simpleMessage("Add"),
     "bought" : MessageLookupByLibrary.simpleMessage("Bought"),
+    "add_car" : MessageLookupByLibrary.simpleMessage("Add car"),
     "calendar_synchronisation" : MessageLookupByLibrary.simpleMessage("Calendar synchronisation"),
+    "cant_be_empty" : m0,
+    "cant_be_over" : m1,
+    "car_name" : MessageLookupByLibrary.simpleMessage("Car name"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Cheese"),
     "consumption" : MessageLookupByLibrary.simpleMessage("Consumption"),
+    "create" : MessageLookupByLibrary.simpleMessage("Create"),
     "dark_theme" : MessageLookupByLibrary.simpleMessage("Dark theme"),
     "export" : MessageLookupByLibrary.simpleMessage("Export"),
     "google_login" : MessageLookupByLibrary.simpleMessage("Google login"),
@@ -38,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "monthly" : MessageLookupByLibrary.simpleMessage("Monthly"),
     "more_regions" : MessageLookupByLibrary.simpleMessage("More regions"),
     "other_regions" : MessageLookupByLibrary.simpleMessage("Other regions"),
+    "my_cars" : MessageLookupByLibrary.simpleMessage("My cars"),
     "price" : MessageLookupByLibrary.simpleMessage("Price"),
     "region" : MessageLookupByLibrary.simpleMessage("Region"),
     "regional" : MessageLookupByLibrary.simpleMessage("Regional"),
@@ -48,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
     "welcome" : m0,
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
-    "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly")
+    "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly"),
+    "welcome" : m2
   };
 }

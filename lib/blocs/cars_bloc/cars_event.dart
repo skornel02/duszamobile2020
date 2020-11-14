@@ -12,17 +12,9 @@ class CarsLoaded extends CarsEvent {
   List<Object> get props => [cars];
 }
 
-class OnSelectCar extends CarsEvent {
-  final String uuid;
-  OnSelectCar(this.uuid);
+class RefreshCars extends CarsEvent {
+  RefreshCars();
 
   @override
-  List<Object> get props => [uuid];
-}
-
-class OnAddCar extends CarsEvent {
-  OnAddCar();
-
-  @override
-  List<Object> get props => [];
+  List<Object> get props => ["carsEvent"];
 }
