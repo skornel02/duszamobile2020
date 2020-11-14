@@ -8,5 +8,17 @@
   "car_name": "Car name",
   "cant_be_empty": "{item} can't be empty!",
   "cant_be_over": "{item} can't be over {amount} of characters",
-  "create": "Create"
+  "create": "Create",
+  "export": "Export",
+  "add": "Add",
+  "user_settings": "User settings",
+  "google_login": "Google login",
+  "synchronise": "Synchronise",
+  "calendar_synchronisation": "Calendar synchronisation",
+  "dark_theme": "Dark theme",
+  "price": "Price",
+  "milometer": "Milometer",
+  "last_refuel_was_recorded": "Last refuel was recorded",
+  "liter_price": "Liter price",
+  "consumption": "Consumption"
 }

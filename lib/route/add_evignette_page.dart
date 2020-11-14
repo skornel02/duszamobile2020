@@ -19,7 +19,7 @@ class _AddRefuelPageState extends State<AddEVignettePage> {
 	bool remindMeDate = false;
 	bool remindMeMilage = true;
 
-	double sliderValue = 15;
+	double refuelAmount = 15;
 	
 	@override
 	Widget build(BuildContext context){
@@ -147,13 +147,14 @@ class _AddRefuelPageState extends State<AddEVignettePage> {
 
 							Row(
 								children: [
+									Text(refuelAmount.toString()),
 									Slider(
 										min: 0,
 										max: 200,
 
-										value: sliderValue, onChanged: (val){
+										value: refuelAmount, onChanged: (val){
 										setState(() {
-											sliderValue = val;
+											refuelAmount = val;
 										});
 									})
 								],

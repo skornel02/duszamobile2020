@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/pojos/car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CarCreateForm extends StatefulWidget {
   @override
@@ -16,48 +19,34 @@ class _CarCreateFormState extends State<CarCreateForm> {
   final TextEditingController textEditingControllerName =
       TextEditingController(text: "Sajt");
 
+  final _picker = ImagePicker();
+  File file;
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              TextFormField(
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return 'Please enter some text';
-                  }
-                  return null;
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Validate returns true if the form is valid, or false
-                    // otherwise.
-                    if (_formKey.currentState.validate()) {
-                      // If the form is valid, display a Snackbar.
-                      Scaffold.of(context).showSnackBar(
-                          SnackBar(content: Text('Processing Data')));
-                    }
-                  },
-                  child: Text('Submit'),
+          Builder(builder: (context) {
+            if (file != null) {
+              return Image.file(file);
+            }
+            return IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.image,
                 ),
-              ),
-            ],
-          ),
-          IconButton(
-              icon: Icon(
-                FontAwesomeIcons.image,
-              ),
-              iconSize: 80,
-              onPressed: () {
-                // add image of car
-              }),
+                iconSize: 80,
+                onPressed: () async {
+                  PickedFile pickedImage =
+                      await _picker.getImage(source: ImageSource.gallery);
+                  if (pickedImage != null) {
+                    setState(() {
+                      file = File(pickedImage.path);
+                    });
+                  }
+                });
+          }),
           Padding(
             padding: const EdgeInsets.only(top: 10),
             child: TextFormField(

@@ -134,6 +134,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Export`
+  String get export {
+    return Intl.message(
+      'Export',
+      name: 'export',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User settings`
+  String get user_settings {
+    return Intl.message(
+      'User settings',
+      name: 'user_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Google login`
+  String get google_login {
+    return Intl.message(
+      'Google login',
+      name: 'google_login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synchronise`
+  String get synchronise {
+    return Intl.message(
+      'Synchronise',
+      name: 'synchronise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Calendar synchronisation`
+  String get calendar_synchronisation {
+    return Intl.message(
+      'Calendar synchronisation',
+      name: 'calendar_synchronisation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark theme`
+  String get dark_theme {
+    return Intl.message(
+      'Dark theme',
+      name: 'dark_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price`
+  String get price {
+    return Intl.message(
+      'Price',
+      name: 'price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Milometer`
+  String get milometer {
+    return Intl.message(
+      'Milometer',
+      name: 'milometer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last refuel was recorded`
+  String get last_refuel_was_recorded {
+    return Intl.message(
+      'Last refuel was recorded',
+      name: 'last_refuel_was_recorded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Liter price`
+  String get liter_price {
+    return Intl.message(
+      'Liter price',
+      name: 'liter_price',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consumption`
+  String get consumption {
+    return Intl.message(
+      'Consumption',
+      name: 'consumption',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

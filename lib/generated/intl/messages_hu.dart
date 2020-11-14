@@ -23,9 +23,12 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "add" : MessageLookupByLibrary.simpleMessage("Hozzáadás"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Sajt"),
+    "export" : MessageLookupByLibrary.simpleMessage("Exportálás"),
     "main_page" : MessageLookupByLibrary.simpleMessage("Főoldal"),
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobil 2020"),
+    "user_settings" : MessageLookupByLibrary.simpleMessage("Felhasználói beállítások"),
     "welcome" : m2
   };
 }

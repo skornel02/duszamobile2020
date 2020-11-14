@@ -27,15 +27,27 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "add" : MessageLookupByLibrary.simpleMessage("Add"),
     "add_car" : MessageLookupByLibrary.simpleMessage("Add car"),
+    "calendar_synchronisation" : MessageLookupByLibrary.simpleMessage("Calendar synchronisation"),
     "cant_be_empty" : m0,
     "cant_be_over" : m1,
     "car_name" : MessageLookupByLibrary.simpleMessage("Car name"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Cheese"),
+    "consumption" : MessageLookupByLibrary.simpleMessage("Consumption"),
     "create" : MessageLookupByLibrary.simpleMessage("Create"),
+    "dark_theme" : MessageLookupByLibrary.simpleMessage("Dark theme"),
+    "export" : MessageLookupByLibrary.simpleMessage("Export"),
+    "google_login" : MessageLookupByLibrary.simpleMessage("Google login"),
+    "last_refuel_was_recorded" : MessageLookupByLibrary.simpleMessage("Last refuel was recorded"),
+    "liter_price" : MessageLookupByLibrary.simpleMessage("Liter price"),
     "main_page" : MessageLookupByLibrary.simpleMessage("Main page"),
+    "milometer" : MessageLookupByLibrary.simpleMessage("Milometer"),
     "my_cars" : MessageLookupByLibrary.simpleMessage("My cars"),
+    "price" : MessageLookupByLibrary.simpleMessage("Price"),
+    "synchronise" : MessageLookupByLibrary.simpleMessage("Synchronise"),
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobile 2020"),
+    "user_settings" : MessageLookupByLibrary.simpleMessage("User settings"),
     "welcome" : m2
   };
 }

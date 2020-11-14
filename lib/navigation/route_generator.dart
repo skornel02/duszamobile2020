@@ -27,9 +27,7 @@ void defineRoutes(FluroRouter router) {
   }));
   router.define("/cars/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return Center(
-      child: AddCarPage(),
-    );
+    return AddCarPage();
   }));
   router.define("/cars/:id", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
