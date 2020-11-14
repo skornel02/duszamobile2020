@@ -6,14 +6,14 @@ abstract class EVignetteEvent extends Equatable {
 
 class SaveEVignette extends EVignetteEvent {
   final EVignette eVignette;
-  SaveReminder(this.eVignette);
+  SaveEVignette(this.eVignette);
 
   @override
   List<Object> get props => [eVignette];
 }
 
 class CancelEVignette extends EVignetteEvent {
-  EVignetteReminder();
+  CancelEVignette();
 
   @override
   List<Object> get props => [];

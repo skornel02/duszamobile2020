@@ -4,6 +4,7 @@ import 'package:duszamobile2020/resources/pojos/refuel.dart';
 import 'package:duszamobile2020/resources/pojos/reminder.dart';
 import 'package:duszamobile2020/resources/pojos/repair.dart';
 import 'package:duszamobile2020/resources/pojos/tire_type.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -12,7 +13,7 @@ part 'car.g.dart';
 
 @JsonSerializable()
 @immutable
-class Car {
+class Car extends Equatable {
   final String id;
   final String name;
   final List<Repair> repairs;
@@ -82,4 +83,11 @@ class Car {
 
   @override
   Map<String, dynamic> toJson() => _$CarToJson(this);
+
+  @override
+  List<Object> get props =>
+      [id, name, repairs, refuels, reminds, eVignettes, tire, settings];
+
+  @override
+  bool get stringify => true;
 }

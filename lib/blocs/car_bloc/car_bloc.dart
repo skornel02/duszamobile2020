@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/resources/pojos/e_vignette.dart';
+import 'package:duszamobile2020/resources/pojos/car_settings.dart';
 import 'package:duszamobile2020/resources/pojos/refuel.dart';
 import 'package:duszamobile2020/resources/pojos/reminder.dart';
 import 'package:duszamobile2020/resources/pojos/repair.dart';
@@ -17,7 +19,5 @@ class CarBloc extends Bloc<CarEvent, CarState> {
   @override
   Stream<CarState> mapEventToState(
     CarEvent event,
-  ) async* {
-
-  }
+  ) async* {}
 }

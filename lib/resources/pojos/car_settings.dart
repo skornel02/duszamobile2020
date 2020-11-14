@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -6,7 +7,7 @@ part 'car_settings.g.dart';
 
 @JsonSerializable()
 @immutable
-class CarSettings {
+class CarSettings extends Equatable {
   /// Base64 encoded
   final String image;
   final double cost;
@@ -36,4 +37,10 @@ class CarSettings {
 
   @override
   Map<String, dynamic> toJson() => _$CarSettingsToJson(this);
+
+  @override
+  List<Object> get props => [image, cost, year];
+
+  @override
+  bool get stringify => true;
 }

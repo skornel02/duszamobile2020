@@ -11,6 +11,8 @@ abstract class CarProvider {
 
   Future<void> saveCars(List<Car> cars);
 
+  Future<DateTime> lastModified();
+
   @visibleForTesting
   List<Car> parseStringToCars(String str) {
     List<dynamic> jsonData = json.decode(str);
@@ -41,7 +43,38 @@ class FileCarProvider extends CarProvider {
     final directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
     final file = File('$path/cars.json');
+
     String data = json.encode(cars);
     await file.writeAsString(data);
+  }
+
+  @override
+  Future<DateTime> lastModified() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final path = directory.path;
+    final file = File('$path/cars.json');
+    try {
+      return file.lastModified();
+    } catch (err) {
+      printError("Couldn't load last modification date: $err");
+      return DateTime.parse("1999-01-01T00:00:01Z");
+    }
+  }
+}
+
+class WebCarProvider extends CarProvider {
+  @override
+  Future<List<Car>> loadCars() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+  }
+
+  @override
+  Future<void> saveCars(List<Car> cars) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+  }
+
+  @override
+  Future<DateTime> lastModified() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
   }
 }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:duszamobile2020/blocs/states/states.dart';
+import 'package:duszamobile2020/resources/pojos/e_vignette.dart';
 import 'package:equatable/equatable.dart';
 
 part 'evignette_event.dart';

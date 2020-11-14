@@ -4,9 +4,6 @@ abstract class CarEvent extends Equatable {
   const CarEvent();
 }
 
-
-
-
 class CarNotFound extends CarEvent {
   CarNotFound();
   @override
@@ -15,7 +12,7 @@ class CarNotFound extends CarEvent {
 
 class UpdateSettings extends CarEvent {
   final CarSettings settings;
-  CarSettings(this.settings);
+  UpdateSettings(this.settings);
 
   @override
   List<Object> get props => [settings];

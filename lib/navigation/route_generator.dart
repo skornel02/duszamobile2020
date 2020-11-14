@@ -1,6 +1,6 @@
+import 'package:duszamobile2020/route/add_car_page.dart';
+import 'package:duszamobile2020/route/cars_page.dart';
 import 'package:duszamobile2020/route/test_route.dart';
-import 'file:///E:/Projects/duszamobile20201/lib/route/add_car_page.dart';
-import 'file:///E:/Projects/duszamobile20201/lib/route/cars_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
