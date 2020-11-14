@@ -4,9 +4,6 @@ abstract class CarEvent extends Equatable {
   const CarEvent();
 }
 
-
-
-
 class CarNotFound extends CarEvent {
   CarNotFound();
   @override

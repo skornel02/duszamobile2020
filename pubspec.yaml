@@ -8,6 +8,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  persistent_bottom_nav_bar: 2.1.0
   animator: 2.0.1
   auto_size_text: 2.1.0
   connectivity: 2.0.1

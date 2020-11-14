@@ -1,3 +1,4 @@
+import 'package:duszamobile2020/route/main_page.dart';
 import 'package:duszamobile2020/route/test_route.dart';
 import 'file:///E:/Projects/duszamobile20201/lib/route/add_car_page.dart';
 import 'file:///E:/Projects/duszamobile20201/lib/route/cars_page.dart';
@@ -6,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 void defineRoutes(FluroRouter router) {
-  router.define("/test", handler:
+  router.define("/main", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return TestRoute();
+    return MainPage();
   }), transitionType: TransitionType.material);
   router.define("/settings", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {

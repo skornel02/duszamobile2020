@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CarsPage extends StatelessWidget {
-	CarsPage({Key key}) : super(key: key);
+	CarsPage({Key key}) : super(key: key){
+		debugPrint("Created CarsPage");
+
+	}
 
 	@override
 	Widget build(BuildContext context){
