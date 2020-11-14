@@ -1,6 +1,9 @@
+import 'package:duszamobile2020/resources/pojos/car_settings.dart';
+import 'package:duszamobile2020/resources/pojos/e_vignette.dart';
 import 'package:duszamobile2020/resources/pojos/refuel.dart';
 import 'package:duszamobile2020/resources/pojos/reminder.dart';
 import 'package:duszamobile2020/resources/pojos/repair.dart';
+import 'package:duszamobile2020/resources/pojos/tire_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -12,42 +15,48 @@ part 'car.g.dart';
 class Car {
   final String id;
   final String name;
-  final String image; //Base64
   final List<Repair> repairs;
   final List<Refuel> refuels;
   final List<Reminder> reminds;
-  final double cost;
-  final int year;
+  final List<EVignette> eVignettes;
+  final TireType tire;
+  final CarSettings settings;
 
-  Car(
+  Car.create(
       {@required this.id,
       @required this.name,
-      @required this.image,
       @required this.repairs,
       @required this.refuels,
       @required this.reminds,
-      @required this.cost,
-      @required this.year});
+      @required this.eVignettes,
+      @required this.tire,
+      @required this.settings});
+
+  Car(this.id, this.name, this.repairs, this.refuels, this.reminds,
+      this.eVignettes, this.tire, this.settings);
 
   /// Static copy constructor with overriding.
-  factory Car.from(Car car,
-      {String id,
-      String name,
-      String image,
-      List<Repair> repairs,
-      List<Refuel> refuels,
-      List<Reminder> reminds,
-      double cost,
-      int year}) {
-    return Car(
+  factory Car.from(
+    Car car, {
+    String id,
+    String name,
+    String image,
+    List<Repair> repairs,
+    List<Refuel> refuels,
+    List<Reminder> reminds,
+    List<EVignette> eVignettes,
+    TireType tire,
+    CarSettings settings,
+  }) {
+    return Car.create(
         id: id ?? car.id,
         name: name ?? car.name,
-        image: image ?? car.image,
         repairs: repairs ?? car.repairs,
         refuels: refuels ?? car.refuels,
         reminds: reminds ?? car.reminds,
-        cost: cost ?? car.cost,
-        year: year ?? car.year);
+        eVignettes: eVignettes ?? car.eVignettes,
+        tire: tire ?? car.tire,
+        settings: settings ?? car.settings);
   }
 
   int get totalMilage {
@@ -66,7 +75,7 @@ class Car {
     return totalRepairs;
   }
 
-  double get totalCost => this.cost + runningCost;
+  double get totalCost => settings.cost + runningCost;
 
   @override
   factory Car.fromJson(Map<String, dynamic> json) => _$CarFromJson(json);

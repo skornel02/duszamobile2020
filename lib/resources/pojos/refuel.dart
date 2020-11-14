@@ -13,7 +13,14 @@ class Refuel {
   final int lastMilage;
   final int milage;
 
-  Refuel({this.id, this.refueled, this.paid, this.lastMilage, this.milage});
+  Refuel.create(
+      {@required this.id,
+      @required this.refueled,
+      @required this.paid,
+      @required this.lastMilage,
+      @required this.milage});
+
+  Refuel(this.id, this.refueled, this.paid, this.lastMilage, this.milage);
 
   /// Static copy constructor with overriding.
   factory Refuel.from(
@@ -24,7 +31,7 @@ class Refuel {
     int lastMilage,
     int milage,
   }) {
-    return Refuel(
+    return Refuel.create(
       id: id ?? refuel.id,
       refueled: refueled ?? refuel.refueled,
       paid: paid ?? refuel.paid,

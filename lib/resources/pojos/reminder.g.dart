@@ -11,11 +11,12 @@ Reminder _$ReminderFromJson(Map<String, dynamic> json) {
     json['id'] as String,
     json['name'] as String,
     json['description'] as String,
+    (json['items'] as List)?.map((e) => e as String)?.toList(),
     json['date'] == null ? null : DateTime.parse(json['date'] as String),
-    json['milage'] as int,
-    json['recurringDate'] as String,
-    json['startMilageOffset'] as int,
-    json['everyMilage'] as int,
+    json['afterDays'] as int,
+    json['startMilage'] as int,
+    json['afterMilage'] as int,
+    json['completed'] as bool,
   );
 }
 
@@ -23,9 +24,10 @@ Map<String, dynamic> _$ReminderToJson(Reminder instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
+      'items': instance.items,
       'date': instance.date?.toIso8601String(),
-      'milage': instance.milage,
-      'recurringDate': instance.recurringDate,
-      'startMilageOffset': instance.startMilageOffset,
-      'everyMilage': instance.everyMilage,
+      'afterDays': instance.afterDays,
+      'startMilage': instance.startMilage,
+      'afterMilage': instance.afterMilage,
+      'completed': instance.completed,
     };
