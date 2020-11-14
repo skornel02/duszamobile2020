@@ -19,7 +19,7 @@ class _GoogleSyncState extends State<GoogleSync> {
     print("Local: $local Remote: $remote");
     if (local.isBefore(remote)) {
       print("Local is behind remote...");
-      await carRepository.updateCacheAndSave(await googleProvider.loadCars());
+      await carRepository.updateCars(await googleProvider.loadCars());
     } else {
       print("Remote is behind local...");
       await googleProvider.saveCars(await carRepository.getCars());

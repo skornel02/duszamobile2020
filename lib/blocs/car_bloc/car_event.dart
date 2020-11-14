@@ -26,21 +26,12 @@ class UpdateSettings extends CarEvent {
 }
 
 //region Refuel
-class AddRefuelItem extends CarEvent {
+class SaveRefuelItem extends CarEvent {
   final Refuel refuel;
-  AddRefuelItem(this.refuel);
+  SaveRefuelItem(this.refuel);
 
   @override
   List<Object> get props => [refuel];
-}
-
-class UpdateRefuelItem extends CarEvent {
-  final String id;
-  final Refuel refuel;
-  UpdateRefuelItem(this.id, this.refuel);
-
-  @override
-  List<Object> get props => [id, refuel];
 }
 
 class RemoveRefuelItem extends CarEvent {
@@ -53,21 +44,12 @@ class RemoveRefuelItem extends CarEvent {
 //endregion
 
 //region Repair
-class AddRepairItem extends CarEvent {
+class SaveRepairItem extends CarEvent {
   final Repair repair;
-  AddRepairItem(this.repair);
+  SaveRepairItem(this.repair);
 
   @override
   List<Object> get props => [repair];
-}
-
-class UpdateRepairItem extends CarEvent {
-  final String id;
-  final Repair repair;
-  UpdateRepairItem(this.id, this.repair);
-
-  @override
-  List<Object> get props => [id, repair];
 }
 
 class RemoveRepairItem extends CarEvent {
@@ -80,21 +62,12 @@ class RemoveRepairItem extends CarEvent {
 //endregion
 
 //region Reminder
-class AddReminderItem extends CarEvent {
+class SaveReminderItem extends CarEvent {
   final Reminder reminder;
-  AddReminderItem(this.reminder);
+  SaveReminderItem(this.reminder);
 
   @override
   List<Object> get props => [reminder];
-}
-
-class UpdateReminderItem extends CarEvent {
-  final String id;
-  final Reminder reminder;
-  UpdateReminderItem(this.id, this.reminder);
-
-  @override
-  List<Object> get props => [id, reminder];
 }
 
 class RemoveReminderItem extends CarEvent {
@@ -107,21 +80,12 @@ class RemoveReminderItem extends CarEvent {
 //endregion
 
 //region EVignette
-class AddEVignetteItem extends CarEvent {
+class SaveEVignetteItem extends CarEvent {
   final EVignette eVignette;
-  AddEVignetteItem(this.eVignette);
+  SaveEVignetteItem(this.eVignette);
 
   @override
   List<Object> get props => [eVignette];
-}
-
-class UpdateEVignetteItem extends CarEvent {
-  final String id;
-  final EVignette eVignette;
-  UpdateEVignetteItem(this.id, this.eVignette);
-
-  @override
-  List<Object> get props => [id, eVignette];
 }
 
 class RemoveEVignetteItem extends CarEvent {

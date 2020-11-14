@@ -1,10 +1,17 @@
 import 'package:duszamobile2020/provider/car_provider.dart';
 import 'package:duszamobile2020/resources/pojos/car.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class CarsCubit extends Cubit<List<Car>> {
+  CarsCubit() : super([]);
+
+  void nextState(List<Car> cars) => emit(cars);
+}
 
 class CarRepository {
   CarProvider _provider;
-  List<Car> _carsCache;
+  CarsCubit carsCubit;
 
   CarRepository() {
     if (kIsWeb) {
@@ -12,11 +19,13 @@ class CarRepository {
     } else {
       _provider = FileCarProvider();
     }
+
+    carsCubit = CarsCubit();
+    _provider.loadCars().then((value) => carsCubit.nextState(value));
   }
 
   Future<List<Car>> getCars() async {
-    if (_carsCache != null) return _carsCache;
-    return _carsCache = await _provider.loadCars();
+    return carsCubit.state;
   }
 
   /// Returns null if car is not found
@@ -49,7 +58,7 @@ class CarRepository {
       newCars = List<Car>.from(cars)..insert(index, car);
     }
 
-    await updateCacheAndSave(newCars);
+    await updateCars(newCars);
   }
 
   Future<void> removeCar(Car car) async {
@@ -59,11 +68,11 @@ class CarRepository {
       if (matching.id != car.id) newCars.add(matching);
     }
 
-    await updateCacheAndSave(newCars);
+    await updateCars(newCars);
   }
 
-  Future<void> updateCacheAndSave(List<Car> cars) async {
-    _carsCache = cars;
+  Future<void> updateCars(List<Car> cars) async {
+    carsCubit.nextState(cars);
     await _provider.saveCars(cars);
   }
 }
