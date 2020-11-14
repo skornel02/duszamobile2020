@@ -8,7 +8,7 @@ class CarRepository {
 
   CarRepository() {
     if (kIsWeb) {
-      throw "Web not currently supported!";
+      _provider = WebCarProvider();
     } else {
       _provider = FileCarProvider();
     }
