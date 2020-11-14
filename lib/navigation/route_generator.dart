@@ -9,7 +9,7 @@ import 'package:flutter/widgets.dart';
 void defineRoutes(FluroRouter router) {
   router.define("/main", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return MainPage();
+    return MainPage("settings");
   }), transitionType: TransitionType.material);
   router.define("/settings", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -24,6 +24,10 @@ void defineRoutes(FluroRouter router) {
       child: CarsPage(),
     );
   }));
+  router.define("/cars/:id", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return MainPage("settings");
+  }));
   router.define("/cars/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return Center(
@@ -36,12 +40,28 @@ void defineRoutes(FluroRouter router) {
       child: Text("/cars/${params["car_id"]}"),
     );
   }));
+
   router.define("/cars/:car_id/statistics", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return Center(
-      child: Text("/cars/${params["car_id"]}/statistics"),
-    );
-  }));
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return MainPage("statistics");
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/settings", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return MainPage("settings");
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/repairs", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return MainPage("repairs");
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/tyretype", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return MainPage("tyretype");
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/evignette", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return MainPage("evignette");
+  }), transitionType: TransitionType.none);
+
 
   // it is also possible to define the route transition to use
   // router.define("users/:id", handler: usersHandler, transitionType: TransitionType.inFromLeft);

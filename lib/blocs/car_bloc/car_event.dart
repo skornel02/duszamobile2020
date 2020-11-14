@@ -12,7 +12,7 @@ class CarNotFound extends CarEvent {
 
 class UpdateSettings extends CarEvent {
   final CarSettings settings;
-  CarSettings(this.settings);
+  UpdateSettings(this.settings);
 
   @override
   List<Object> get props => [settings];

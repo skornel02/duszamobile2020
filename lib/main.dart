@@ -38,7 +38,7 @@ void main() async {
     startPage = "login";
   }
 
-  startPage = "/main";
+  startPage = "/cars/1/settings";
 
   runApp(App());
 }
@@ -95,6 +95,7 @@ class _App extends State<App> with WidgetsBindingObserver {
             movingOnWindowChange: true,
             child: MaterialApp(
               initialRoute: startPage,
+
               onGenerateRoute: router.generator,
               title: S.current?.title ?? "Duszamobile2020",
               showPerformanceOverlay: false,

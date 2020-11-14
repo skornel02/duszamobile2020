@@ -7,19 +7,10 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class MainPage extends StatelessWidget {
 
-
-	MainPage(){
+	final String path;
+	MainPage(this.path){
 		debugPrint("Created Mainpage");
 	}
-
-	List<Widget> pages =  [
-		CarsPage(),
-		AddCarPage(),
-		AddCarPage(),
-		AddCarPage()
-	];
-
-
 
 	List<PersistentBottomNavBarItem> _navBarsItems() {
 		return [
@@ -50,30 +41,70 @@ class MainPage extends StatelessWidget {
 		];
 	}
 
+	int getIndex(context){
+		if(path == "settings"){
+			return 0;
+		}else if(path == "statistics"){
+			return 1;
+		}else if(path == "repairs"){
+			return 2;
+		}else if(path == "tyretype"){
+			return 3;
+		}else if(path == "evignette"){
+			return 4;
+		}
+	}
 
 	@override
 	Widget build(BuildContext context){
 		return Scaffold(
-
-			body: ,
+			body: Builder(
+				builder: (c){
+					switch(path){
+						case "settings":
+							return CarsPage();
+						case "statistics":
+							return AddCarPage();
+					}
+					return null;
+				},
+			),
 			bottomNavigationBar: BottomNavigationBar(
-				currentIndex: 0, // this will be set when a new tab is tapped
-				
+				backgroundColor: Colors.red,
+				currentIndex: getIndex(context),
+			//	currentIndex: 0, // this will be set when a new tab is tapped
+				onTap: (index){
+					switch(index){
+						case 0:
+							Navigator.pushNamedAndRemoveUntil(context, "/cars/1/settings", (a) => false);
+							break;
+						case 1:
+							Navigator.pushNamedAndRemoveUntil(context, "/cars/1/statistics", (a) => false);
+							break;
+					}
+				},
 				items: [
 					BottomNavigationBarItem(
-						icon: new Icon(Icons.home),
-						title: new Text('Home'),
+						icon: new Icon(FontAwesomeIcons.gasPump, color: Colors.black,),
+						label: "gaspump",
 					),
 					BottomNavigationBarItem(
-						icon: new Icon(Icons.mail),
-						title: new Text('Messages'),
+						icon: new Icon(FontAwesomeIcons.chartBar, color: Colors.black,),
+						label: "chartbar",
+					),
+		/*
+					BottomNavigationBarItem(
+							icon: Icon(FontAwesomeIcons.home, color: Colors.black,),
+							label: "home"
 					),
 					BottomNavigationBarItem(
-							icon: Icon(Icons.person),
-							title: Text('Profile')
+							icon: Icon(FontAwesomeIcons.calendar, color: Colors.black,),
+							label: "calendar"
 					)
+					*/
 				],
-		),
+			),
+
 		);
 	}
 }
