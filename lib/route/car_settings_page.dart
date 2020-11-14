@@ -1,103 +1,50 @@
+import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
+import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/widgets/car_form.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CarSettingsPage extends StatefulWidget {
-	CarSettingsPage({Key key}) : super(key: key);
+GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 
-	@override
-	_CarSettingsPageState createState()=> _CarSettingsPageState();
-}
+class CarSettingsPage extends StatelessWidget {
+	final String id;
 
-class _CarSettingsPageState extends State<CarSettingsPage> {
-
-	TextEditingController textEditingControllerName = TextEditingController();
-	TextEditingController textEditingControllerPrice= TextEditingController();
-	TextEditingController textEditingControllerYear= TextEditingController();
+	CarSettingsPage(this.id);
 
 
 	@override
-	Widget build(BuildContext context){
-		return Scaffold(
-				appBar: AppBar(
-					title: Text("Autó hozzáadás"),
-				),
-				body: Padding(
-					padding: const EdgeInsets.all(16),
-					child: Column(
-						children: [
-							IconButton(icon: Icon(FontAwesomeIcons.image,), iconSize: 80,
-									onPressed: (){
-										// add image of car
-									}),
+	Widget build(BuildContext context) {
 
-							Padding(
-								padding: const EdgeInsets.only(top: 10),
-								child: TextField(
-									autofocus: true,
-									style: TextStyle(fontSize: 18),
-									maxLines: 1,
+		return BlocProvider(
+			create: (_) => CarBloc(carId: id, repo: RepositoryProvider.of<CarRepository>(context)),
+		  child: Scaffold(
+		  	key: _profileScaffoldKey,
+		  	appBar: AppBar(
+		  		title: Text(S.of(context).car_settings),
+		  	),
+		  	body: BlocBuilder<CarBloc, CarState>(
+					builder: (contex, state){
+						debugPrint("kbnod: " + state.toString());
+						if(state is ReadyState){
+							return Padding(
+								padding: const EdgeInsets.all(16),
+								child: CarForm(car: state.car, callback: (Car car) async {
+									final repository =
+									RepositoryProvider.of<CarRepository>(context);
+									await repository.updateCar(car);
+									Navigator.pushNamedAndRemoveUntil(
+											context, "/cars/" + car.id, (a) => false);
+								},),
+							);
+						}
+						return Center(child: CircularProgressIndicator());
 
-									controller: textEditingControllerName,
-									textInputAction: TextInputAction.next,
-									decoration:
-									InputDecoration(labelText: "Név",// helperText: "Oktatási azonositó",
-										alignLabelWithHint: true,
-										labelStyle: TextStyle(
-
-										),
-										filled: true,
-										fillColor: Colors.grey.withAlpha(120),
-									),
-								),
-							),
-							Padding(
-								padding: const EdgeInsets.only(top:10),
-								child: TextField(
-									style: TextStyle(fontSize: 18),
-									maxLines: 1,
-
-									controller: textEditingControllerPrice,
-									textInputAction: TextInputAction.next,
-									decoration:
-									InputDecoration(labelText: "Pénz",// helperText: "Oktatási azonositó",
-										alignLabelWithHint: true,
-										labelStyle: TextStyle(
-
-										),
-										filled: true,
-										fillColor: Colors.grey.withAlpha(120),
-									),
-								),
-							),
-							Padding(
-								padding: const EdgeInsets.only(top: 10),
-								child: TextField(
-									style: TextStyle(fontSize: 18),
-									maxLines: 1,
-
-									controller: textEditingControllerYear,
-									textInputAction: TextInputAction.next,
-									decoration:
-									InputDecoration(labelText: "Év",// helperText: "Oktatási azonositó",
-										alignLabelWithHint: true,
-										labelStyle: TextStyle(
-
-										),
-										filled: true,
-										fillColor: Colors.grey.withAlpha(120),
-									),
-								),
-							),
-							Spacer(),
-							RaisedButton(
-								child: Text("Hozzáadás"),
-								onPressed: (){
-									// notify bloc
-								},
-							),
-						],
-					),
-				)
+					},
+		  	),
+		  ),
 		);
 	}
 }

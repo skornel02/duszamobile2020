@@ -10,9 +10,11 @@ class EVignettesPage extends StatelessWidget {
 	@override
 	Widget build(BuildContext context){
 		return Scaffold(
-			body: ListView.builder(itemBuilder: (context, index){
+			body: Center(
+				child: TextField(
 
-			}),
+				),
+			),
 			floatingActionButton: FloatingActionButton(
 				child: Icon(Icons.add),
 				onPressed: (){
