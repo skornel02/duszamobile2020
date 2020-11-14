@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add" : MessageLookupByLibrary.simpleMessage("Add"),
+    "bought" : MessageLookupByLibrary.simpleMessage("Bought"),
     "calendar_synchronisation" : MessageLookupByLibrary.simpleMessage("Calendar synchronisation"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Cheese"),
     "consumption" : MessageLookupByLibrary.simpleMessage("Consumption"),
@@ -34,10 +35,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "liter_price" : MessageLookupByLibrary.simpleMessage("Liter price"),
     "main_page" : MessageLookupByLibrary.simpleMessage("Main page"),
     "milometer" : MessageLookupByLibrary.simpleMessage("Milometer"),
+    "monthly" : MessageLookupByLibrary.simpleMessage("Monthly"),
+    "more_regions" : MessageLookupByLibrary.simpleMessage("More regions"),
+    "other_regions" : MessageLookupByLibrary.simpleMessage("Other regions"),
     "price" : MessageLookupByLibrary.simpleMessage("Price"),
+    "region" : MessageLookupByLibrary.simpleMessage("Region"),
+    "regional" : MessageLookupByLibrary.simpleMessage("Regional"),
     "synchronise" : MessageLookupByLibrary.simpleMessage("Synchronise"),
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobile 2020"),
+    "type" : MessageLookupByLibrary.simpleMessage("Type"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("User settings"),
-    "welcome" : m0
+    "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
+    "welcome" : m0,
+    "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
+    "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly")
   };
 }

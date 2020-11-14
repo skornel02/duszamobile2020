@@ -38,7 +38,7 @@ void main() async {
     startPage = "login";
   }
 
-  startPage = "/cars/1/settings";
+  startPage = "/cars/add";
 
   runApp(App());
 }

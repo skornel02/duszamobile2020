@@ -14,5 +14,16 @@
     "milometer": "Milometer",
     "last_refuel_was_recorded": "Last refuel was recorded",
     "liter_price": "Liter price",
-    "consumption": "Consumption"
+    "consumption": "Consumption",
+    "type": "Type",
+    "regional": "Regional",
+    "region": "Region",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly_countrywide": "Yearly countrywide",
+    "yearly_regional": "Weekly",
+    "other_regions": "Other regions",
+    "more_regions": "More regions",
+    "bought": "Bought"
+
 }

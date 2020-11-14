@@ -1,3 +1,4 @@
+import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -20,7 +21,9 @@ class _AddRefuelPageState extends State<AddEVignettePage> {
 	bool remindMeMilage = true;
 
 	double refuelAmount = 15;
-	
+
+	String type;
+	String region;
 	@override
 	Widget build(BuildContext context){
 		return Scaffold(
@@ -122,48 +125,54 @@ class _AddRefuelPageState extends State<AddEVignettePage> {
 								),
 							),
 
-							Divider(),
-
-							CheckboxListTile(
-								title: Text("Figyelmeztesen ekkor:"),
-								value: remindMeDate, onChanged: (val){
-								setState(() {
-									remindMeDate = val;
-								});
-							}),
-
-							InputDatePickerFormField(
-
-							),
-
-							CheckboxListTile(
-								title: Text("Figyelmeztesen ennyi km után:"),
-								value: remindMeMilage, onChanged: (val){
-								setState(() {
-									remindMeMilage = val;
-								});
-
-							}),
-
 							Row(
 								children: [
-									Text(refuelAmount.toString()),
-									Slider(
-										min: 0,
-										max: 200,
-
-										value: refuelAmount, onChanged: (val){
-										setState(() {
-											refuelAmount = val;
-										});
-									})
+									Text("${S.of(context).type}:"),
+									DropdownButton(
+										value: type,
+										items: [
+											DropdownMenuItem(child: Text(S.of(context).weekly), value: "weekly"),
+											DropdownMenuItem(child: Text(S.of(context).monthly), value: "monthly"),
+											DropdownMenuItem(child: Text(S.of(context).yearly_countrywide), value: "yearly_countrywide"),
+											DropdownMenuItem(child: Text(S.of(context).yearly_regional), value: "yearly_regional"),
+										],
+										onChanged: (val){
+											setState(() {
+											  type = val;
+											});
+										}
+									)
+								],
+							),
+							Row(
+								children: [
+									Text("${S.of(context).region}:"),
+									DropdownButton(
+											value: region,
+											items: [
+												DropdownMenuItem(child: Text(S.of(context).other_regions), value: "other_regions"),
+												DropdownMenuItem(child: Text(S.of(context).more_regions), value: "more_regions"),
+											],
+											onChanged: (val){
+												setState(() {
+													region = val;
+												});
+											}
+									)
 								],
 							),
 
+							Text("${S.of(context).bought}:"),
+							InputDatePickerFormField(
+								firstDate: DateTime.now().subtract(Duration(days: 365)),
+								lastDate: DateTime.now(),
+								onDateSaved: (DateTime date){
 
-							Spacer(),
+								},
+							),
+
 							RaisedButton(
-								child: Text("Hozzáadás"),
+								child: Text(S.of(context).add),
 								onPressed: (){
 									// notify bloc
 								},

@@ -8,10 +8,10 @@ class AddCarPage extends StatefulWidget {
 	AddCarPage({Key key}) : super(key: key);
 
 	@override
-	_AddRefuelPageState createState()=> _AddRefuelPageState();
+	_AddCarPageState createState()=> _AddCarPageState();
 }
 
-class _AddRefuelPageState extends State<AddCarPage> {
+class _AddCarPageState extends State<AddCarPage> {
 	TextEditingController textEditingControllerName = TextEditingController();
 	TextEditingController textEditingControllerPrice= TextEditingController();
 	TextEditingController textEditingControllerYear= TextEditingController();
@@ -19,6 +19,8 @@ class _AddRefuelPageState extends State<AddCarPage> {
 
 	final _picker = ImagePicker();
 	File file;
+
+	final focusNode = FocusNode();
 
 
 	@override
@@ -50,10 +52,13 @@ class _AddRefuelPageState extends State<AddCarPage> {
 				  		Padding(
 				  		  padding: const EdgeInsets.only(top: 10),
 				  		  child: TextField(
+									focusNode: focusNode,
 									autofocus: true,
 				  		  	style: TextStyle(fontSize: 18),
 				  		  	maxLines: 1,
-
+									onTap: (){
+										focusNode.requestFocus();
+									},
 				  		  	controller: textEditingControllerName,
 				  		  	textInputAction: TextInputAction.next,
 				  		  	decoration:
@@ -91,7 +96,6 @@ class _AddRefuelPageState extends State<AddCarPage> {
 				  		  child: TextField(
 				  		  	style: TextStyle(fontSize: 18),
 				  		  	maxLines: 1,
-
 				  		  	controller: textEditingControllerYear,
 				  		  	textInputAction: TextInputAction.next,
 				  		  	decoration:
