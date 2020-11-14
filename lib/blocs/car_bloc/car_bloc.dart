@@ -83,7 +83,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextRefuels.add(event.refuel);
       } else {
-        nextRefuels.insert(index, event.refuel);
+        nextRefuels.replaceRange(index, index + 1, [event.refuel]);
       }
       Car next = Car.from(original, refuels: nextRefuels);
       _repo.updateCar(next);
@@ -108,7 +108,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextRepairs.add(event.repair);
       } else {
-        nextRepairs.insert(index, event.repair);
+        nextRepairs.replaceRange(index, index + 1, [event.repair]);
       }
       Car next = Car.from(original, repairs: nextRepairs);
       _repo.updateCar(next);
@@ -133,7 +133,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextEVignettes.add(event.eVignette);
       } else {
-        nextEVignettes.insert(index, event.eVignette);
+        nextEVignettes.replaceRange(index, index + 1, [event.eVignette]);
       }
       Car next = Car.from(original, eVignettes: nextEVignettes);
       _repo.updateCar(next);
@@ -158,7 +158,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextReminders.add(event.reminder);
       } else {
-        nextReminders.insert(index, event.reminder);
+        nextReminders.replaceRange(index, index + 1, [event.reminder]);
       }
       Car next = Car.from(original, reminds: nextReminders);
       _repo.updateCar(next);

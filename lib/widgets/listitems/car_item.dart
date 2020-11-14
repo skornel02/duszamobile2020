@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:duszamobile2020/blocs/cars_bloc/cars_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/pojos/car.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CarItem extends StatelessWidget {
@@ -51,6 +53,7 @@ class CarItem extends StatelessWidget {
                     child: Text("Continue"),
                     onPressed: () {
                       Navigator.of(context).pop();
+                      BlocProvider.of<CarsBloc>(context).add(RemoveCar(car.id));
                     },
                   );
 

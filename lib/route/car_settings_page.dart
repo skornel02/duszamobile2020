@@ -10,41 +10,42 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 
 class CarSettingsPage extends StatelessWidget {
-	final String id;
+  final String id;
 
-	CarSettingsPage(this.id);
+  CarSettingsPage(this.id);
 
-
-	@override
-	Widget build(BuildContext context) {
-
-		return BlocProvider(
-			create: (_) => CarBloc(carId: id, repo: RepositoryProvider.of<CarRepository>(context)),
-		  child: Scaffold(
-		  	key: _profileScaffoldKey,
-		  	appBar: AppBar(
-		  		title: Text(S.of(context).car_settings),
-		  	),
-		  	body: BlocBuilder<CarBloc, CarState>(
-					builder: (contex, state){
-						debugPrint("kbnod: " + state.toString());
-						if(state is ReadyState){
-							return Padding(
-								padding: const EdgeInsets.all(16),
-								child: CarForm(car: state.car, callback: (Car car) async {
-									final repository =
-									RepositoryProvider.of<CarRepository>(context);
-									await repository.updateCar(car);
-									Navigator.pushNamedAndRemoveUntil(
-											context, "/cars/" + car.id, (a) => false);
-								},),
-							);
-						}
-						return Center(child: CircularProgressIndicator());
-
-					},
-		  	),
-		  ),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => CarBloc(
+          carId: id, repo: RepositoryProvider.of<CarRepository>(context)),
+      child: Scaffold(
+        key: _profileScaffoldKey,
+        appBar: AppBar(
+          title: Text(S.of(context).car_settings),
+        ),
+        body: BlocBuilder<CarBloc, CarState>(
+          builder: (contex, state) {
+            debugPrint("kbnod: " + state.toString());
+            if (state is ReadyState) {
+              return Padding(
+                padding: const EdgeInsets.all(16),
+                child: CarForm(
+                  car: state.car,
+                  callback: (Car car) async {
+                    final repository =
+                        RepositoryProvider.of<CarRepository>(context);
+                    await repository.updateCar(car);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, "/cars/" + car.id, (a) => false);
+                  },
+                ),
+              );
+            }
+            return Center(child: CircularProgressIndicator());
+          },
+        ),
+      ),
+    );
+  }
 }

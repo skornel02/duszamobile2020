@@ -43,6 +43,8 @@ class CarsBloc extends Bloc<CarsEvent, CarsState> {
     } else if (event is RefreshCars) {
       print("refreshing...");
       yield ReadyState(await _repository.getCars());
+    } else if (event is RemoveCar) {
+      _repository.removeCarById(event.id);
     }
   }
 }

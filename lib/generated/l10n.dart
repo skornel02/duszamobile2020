@@ -125,10 +125,10 @@ class S {
     );
   }
 
-  /// `Synchronise`
+  /// `Synchronize`
   String get synchronise {
     return Intl.message(
-      'Synchronise',
+      'Synchronize',
       name: 'synchronise',
       desc: '',
       args: [],

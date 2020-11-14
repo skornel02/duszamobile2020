@@ -76,6 +76,16 @@ class Car extends Equatable {
     }
   }
 
+  List<Reminder> get getNotifications {
+    DateTime now = DateTime.now();
+    int milage = totalMilage;
+    List<Reminder> notifications = List();
+    for (var reminder in reminds) {
+      if (reminder.isDue(now, milage)) notifications.add(reminder);
+    }
+    return notifications;
+  }
+
   double get runningCost {
     double totalRepairs = 0;
     for (var repair in repairs) {

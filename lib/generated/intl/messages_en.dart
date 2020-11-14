@@ -76,7 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "repairs" : MessageLookupByLibrary.simpleMessage("Repairs"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "statistics" : MessageLookupByLibrary.simpleMessage("Statistics"),
-    "synchronise" : MessageLookupByLibrary.simpleMessage("Synchronise"),
+    "synchronise" : MessageLookupByLibrary.simpleMessage("Synchronize"),
     "time_format" : MessageLookupByLibrary.simpleMessage("yyyy-MM-dd – kk:mm"),
     "tire_type" : MessageLookupByLibrary.simpleMessage("Tyre type"),
     "tire_type_all_year" : MessageLookupByLibrary.simpleMessage("All year"),
