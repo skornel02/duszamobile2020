@@ -35,16 +35,21 @@ class FileCarProvider extends CarProvider {
     final directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
     final file = File('$path/cars.json');
-    if (!(await file.exists())) await saveCars([]);
+    if (!(await file.exists())) await saveCars([], initial: true);
     String fileData = await file.readAsString();
     return this.parseStringToCars(fileData);
   }
 
   @override
-  Future<void> saveCars(List<Car> cars) async {
+  Future<void> saveCars(List<Car> cars, {bool initial = false}) async {
     final directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
     final file = File('$path/cars.json');
+
+    if (!initial) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString("LastModified", DateTime.now().toIso8601String());
+    }
 
     String data = json.encode(cars);
     await file.writeAsString(data);
@@ -52,11 +57,10 @@ class FileCarProvider extends CarProvider {
 
   @override
   Future<DateTime> lastModified() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final path = directory.path;
-    final file = File('$path/cars.json');
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
-      return file.lastModified();
+      String lastModified = prefs.getString("LastModified");
+      return DateTime.parse(lastModified);
     } catch (err) {
       printError("Couldn't load last modification date: $err");
       return DateTime.parse("1999-01-01T00:00:01Z");

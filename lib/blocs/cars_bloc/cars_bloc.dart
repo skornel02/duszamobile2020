@@ -11,6 +11,7 @@ part 'cars_state.dart';
 
 class CarsBloc extends Bloc<CarsEvent, CarsState> {
   CarRepository _repository;
+  StreamSubscription _carsSubscription;
 
   CarsBloc(this._repository) : super(InitialState()) {
     _repository.getCars().then((cars) {
@@ -20,6 +21,16 @@ class CarsBloc extends Bloc<CarsEvent, CarsState> {
       printError(stacktrace);
       this.add(CarsLoaded([]));
     });
+
+    _carsSubscription = _repository.carsCubit.listen((cars) {
+      this.add(CarsLoaded(cars));
+    });
+  }
+
+  @override
+  Future<void> close() {
+    _carsSubscription.cancel();
+    return super.close();
   }
 
   @override
