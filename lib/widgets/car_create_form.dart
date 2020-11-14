@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/resources/pojos/car_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
