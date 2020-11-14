@@ -59,7 +59,7 @@ class Car extends Equatable {
         settings: settings ?? car.settings);
   }
 
-  Car.fromName(this.name)
+  Car.fromName(this.name, {CarSettings settings})
       : id = Uuid().v4(),
         repairs = List(),
         refuels = List(),

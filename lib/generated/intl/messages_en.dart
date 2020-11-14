@@ -19,11 +19,13 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static m0(item) => "${item} can\'t be empty";
+  static m0(item) => "${item} can\'t be empty!";
 
   static m1(item, amount) => "${item} can\'t be over ${amount} of characters";
 
-  static m2(name) => "Welcome ${name}!";
+  static m2(area, time) => "Last ${area} change: ${time}";
+
+  static m3(name) => "Welcome ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -36,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cant_be_over" : m1,
     "car_editor" : MessageLookupByLibrary.simpleMessage("Car editor"),
     "car_name" : MessageLookupByLibrary.simpleMessage("Car name"),
+    "car_settings" : MessageLookupByLibrary.simpleMessage("Car settings"),
     "change_car" : MessageLookupByLibrary.simpleMessage("Change car"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Cheese"),
     "consumption" : MessageLookupByLibrary.simpleMessage("Consumption"),
@@ -46,8 +49,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "evignettes" : MessageLookupByLibrary.simpleMessage("EVignettes"),
     "export" : MessageLookupByLibrary.simpleMessage("Export"),
     "google_login" : MessageLookupByLibrary.simpleMessage("Google login"),
+    "last_change" : m2,
     "last_refuel_was_recorded" : MessageLookupByLibrary.simpleMessage("Last refuel was recorded"),
     "liter_price" : MessageLookupByLibrary.simpleMessage("Liter price"),
+    "local_area" : MessageLookupByLibrary.simpleMessage("local"),
     "main_page" : MessageLookupByLibrary.simpleMessage("Main page"),
     "milometer" : MessageLookupByLibrary.simpleMessage("Milometer"),
     "monthly" : MessageLookupByLibrary.simpleMessage("Monthly"),
@@ -60,10 +65,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "region" : MessageLookupByLibrary.simpleMessage("Region"),
     "regional" : MessageLookupByLibrary.simpleMessage("Regional"),
     "reminders" : MessageLookupByLibrary.simpleMessage("Reminders"),
+    "remote_area" : MessageLookupByLibrary.simpleMessage("remote"),
     "repairs" : MessageLookupByLibrary.simpleMessage("Repairs"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "statistics" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "synchronise" : MessageLookupByLibrary.simpleMessage("Synchronise"),
+    "time_format" : MessageLookupByLibrary.simpleMessage("yyyy-MM-dd – kk:mm"),
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobile 2020"),
     "type" : MessageLookupByLibrary.simpleMessage("Type"),
     "tyre_type" : MessageLookupByLibrary.simpleMessage("Tyre type"),
@@ -73,7 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "tyre_type_winter" : MessageLookupByLibrary.simpleMessage("Winter"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("User settings"),
     "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
-    "welcome" : m2,
+    "welcome" : m3,
     "year" : MessageLookupByLibrary.simpleMessage("Year"),
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
     "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly")

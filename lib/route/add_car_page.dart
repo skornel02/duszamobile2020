@@ -4,13 +4,13 @@ import 'package:duszamobile2020/generated/l10n.dart';
 
 GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 
-class CarSettingsPage extends StatelessWidget {
+class AddCarPage extends StatelessWidget {
 	@override
 	Widget build(BuildContext context) {
 		return Scaffold(
 			key: _profileScaffoldKey,
 			appBar: AppBar(
-				title: Text(S.of(context).car_settings),
+				title: Text(S.of(context).add_car),
 			),
 			body: Padding(
 				padding: const EdgeInsets.all(16),

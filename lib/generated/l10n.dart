@@ -75,71 +75,11 @@ class S {
     );
   }
 
-  /// `My cars`
-  String get my_cars {
-    return Intl.message(
-      'My cars',
-      name: 'my_cars',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Add car`
-  String get add_car {
-    return Intl.message(
-      'Add car',
-      name: 'add_car',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Car editor`
   String get car_editor {
     return Intl.message(
       'Car editor',
       name: 'car_editor',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Car name`
-  String get car_name {
-    return Intl.message(
-      'Car name',
-      name: 'car_name',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `{item} can't be empty`
-  String cant_be_empty(Object item) {
-    return Intl.message(
-      '$item can\'t be empty',
-      name: 'cant_be_empty',
-      desc: '',
-      args: [item],
-    );
-  }
-
-  /// `{item} can't be over {amount} of characters`
-  String cant_be_over(Object item, Object amount) {
-    return Intl.message(
-      '$item can\'t be over $amount of characters',
-      name: 'cant_be_over',
-      desc: '',
-      args: [item, amount],
-    );
-  }
-
-  /// `Create`
-  String get create {
-    return Intl.message(
-      'Create',
-      name: 'create',
       desc: '',
       args: [],
     );
@@ -530,6 +470,116 @@ class S {
     return Intl.message(
       'Add refuel',
       name: 'add_refuel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My cars`
+  String get my_cars {
+    return Intl.message(
+      'My cars',
+      name: 'my_cars',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add car`
+  String get add_car {
+    return Intl.message(
+      'Add car',
+      name: 'add_car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car settings`
+  String get car_settings {
+    return Intl.message(
+      'Car settings',
+      name: 'car_settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car name`
+  String get car_name {
+    return Intl.message(
+      'Car name',
+      name: 'car_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{item} can't be empty!`
+  String cant_be_empty(Object item) {
+    return Intl.message(
+      '$item can\'t be empty!',
+      name: 'cant_be_empty',
+      desc: '',
+      args: [item],
+    );
+  }
+
+  /// `{item} can't be over {amount} of characters`
+  String cant_be_over(Object item, Object amount) {
+    return Intl.message(
+      '$item can\'t be over $amount of characters',
+      name: 'cant_be_over',
+      desc: '',
+      args: [item, amount],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `yyyy-MM-dd – kk:mm`
+  String get time_format {
+    return Intl.message(
+      'yyyy-MM-dd – kk:mm',
+      name: 'time_format',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last {area} change: {time}`
+  String last_change(Object area, Object time) {
+    return Intl.message(
+      'Last $area change: $time',
+      name: 'last_change',
+      desc: '',
+      args: [area, time],
+    );
+  }
+
+  /// `local`
+  String get local_area {
+    return Intl.message(
+      'local',
+      name: 'local_area',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `remote`
+  String get remote_area {
+    return Intl.message(
+      'remote',
+      name: 'remote_area',
       desc: '',
       args: [],
     );
