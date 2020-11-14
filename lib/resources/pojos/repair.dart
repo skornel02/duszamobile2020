@@ -15,8 +15,9 @@ class Repair {
   final String reason;
   final List<String> items;
   final String description;
+  final bool warranty;
 
-  Repair({
+  Repair.create({
     @required this.id,
     @required this.date,
     @required this.milage,
@@ -24,7 +25,11 @@ class Repair {
     @required this.reason,
     @required this.items,
     @required this.description,
+    @required this.warranty,
   });
+
+  Repair(this.id, this.date, this.milage, this.price, this.reason, this.items,
+      this.description, this.warranty);
 
   /// Static copy constructor with overriding.
   factory Repair.from(
@@ -36,15 +41,17 @@ class Repair {
     String reason,
     List<String> items,
     String description,
+    bool warranty,
   }) {
-    return Repair(
+    return Repair.create(
         id: id ?? repair.id,
         date: date ?? repair.date,
         milage: milage ?? repair.milage,
         price: price ?? repair.price,
         reason: reason ?? repair.reason,
         items: items ?? repair.items,
-        description: description ?? repair.description);
+        description: description ?? repair.description,
+        warranty: warranty ?? repair.warranty);
   }
 
   @override
