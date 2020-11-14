@@ -74,6 +74,66 @@ class S {
       args: [name],
     );
   }
+
+  /// `My cars`
+  String get my_cars {
+    return Intl.message(
+      'My cars',
+      name: 'my_cars',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add car`
+  String get add_car {
+    return Intl.message(
+      'Add car',
+      name: 'add_car',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car name`
+  String get car_name {
+    return Intl.message(
+      'Car name',
+      name: 'car_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{item} can't be empty!`
+  String cant_be_empty(Object item) {
+    return Intl.message(
+      '$item can\'t be empty!',
+      name: 'cant_be_empty',
+      desc: '',
+      args: [item],
+    );
+  }
+
+  /// `{item} can't be over {amount} of characters`
+  String cant_be_over(Object item, Object amount) {
+    return Intl.message(
+      '$item can\'t be over $amount of characters',
+      name: 'cant_be_over',
+      desc: '',
+      args: [item, amount],
+    );
+  }
+
+  /// `Create`
+  String get create {
+    return Intl.message(
+      'Create',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

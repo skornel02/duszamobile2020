@@ -18,6 +18,11 @@ class CarSettings extends Equatable {
 
   CarSettings(this.image, this.cost, this.year);
 
+  CarSettings.basic()
+      : image = null,
+        cost = null,
+        year = null;
+
   /// Static copy constructor with overriding.
   factory CarSettings.from(
     CarSettings settings, {

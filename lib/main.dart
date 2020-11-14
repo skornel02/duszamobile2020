@@ -1,4 +1,6 @@
+import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_driver/driver_extension.dart';
 import 'dart:async';
 import 'package:duszamobile2020/navigation/route_generator.dart';
@@ -38,7 +40,7 @@ void main() async {
     startPage = "login";
   }
 
-  startPage = "/cars/1/settings";
+  startPage = "/cars";
 
   runApp(App());
 }
@@ -93,19 +95,21 @@ class _App extends State<App> with WidgetsBindingObserver {
             reverseCurve: Curves.fastLinearToSlowEaseIn,
             dismissOtherOnShow: true,
             movingOnWindowChange: true,
-            child: MaterialApp(
-              initialRoute: startPage,
-
-              onGenerateRoute: router.generator,
-              title: S.current?.title ?? "Duszamobile2020",
-              showPerformanceOverlay: false,
-              theme: theme,
-              localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
+            child: RepositoryProvider(
+              create: (context) => CarRepository(),
+              child: MaterialApp(
+                initialRoute: startPage,
+                onGenerateRoute: router.generator,
+                title: S.current?.title ?? "Duszamobile2020",
+                showPerformanceOverlay: false,
+                theme: theme,
+                localizationsDelegates: [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+              ),
             ),
           );
         });

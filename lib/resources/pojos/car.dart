@@ -41,7 +41,6 @@ class Car extends Equatable {
     Car car, {
     String id,
     String name,
-    String image,
     List<Repair> repairs,
     List<Refuel> refuels,
     List<Reminder> reminds,
@@ -59,6 +58,15 @@ class Car extends Equatable {
         tire: tire ?? car.tire,
         settings: settings ?? car.settings);
   }
+
+  Car.fromName(this.name)
+      : id = Uuid().v4(),
+        repairs = List(),
+        refuels = List(),
+        reminds = List(),
+        eVignettes = List(),
+        tire = TireType.NOT_SPECIFIED,
+        settings = CarSettings.basic();
 
   int get totalMilage {
     if (refuels.isEmpty) {

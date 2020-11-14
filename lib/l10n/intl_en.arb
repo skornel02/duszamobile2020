@@ -1,6 +1,12 @@
 {
-    "title": "Dusza mobile 2020",
-    "cheese": "Cheese",
-    "main_page": "Main page",
-    "welcome": "Welcome {name}!"
+  "title": "Dusza mobile 2020",
+  "cheese": "Cheese",
+  "main_page": "Main page",
+  "welcome": "Welcome {name}!",
+  "my_cars": "My cars",
+  "add_car": "Add car",
+  "car_name": "Car name",
+  "cant_be_empty": "{item} can't be empty!",
+  "cant_be_over": "{item} can't be over {amount} of characters",
+  "create": "Create"
 }
