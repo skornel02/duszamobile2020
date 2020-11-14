@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -6,7 +7,7 @@ part 'e_vignette.g.dart';
 
 @JsonSerializable()
 @immutable
-class EVignette {
+class EVignette extends Equatable {
   final String id;
   final DateTime start;
   final int duration;
@@ -41,4 +42,7 @@ class EVignette {
 
   @override
   Map<String, dynamic> toJson() => _$EVignetteToJson(this);
+
+  @override
+  List<Object> get props => [id, start, duration, area];
 }

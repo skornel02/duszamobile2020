@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -6,7 +7,7 @@ part 'reminder.g.dart';
 
 @JsonSerializable()
 @immutable
-class Reminder {
+class Reminder extends Equatable {
   final String id;
   final String name;
   final String description;
@@ -64,4 +65,20 @@ class Reminder {
 
   @override
   Map<String, dynamic> toJson() => _$ReminderToJson(this);
+
+  @override
+  List<Object> get props => [
+        id,
+        name,
+        description,
+        items,
+        date,
+        afterDays,
+        startMilage,
+        afterMilage,
+        completed
+      ];
+
+  @override
+  bool get stringify => true;
 }
