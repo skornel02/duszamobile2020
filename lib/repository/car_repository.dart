@@ -2,11 +2,11 @@ import 'package:duszamobile2020/provider/car_provider.dart';
 import 'package:duszamobile2020/resources/pojos/car.dart';
 import 'package:flutter/foundation.dart';
 
-class CarResository {
+class CarRepository {
   CarProvider _provider;
   List<Car> _carsCache;
 
-  CarResository() {
+  CarRepository() {
     if (kIsWeb) {
       throw "Web not currently supported!";
     } else {
