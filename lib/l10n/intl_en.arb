@@ -1,4 +1,34 @@
 {
+<<<<<<< HEAD
+    "title": "Dusza mobile 2020",
+    "cheese": "Cheese",
+    "main_page": "Main page",
+    "welcome": "Welcome {name}!",
+    "export": "Export",
+    "add": "Add",
+    "user_settings": "User settings",
+    "google_login": "Google login",
+    "synchronise": "Synchronise",
+    "calendar_synchronisation": "Calendar synchronisation",
+    "dark_theme": "Dark theme",
+    "price": "Price",
+    "milometer": "Milometer",
+    "last_refuel_was_recorded": "Last refuel was recorded",
+    "liter_price": "Liter price",
+    "consumption": "Consumption",
+    "type": "Type",
+    "regional": "Regional",
+    "region": "Region",
+    "weekly": "Weekly",
+    "monthly": "Monthly",
+    "yearly_countrywide": "Yearly countrywide",
+    "yearly_regional": "Weekly",
+    "other_regions": "Other regions",
+    "more_regions": "More regions",
+    "bought": "Bought"
+
+}
+=======
   "title": "Dusza mobile 2020",
   "cheese": "Cheese",
   "main_page": "Main page",
@@ -22,3 +52,4 @@
   "liter_price": "Liter price",
   "consumption": "Consumption"
 }
+>>>>>>> 62e00ba2f83228752794f8d5659cc533c8f855ff

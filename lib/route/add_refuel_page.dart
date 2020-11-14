@@ -27,7 +27,13 @@ class _AddRefuelPageState extends State<AddRefuelPage> {
 				),
 				body: Column(
 					children: [
-						InputDatePickerFormField(),
+						InputDatePickerFormField(
+							firstDate: DateTime.now().subtract(Duration(days: 365)),
+							lastDate: DateTime.now(),
+							onDateSaved: (DateTime date){
+
+							},
+						),
 						Row(
 							children: [
 								Text(refuelAmount.toString()),
@@ -122,7 +128,6 @@ class _AddRefuelPageState extends State<AddRefuelPage> {
 								Text("${S.of(context).consumption}: 0"),
 							],
 						)
-
 					],
 				)
 		);

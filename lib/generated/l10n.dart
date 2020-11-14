@@ -254,6 +254,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Type`
+  String get type {
+    return Intl.message(
+      'Type',
+      name: 'type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Regional`
+  String get regional {
+    return Intl.message(
+      'Regional',
+      name: 'regional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Region`
+  String get region {
+    return Intl.message(
+      'Region',
+      name: 'region',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weekly`
+  String get weekly {
+    return Intl.message(
+      'Weekly',
+      name: 'weekly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monthly`
+  String get monthly {
+    return Intl.message(
+      'Monthly',
+      name: 'monthly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yearly countrywide`
+  String get yearly_countrywide {
+    return Intl.message(
+      'Yearly countrywide',
+      name: 'yearly_countrywide',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weekly`
+  String get yearly_regional {
+    return Intl.message(
+      'Weekly',
+      name: 'yearly_regional',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Other regions`
+  String get other_regions {
+    return Intl.message(
+      'Other regions',
+      name: 'other_regions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More regions`
+  String get more_regions {
+    return Intl.message(
+      'More regions',
+      name: 'more_regions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bought`
+  String get bought {
+    return Intl.message(
+      'Bought',
+      name: 'bought',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
