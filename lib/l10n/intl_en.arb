@@ -2,5 +2,17 @@
     "title": "Dusza mobile 2020",
     "cheese": "Cheese",
     "main_page": "Main page",
-    "welcome": "Welcome {name}!"
+    "welcome": "Welcome {name}!",
+    "export": "Export",
+    "add": "Add",
+    "user_settings": "User settings",
+    "google_login": "Google login",
+    "synchronise": "Synchronise",
+    "calendar_synchronisation": "Calendar synchronisation",
+    "dark_theme": "Dark theme",
+    "price": "Price",
+    "milometer": "Milometer",
+    "last_refuel_was_recorded": "Last refuel was recorded",
+    "liter_price": "Liter price",
+    "consumption": "Consumption"
 }

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddCarPage extends StatefulWidget {
 	AddCarPage({Key key}) : super(key: key);
@@ -9,10 +12,13 @@ class AddCarPage extends StatefulWidget {
 }
 
 class _AddRefuelPageState extends State<AddCarPage> {
-
 	TextEditingController textEditingControllerName = TextEditingController();
 	TextEditingController textEditingControllerPrice= TextEditingController();
 	TextEditingController textEditingControllerYear= TextEditingController();
+
+
+	final _picker = ImagePicker();
+	File file;
 
 
 	@override
@@ -25,10 +31,21 @@ class _AddRefuelPageState extends State<AddCarPage> {
 				  padding: const EdgeInsets.all(16),
 				  child: Column(
 				  	children: [
-				  		IconButton(icon: Icon(FontAwesomeIcons.image,), iconSize: 80,
-				  			onPressed: (){
-				  				// add image of car
-				  		}),
+				  		Builder(builder: (context){
+				  			if(file!=null){
+				  				return Image.file(file);
+								}
+								return IconButton(icon: Icon(FontAwesomeIcons.image,), iconSize: 80,
+									onPressed: () async {
+										PickedFile pickedImage = await _picker.getImage(source: ImageSource.gallery);
+										if(pickedImage != null){
+											setState(() {
+												file = File(pickedImage.path);
+											});
+										}
+									});
+							}),
+
 
 				  		Padding(
 				  		  padding: const EdgeInsets.only(top: 10),
