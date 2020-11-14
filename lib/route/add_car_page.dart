@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
@@ -110,7 +109,7 @@ class _AddCarPageState extends State<AddCarPage> {
 				  		),
 				  		Spacer(),
 				  		RaisedButton(
-				  			child: Text(S.of()),
+				  			child: Text("Hozzáadás"),
 				  			onPressed: (){
 				  				// notify bloc
 				  			},
