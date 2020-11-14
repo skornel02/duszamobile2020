@@ -9,8 +9,6 @@ class CarsPage extends StatelessWidget {
 		return Scaffold(
 			appBar: AppBar(
 				title: Text("Autóim"),
-				centerTitle: true,
-
 				actions: [IconButton(icon: Icon(FontAwesomeIcons.cog), onPressed: (){
 					Navigator.pushNamed(context, "/settings");
 				})],
