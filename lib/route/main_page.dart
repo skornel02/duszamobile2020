@@ -1,9 +1,11 @@
-import 'package:duszamobile2020/route/add_car_page.dart';
-import 'package:duszamobile2020/route/cars_page.dart';
+import 'package:duszamobile2020/route/reminder_page.dart';
+import 'package:duszamobile2020/route/repairs_page.dart';
+import 'package:duszamobile2020/route/statistics_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'evignettes_page.dart';
 
 class MainPage extends StatelessWidget {
 
@@ -58,18 +60,75 @@ class MainPage extends StatelessWidget {
 	@override
 	Widget build(BuildContext context){
 		return Scaffold(
+			appBar: AppBar( title: Text("auto"),),
+			drawer: SafeArea(
+			  child: Drawer(
+			  	child: Column(
+			  		children: [
+			  			ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("tankolás"),
+			  			onTap: (){
+			  				Navigator.pop(context);
+			  				Navigator.pushNamedAndRemoveUntil(context, "/cars/1/refuel", (a) => false);
+			  			},
+			  			),
+			  			ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Szervizek"),
+			  				onTap: (){
+			  					Navigator.pop(context);
+			  					Navigator.pushNamedAndRemoveUntil(context, "/cars/1/repairs", (a) => false);
+			  				},
+			  			),
+							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Értesitők"),
+								onTap: (){
+									Navigator.pop(context);
+									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/reminder", (a) => false);
+								},
+							),
+							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Autópálya matricák"),
+								onTap: (){
+									Navigator.pop(context);
+									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/evignette", (a) => false);
+								},
+							),
+							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Statisztikák"),
+								onTap: (){
+									Navigator.pop(context);
+									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/statistics", (a) => false);
+								},
+							),
+							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Felhasználói beállitás"),
+								onTap: (){
+									Navigator.pop(context);
+									Navigator.pushNamedAndRemoveUntil(context, "/settings", (a) => false);
+								},
+							),
+							ListTile(leading: Icon(FontAwesomeIcons.gasPump),title: Text("Autó beállítások"),
+								onTap: (){
+									Navigator.pop(context);
+									Navigator.pushNamedAndRemoveUntil(context, "/cars/1/settings", (a) => false);
+								},
+							),
+
+			  		],
+			  	),
+			  ),
+			),
 			body: Builder(
 				builder: (c){
 					switch(path){
-						case "settings":
-							return CarsPage();
 						case "statistics":
-							return AddCarPage();
+							return StatisticsPage();
+						case "repairs":
+							return RepairsPage();
+						case "reminder":
+							return RemindersPage();
+						case "evignette":
+							return EVignettesPage();
 					}
 					return null;
 				},
 			),
-			bottomNavigationBar: BottomNavigationBar(
+			/*
+				bottomNavigationBar: BottomNavigationBar(
 				backgroundColor: Colors.red,
 				currentIndex: getIndex(context),
 			//	currentIndex: 0, // this will be set when a new tab is tapped
@@ -104,7 +163,7 @@ class MainPage extends StatelessWidget {
 					*/
 				],
 			),
-
+			*/
 		);
 	}
 }

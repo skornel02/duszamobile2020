@@ -1,3 +1,5 @@
+import 'package:duszamobile2020/route/add_evignette_page.dart';
+import 'package:duszamobile2020/route/auto_settings_page.dart';
 import 'package:duszamobile2020/route/main_page.dart';
 import 'package:duszamobile2020/route/add_car_page.dart';
 import 'package:duszamobile2020/route/cars_page.dart';
@@ -46,19 +48,27 @@ void defineRoutes(FluroRouter router) {
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/settings", handler:
   Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return MainPage("settings");
+    return CarSettingsPage();
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/repairs", handler:
   Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("repairs");
   }), transitionType: TransitionType.none);
-  router.define("/cars/:car_id/tyretype", handler:
+  router.define("/cars/:car_id/refuel", handler:
   Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return MainPage("tyretype");
+    return MainPage("refuel");
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/reminder", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return MainPage("reminder");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/evignette", handler:
   Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return MainPage("evignette");
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/evignette/add", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return AddEVignettePage();
   }), transitionType: TransitionType.none);
 
 
