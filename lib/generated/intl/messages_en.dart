@@ -23,14 +23,19 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(item, amount) => "${item} can\'t be over ${amount} of characters";
 
-  static m2(area, time) => "Last ${area} change: ${time}";
+  static m2(car_name) => "remove car \'${car_name}\'";
 
-  static m3(name) => "Welcome ${name}!";
+  static m3(do_something) => "You dou want to ${do_something}?";
+
+  static m4(area, time) => "Last ${area} change: ${time}";
+
+  static m5(name) => "Welcome ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add" : MessageLookupByLibrary.simpleMessage("Add"),
     "add_car" : MessageLookupByLibrary.simpleMessage("Add car"),
+    "are_you_sure" : MessageLookupByLibrary.simpleMessage("Are you sure?"),
     "bought" : MessageLookupByLibrary.simpleMessage("Bought"),
     "calendar_synchronisation" : MessageLookupByLibrary.simpleMessage("Calendar synchronisation"),
     "cant_be_empty" : m0,
@@ -40,9 +45,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "consumption" : MessageLookupByLibrary.simpleMessage("Consumption"),
     "create" : MessageLookupByLibrary.simpleMessage("Create"),
     "dark_theme" : MessageLookupByLibrary.simpleMessage("Dark theme"),
+    "do_remove_car" : m2,
+    "do_you_want_to" : m3,
     "export" : MessageLookupByLibrary.simpleMessage("Export"),
     "google_login" : MessageLookupByLibrary.simpleMessage("Google login"),
-    "last_change" : m2,
+    "last_change" : m4,
     "last_refuel_was_recorded" : MessageLookupByLibrary.simpleMessage("Last refuel was recorded"),
     "liter_price" : MessageLookupByLibrary.simpleMessage("Liter price"),
     "local_area" : MessageLookupByLibrary.simpleMessage("local"),
@@ -62,7 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "type" : MessageLookupByLibrary.simpleMessage("Type"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("User settings"),
     "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
-    "welcome" : m3,
+    "welcome" : m5,
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
     "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly")
   };

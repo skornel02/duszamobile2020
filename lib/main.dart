@@ -54,6 +54,7 @@ class App extends StatefulWidget {
 
 class _App extends State<App> with WidgetsBindingObserver {
   DateTime currentBackPressTime;
+  CarRepository _repository = CarRepository();
 
   @override
   initState() {
@@ -63,6 +64,7 @@ class _App extends State<App> with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    _repository.carsCubit.close();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -96,7 +98,7 @@ class _App extends State<App> with WidgetsBindingObserver {
             dismissOtherOnShow: true,
             movingOnWindowChange: true,
             child: RepositoryProvider(
-              create: (context) => CarRepository(),
+              create: (context) => _repository,
               child: MaterialApp(
                 initialRoute: startPage,
                 onGenerateRoute: router.generator,

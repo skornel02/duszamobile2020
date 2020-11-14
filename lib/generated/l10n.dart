@@ -394,6 +394,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Are you sure?`
+  String get are_you_sure {
+    return Intl.message(
+      'Are you sure?',
+      name: 'are_you_sure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You dou want to {do_something}?`
+  String do_you_want_to(Object do_something) {
+    return Intl.message(
+      'You dou want to $do_something?',
+      name: 'do_you_want_to',
+      desc: '',
+      args: [do_something],
+    );
+  }
+
+  /// `remove car '{car_name}'`
+  String do_remove_car(Object car_name) {
+    return Intl.message(
+      'remove car \'$car_name\'',
+      name: 'do_remove_car',
+      desc: '',
+      args: [car_name],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

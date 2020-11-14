@@ -34,5 +34,8 @@
   "time_format": "yyyy-MM-dd – kk:mm",
   "last_change": "Last {area} change: {time}",
   "local_area": "local",
-  "remote_area": "remote"
+  "remote_area": "remote",
+  "are_you_sure": "Are you sure?",
+  "do_you_want_to": "You dou want to {do_something}?",
+  "do_remove_car": "remove car '{car_name}'"
 }
