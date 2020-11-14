@@ -24,9 +24,9 @@ class Reminder extends Equatable {
       @required this.description,
       @required this.items,
       @required this.date,
-      @required this.afterDays,
+      this.afterDays,
       @required this.startMilage,
-      @required this.afterMilage,
+      this.afterMilage,
       @required this.completed});
 
   Reminder(this.id, this.name, this.description, this.items, this.date,
@@ -53,11 +53,34 @@ class Reminder extends Equatable {
         date: date ?? reminder.date,
         afterDays: afterDays ?? reminder.afterDays,
         startMilage: startMilage ?? reminder.startMilage,
-        afterMilage: afterMilage ?? reminder.afterDays,
+        afterMilage: afterMilage ?? reminder.afterMilage,
         completed: completed ?? reminder.completed);
   }
 
-  bool isDue(DateTime date, int milage) => false;
+  bool _isDueToDate(DateTime date) {
+    if (afterDays == null) return false;
+    var dueDateTime = this.date.add(Duration(days: afterDays));
+    var dateDate = DateTime.utc(date.year, date.month, date.day);
+    var dueDate =
+        DateTime.utc(dueDateTime.year, dueDateTime.month, dueDateTime.day);
+    return dateDate.isAtSameMomentAs(dueDate) || dateDate.isAfter(dueDate);
+  }
+
+  bool _isDueToMilage(int milage) {
+    if (afterMilage == null) return false;
+    var milageDifference = milage - this.startMilage;
+    return milageDifference > afterMilage;
+  }
+
+  bool isDue(DateTime date, int milage) {
+    if (completed) return false;
+    return _isDueToDate(date) || _isDueToMilage(milage);
+  }
+
+  Reminder getSuggestion(DateTime date, int milage) {
+    return Reminder.from(this,
+        id: Uuid().v4(), date: date, startMilage: milage, completed: false);
+  }
 
   @override
   factory Reminder.fromJson(Map<String, dynamic> json) =>
