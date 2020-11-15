@@ -55,19 +55,16 @@ class ReminderItem extends StatelessWidget {
 
                   ],
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Text(reminder.date != null
-                      ? DateFormat(S.of(context).date_format_to_show).format(reminder.date)
-                      : ""
-                  ),
-                )
               ],
             ),
             Spacer(),
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                Text(reminder.date != null
+                    ? DateFormat(S.of(context).date_format_to_show).format(reminder.date)
+                    : ""
+                ),
                 IconButton(
                   icon: Icon(FontAwesomeIcons.times),
                   onPressed: () => _onRemove(context),
