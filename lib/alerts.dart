@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-showConfirmAlert(BuildContext context,
+Future<void> showConfirmAlert(BuildContext context,
     {String title, String description, Function onAccept}) {
   Widget cancelButton = FlatButton(
     child: Text("Cancel"),
@@ -25,7 +25,7 @@ showConfirmAlert(BuildContext context,
     ],
   );
 
-  showDialog(
+  return showDialog(
     context: context,
     builder: (context) {
       return alert;

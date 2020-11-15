@@ -281,7 +281,6 @@ class _RepairFormState extends State<RepairForm> {
                             items: items,
                             warranty: warranty);
                       }
-
                       widget.callback(next);
                     }
                   },

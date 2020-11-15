@@ -985,41 +985,41 @@ class S {
     );
   }
 
-  /// `Weekly country`
-  String get expiration_weekly_country {
+  /// `Weekly`
+  String get expiration_weekly {
     return Intl.message(
-      'Weekly country',
-      name: 'expiration_weekly_country',
+      'Weekly',
+      name: 'expiration_weekly',
       desc: '',
       args: [],
     );
   }
 
-  /// `Monthly country`
-  String get expiration_monthly_country {
+  /// `Monthly`
+  String get expiration_monthly {
     return Intl.message(
-      'Monthly country',
-      name: 'expiration_monthly_country',
+      'Monthly',
+      name: 'expiration_monthly',
       desc: '',
       args: [],
     );
   }
 
-  /// `Yearly country`
-  String get expiration_yearly_country {
+  /// `Annual`
+  String get expiration_yearly {
     return Intl.message(
-      'Yearly country',
-      name: 'expiration_yearly_country',
+      'Annual',
+      name: 'expiration_yearly',
       desc: '',
       args: [],
     );
   }
 
-  /// `Yearly county`
-  String get expiration_yearly_county {
+  /// `Only country wide available`
+  String get only_annual_for_county {
     return Intl.message(
-      'Yearly county',
-      name: 'expiration_yearly_county',
+      'Only country wide available',
+      name: 'only_annual_for_county',
       desc: '',
       args: [],
     );
@@ -1040,6 +1040,66 @@ class S {
     return Intl.message(
       'Cancel',
       name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Active`
+  String get active {
+    return Intl.message(
+      'Active',
+      name: 'active',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expired`
+  String get expired {
+    return Intl.message(
+      'Expired',
+      name: 'expired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Suggestion`
+  String get suggestion {
+    return Intl.message(
+      'Suggestion',
+      name: 'suggestion',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to create a reminder when the E-Vignette expires?`
+  String get remind_about_e_vignette {
+    return Intl.message(
+      'Do you want to create a reminder when the E-Vignette expires?',
+      name: 'remind_about_e_vignette',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `[E-Vignette] {area} will expire`
+  String e_vignette_expiration_reminder(Object area) {
+    return Intl.message(
+      '[E-Vignette] $area will expire',
+      name: 'e_vignette_expiration_reminder',
+      desc: '',
+      args: [area],
+    );
+  }
+
+  /// `Automatically generated`
+  String get automatically_generated {
+    return Intl.message(
+      'Automatically generated',
+      name: 'automatically_generated',
       desc: '',
       args: [],
     );

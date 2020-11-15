@@ -94,10 +94,16 @@
   "currency": "{efficiency} $",
   "expiration_date": "Valid until {date}",
   "expiration": "Expiration",
-  "expiration_weekly_country": "Weekly country",
-  "expiration_monthly_country": "Monthly country",
-  "expiration_yearly_country": "Yearly country",
-  "expiration_yearly_county": "Yearly county",
+  "expiration_weekly": "Weekly",
+  "expiration_monthly": "Monthly",
+  "expiration_yearly": "Annual",
+  "only_annual_for_county": "Only country wide available",
   "county": "County",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "active": "Active",
+  "expired": "Expired",
+  "suggestion": "Suggestion",
+  "remind_about_e_vignette": "Do you want to create a reminder when the E-Vignette expires?",
+  "e_vignette_expiration_reminder": "[E-Vignette] {area} will expire",
+  "automatically_generated": "Automatically generated"
 }
