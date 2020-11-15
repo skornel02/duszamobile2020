@@ -3,6 +3,7 @@ import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/car.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/widgets/car_drawer.dart';
+import 'package:duszamobile2020/widgets/listitems/evignette_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,7 +35,7 @@ class EVignettesPage extends StatelessWidget {
               return ListView.builder(
                 itemCount: state.car.eVignettes.length,
                 itemBuilder: (context, index) {
-                  return Text(car.eVignettes[index].area);
+                  return EVignetteItem(car.eVignettes[index]);
                 },
               );
             }

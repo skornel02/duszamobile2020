@@ -66,8 +66,8 @@ class EVignetteItem extends StatelessWidget {
         return 'images/icon_veszprem.png';
       case "Zala megye":
         return 'images/icon_zala.png';
-      return 'images/icon_orszagos.png';
     }
+    return 'images/icon_orszagos.png';
   }
 
   @override
@@ -89,6 +89,7 @@ class EVignetteItem extends StatelessWidget {
                 Text(eVignette.duration == 365 ? "Éves" : "${eVignette.duration} napos"),
               ],
             ),
+            Spacer(),
             Column(
               children: [
                 Text(S.of(context).expiration_date(
@@ -97,7 +98,7 @@ class EVignetteItem extends StatelessWidget {
                 SizedBox(
                   height: 50,
                   width: 50,
-                  child: Image.asset(getImagePath(eVignette.area)),
+                  child: Image.asset("assets/" + getImagePath(eVignette.area)),
                 )
               ],
             )

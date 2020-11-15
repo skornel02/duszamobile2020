@@ -42,7 +42,7 @@ class ReminderItem extends StatelessWidget {
         onTap: () => _onOpen(context),
         child: Row(
           children: [
-            Text(index.toString()),
+            Text((index+1).toString(), style: TextStyle(fontSize: 30),),
             Stack(
               children: <Widget>[
                 Column(
@@ -50,14 +50,17 @@ class ReminderItem extends StatelessWidget {
                   children: <Widget>[
                     Text(reminder.name),
                     Text(reminder.description),
-                    Text(reminder?.daysLeft?.toString() ?? ""),
-                    Text(reminder?.milageLeft?.toString() ?? ""),
+                  //  Text(reminder?.daysLeft?.toString() ?? ""),
+                 //   Text(reminder?.milageLeft?.toString() ?? ""),
 
                   ],
                 ),
                 Align(
                   alignment: Alignment.topRight,
-                  child: Text(DateFormat(S.of(context).date_format_to_show).format(reminder.date)),
+                  child: Text(reminder.date != null
+                      ? DateFormat(S.of(context).date_format_to_show).format(reminder.date)
+                      : ""
+                  ),
                 )
               ],
             ),

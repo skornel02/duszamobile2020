@@ -86,19 +86,19 @@ class Car extends Equatable {
     return notifications;
   }
 
-  Refuel getRefuelById(String id){
+  Refuel getRefuelById(String id) {
     return refuels.firstWhere((e) => e.id == id);
   }
 
-  Repair getRepairById(String id){
+  Repair getRepairById(String id) {
     return repairs.firstWhere((e) => e.id == id);
   }
 
-  Reminder getReminderById(String id){
+  Reminder getReminderById(String id) {
     return reminds.firstWhere((e) => e.id == id);
   }
 
-  EVignette getEVignetteById(String id){
+  EVignette getEVignetteById(String id) {
     return eVignettes.firstWhere((e) => e.id == id);
   }
 
@@ -111,6 +111,17 @@ class Car extends Equatable {
   }
 
   double get totalCost => settings.cost + runningCost;
+
+  List<String> get knownTags {
+    List<String> tags = List();
+    for (var repair in repairs) {
+      repair.items.forEach((element) => tags.add(element));
+    }
+    for (var reminder in reminds) {
+      reminder.items.forEach((element) => tags.add(element));
+    }
+    return tags.toSet().toList();
+  }
 
   @override
   factory Car.fromJson(Map<String, dynamic> json) => _$CarFromJson(json);

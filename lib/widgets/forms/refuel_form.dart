@@ -130,6 +130,14 @@ class _RefuelFormState extends State<RefuelForm> {
                         initialDate: currentValue ?? DateTime.now(),
                         lastDate: DateTime.now());
                   },
+                  validator: (value) {
+                    if (value == null) {
+                      return S
+                          .of(context)
+                          .cant_be_invalid_date(S.of(context).date);
+                    }
+                    return null;
+                  },
                 ),
                 Row(
                   children: [

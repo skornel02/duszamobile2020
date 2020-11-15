@@ -635,6 +635,16 @@ class S {
     );
   }
 
+  /// `{item} must have a valid date`
+  String cant_be_invalid_date(Object item) {
+    return Intl.message(
+      '$item must have a valid date',
+      name: 'cant_be_invalid_date',
+      desc: '',
+      args: [item],
+    );
+  }
+
   /// `Create`
   String get create {
     return Intl.message(
@@ -835,21 +845,11 @@ class S {
     );
   }
 
-  /// `Warranty`
+  /// `Under warranty`
   String get warranty {
     return Intl.message(
-      'Warranty',
+      'Under warranty',
       name: 'warranty',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Not warranty ? ezt át kell írni`
-  String get not_warranty {
-    return Intl.message(
-      'Not warranty ? ezt át kell írni',
-      name: 'not_warranty',
       desc: '',
       args: [],
     );
@@ -975,16 +975,6 @@ class S {
     );
   }
 
-  /// `Cancel`
-  String get cancel {
-    return Intl.message(
-      'Cancel',
-      name: 'cancel',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Expiration`
   String get expiration {
     return Intl.message(
@@ -1040,6 +1030,16 @@ class S {
     return Intl.message(
       'County',
       name: 'county',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
       desc: '',
       args: [],
     );
