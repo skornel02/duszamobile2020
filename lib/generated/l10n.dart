@@ -225,6 +225,16 @@ class S {
     );
   }
 
+  /// `{item}: {amount} $`
+  String spending_format(Object item, Object amount) {
+    return Intl.message(
+      '$item: $amount \$',
+      name: 'spending_format',
+      desc: '',
+      args: [item, amount],
+    );
+  }
+
   /// `Type`
   String get type {
     return Intl.message(
@@ -550,6 +560,16 @@ class S {
     return Intl.message(
       'Edit refuel',
       name: 'edit_refuel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit repair`
+  String get edit_repair {
+    return Intl.message(
+      'Edit repair',
+      name: 'edit_repair',
       desc: '',
       args: [],
     );
@@ -1232,6 +1252,46 @@ class S {
       name: 'empty',
       desc: '',
       args: [s],
+    );
+  }
+
+  /// `Total spending`
+  String get total_spending {
+    return Intl.message(
+      'Total spending',
+      name: 'total_spending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Petrol price change`
+  String get petrol_price_over_time {
+    return Intl.message(
+      'Petrol price change',
+      name: 'petrol_price_over_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message(
+      'Filter',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General statistics`
+  String get general_statistics {
+    return Intl.message(
+      'General statistics',
+      name: 'general_statistics',
+      desc: '',
+      args: [],
     );
   }
 }

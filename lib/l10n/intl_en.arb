@@ -18,6 +18,7 @@
   "last_refuel_was_recorded": "Last refuel was recorded",
   "liter_price": "Liter price: {price} $",
   "consumption": "Efficiency: {efficiency} l/100km",
+  "spending_format": "{item}: {amount} $",
   "type": "Type",
   "regional": "Regional",
   "region": "Region",
@@ -51,6 +52,7 @@
   "add_repair": "Add repair",
   "edit_reminder": "Edit reminder",
   "edit_refuel": "Edit refuel",
+  "edit_repair": "Edit repair",
   "my_cars": "My cars",
   "add_car": "Add car",
   "car_settings": "Car settings",
@@ -118,6 +120,9 @@
   "both": "Both",
   "refuel": "Refuel",
   "settings_description": "Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!",
-  "empty": "No {s} added yet"
-
+  "empty": "No {s} added yet",
+  "total_spending": "Total spending",
+  "petrol_price_over_time": "Petrol price change",
+  "filter": "Filter",
+  "general_statistics": "General statistics"
 }

@@ -113,8 +113,7 @@ class RefuelsPage extends StatelessWidget {
                 ],
               );
             } else {
-              //TODO: ERIK, JOBB FELIRAT!!!
-              return Text(S.of(context).empty(S.of(context).refuel));
+              return Center(child: Text(S.of(context).empty(S.of(context).refuel)));
             }
           }
           return Center(

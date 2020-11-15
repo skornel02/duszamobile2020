@@ -69,7 +69,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m24(carName) => "Refuels - ${carName}";
 
-  static m25(name) => "Welcome ${name}!";
+  static m25(item, amount) => "${item}: ${amount} \$";
+
+  static m26(name) => "Welcome ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -124,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_car" : MessageLookupByLibrary.simpleMessage("Edit car"),
     "edit_refuel" : MessageLookupByLibrary.simpleMessage("Edit refuel"),
     "edit_reminder" : MessageLookupByLibrary.simpleMessage("Edit reminder"),
+    "edit_repair" : MessageLookupByLibrary.simpleMessage("Edit repair"),
     "empty" : m17,
     "evignettes" : MessageLookupByLibrary.simpleMessage("EVignettes"),
     "expiration" : MessageLookupByLibrary.simpleMessage("Expiration"),
@@ -133,6 +136,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "expiration_yearly" : MessageLookupByLibrary.simpleMessage("Annual"),
     "expired" : MessageLookupByLibrary.simpleMessage("Expired"),
     "export" : MessageLookupByLibrary.simpleMessage("Export"),
+    "filter" : MessageLookupByLibrary.simpleMessage("Filter"),
+    "general_statistics" : MessageLookupByLibrary.simpleMessage("General statistics"),
     "google_login" : MessageLookupByLibrary.simpleMessage("Google login"),
     "last_change" : m19,
     "last_milage" : MessageLookupByLibrary.simpleMessage("Last refuel milage"),
@@ -154,6 +159,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notify_on_date" : MessageLookupByLibrary.simpleMessage("Notify on date"),
     "only_annual_for_county" : MessageLookupByLibrary.simpleMessage("Only country wide available"),
     "other_regions" : MessageLookupByLibrary.simpleMessage("Other regions"),
+    "petrol_price_over_time" : MessageLookupByLibrary.simpleMessage("Petrol price change"),
     "price" : MessageLookupByLibrary.simpleMessage("Price"),
     "reason" : MessageLookupByLibrary.simpleMessage("Reason"),
     "refuel" : MessageLookupByLibrary.simpleMessage("Refuel"),
@@ -171,6 +177,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "repeat_this_reminder_again" : MessageLookupByLibrary.simpleMessage("Do you want to repeat this reminder?"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "settings_description" : MessageLookupByLibrary.simpleMessage("Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!"),
+    "spending_format" : m25,
     "statistics" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "statistics_page_menuitem" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "suggestion" : MessageLookupByLibrary.simpleMessage("Suggestion"),
@@ -182,13 +189,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "tire_type_summer" : MessageLookupByLibrary.simpleMessage("Summer"),
     "tire_type_winter" : MessageLookupByLibrary.simpleMessage("Winter"),
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobile 2020"),
+    "total_spending" : MessageLookupByLibrary.simpleMessage("Total spending"),
     "type" : MessageLookupByLibrary.simpleMessage("Type"),
     "upcoming" : MessageLookupByLibrary.simpleMessage("Upcoming"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("User settings"),
     "user_settings_page_menuitem" : MessageLookupByLibrary.simpleMessage("User/App settings"),
     "warranty" : MessageLookupByLibrary.simpleMessage("Under warranty"),
     "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
-    "welcome" : m25,
+    "welcome" : m26,
     "year" : MessageLookupByLibrary.simpleMessage("Year"),
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
     "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly"),

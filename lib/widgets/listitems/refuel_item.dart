@@ -10,9 +10,7 @@ import 'package:intl/intl.dart';
 class RefuelItem extends StatelessWidget {
   final Refuel refuel;
 
-  final int index;
-
-  RefuelItem(this.refuel, {@required this.index});
+  RefuelItem(this.refuel);
 
   void _onOpen(BuildContext context) {
     ReadyState state = BlocProvider.of<CarBloc>(context).state;
@@ -40,47 +38,48 @@ class RefuelItem extends StatelessWidget {
       elevation: 5,
       child: InkWell(
         onTap: () => _onOpen(context),
-        child: Row(
-          children: [
-            Text(index.toString()),
-            Stack(
+        child: Stack(
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Container(
-                          width: MediaQuery.of(context).size.width - 60,
-                          child: Wrap(
-                              alignment: WrapAlignment.start,
-                              runSpacing: 1.4,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              spacing: 2,
-                              children: [] //tagWidgets
-                          ),
-                        ),
-                      ],
+                    Container(
+                      width: MediaQuery.of(context).size.width - 60,
+                      child: Wrap(
+                          alignment: WrapAlignment.start,
+                          runSpacing: 1.4,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          spacing: 2,
+                          children: [] //tagWidgets
+                      ),
                     ),
-                    Text(refuel.milage.toString() + " km"),
-                    Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}"),
-
                   ],
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
-                )
+                Text(refuel.milage.toString() + " km"),
+                Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}"),
+
               ],
             ),
-            IconButton(
-              icon: Icon(FontAwesomeIcons.times),
-              onPressed: () => _onRemove(context),
+            Align(
+              alignment: Alignment.topRight,
+              child: Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
             ),
+
+            Align(
+              alignment: Alignment.bottomRight,
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.times),
+                onPressed: () => _onRemove(context),
+              ),
+            ),
+
           ],
-        )
+        ),
+
       ),
     );
   }
