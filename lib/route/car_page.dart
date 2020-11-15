@@ -10,11 +10,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'evignettes_page.dart';
 
-class MainPage extends StatelessWidget {
+class CarPage extends StatelessWidget {
 
 	final String path;
 	final String id;
-	MainPage({@required this.id, this.path}){
+	CarPage({@required this.id, this.path}){
 		debugPrint("Created Mainpage");
 	}
 
