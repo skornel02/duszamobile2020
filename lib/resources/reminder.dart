@@ -122,12 +122,24 @@ class Reminder extends Equatable {
     bool dueToMilage = _isDueToMilage(milage);
     bool dueToDate = _isDueToDate(date);
     if (dueToDate && !dueToMilage) {
-      return S.current.notification_date(
-          DateFormat(S.current.date_format).format(date), name);
+      try {
+        return S.current.notification_date(
+            DateFormat(S.current.date_format).format(date), name);
+      } catch (err) {
+        return name;
+      }
     } else if (dueToMilage && !dueToDate) {
-      return S.current.notification_milage(milage, name);
+      try {
+        return S.current.notification_milage(milage, name);
+      } catch (err) {
+        return name;
+      }
     } else {
-      return S.current.notification_date_and_milage(name);
+      try {
+        return S.current.notification_date_and_milage(name);
+      } catch (err) {
+        return name;
+      }
     }
   }
 
