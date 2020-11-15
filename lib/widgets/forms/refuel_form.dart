@@ -122,7 +122,7 @@ class _RefuelFormState extends State<RefuelForm> {
                     filled: true,
                     fillColor: Colors.grey.withAlpha(120),
                   ),
-                  format: DateFormat(S.of(context).date_format),
+                  format: DateFormat(S.of(context).date_format_to_show),
                   onChanged: (DateTime newDate) {
                     date = newDate;
                   },

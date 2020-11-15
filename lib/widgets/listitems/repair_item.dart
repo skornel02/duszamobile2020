@@ -24,7 +24,7 @@ class RepairItem extends StatelessWidget {
       context,
       title: S.of(context).are_you_sure,
       description: S.of(context).do_you_want_to(S.of(context).do_remove_repair(
-          DateFormat(S.of(context).date_format).format(repair.date))),
+          DateFormat(S.of(context).date_format_to_show).format(repair.date))),
       onAccept: () {
         BlocProvider.of<CarBloc>(context).add(RemoveRepairItem(repair.id));
       },
@@ -50,22 +50,27 @@ class RepairItem extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       width: MediaQuery.of(context).size.width - 60,
-                      child: Tags(
-                          itemCount: repair.items.length,
-                          itemBuilder: (int index) {
-                            final item = repair.items[index];
-                            return ItemTags(
-                              key: Key(index.toString()),
-                              index: index,
-                              title: item,
-                              active: true,
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                              ),
-                              onPressed: (item) => print(item),
-                              onLongPressed: (item) => print(item),
-                            );
-                          }),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: Tags(
+                          alignment: WrapAlignment.start,
+                            itemCount: repair.items.length,
+                            itemBuilder: (int index) {
+                              final item = repair.items[index];
+                              return ItemTags(
+                                pressEnabled: false,
+                                key: Key(index.toString()),
+                                index: index,
+                                title: item,
+                                active: true,
+                                textStyle: TextStyle(
+                                  fontSize: 12,
+                                ),
+                                onPressed: (item) => print(item),
+                                onLongPressed: (item) => print(item),
+                              );
+                            }),
+                      ),
                     ),
                   ],
                 ),

@@ -25,7 +25,7 @@ class RefuelItem extends StatelessWidget {
       context,
       title: S.of(context).are_you_sure,
       description: S.of(context).do_you_want_to(S.of(context).do_remove_refuel(
-          DateFormat(S.of(context).date_format).format(refuel.date))),
+          DateFormat(S.of(context).date_format_to_show).format(refuel.date))),
       onAccept: () {
         BlocProvider.of<CarBloc>(context).add(RemoveRefuelItem(refuel.id));
       },

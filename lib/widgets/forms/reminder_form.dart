@@ -172,7 +172,7 @@ class _ReminderFormState extends State<ReminderForm> {
 									),
 									format: DateFormat(S
 											.of(context)
-											.date_format),
+											.date_format_to_show),
 									onChanged: (DateTime newDate){
 										date = newDate;
 									},
@@ -198,22 +198,56 @@ class _ReminderFormState extends State<ReminderForm> {
 								Divider(),
 
 								// TODO cant be disabled
-								Row(
-									children: [
-										SizedBox(
-												width: 50,
-												child: Text("${afterMilage.toInt()} km")
-										),
-										Slider(
-											min: 0,
-											max: 100,
-											value: afterMilage.toDouble(),
-											onChanged: (val){
-												setState((){
-													afterMilage = val.round();
-												});
-											})
-									],
+								ColorFiltered(
+									colorFilter: ColorFilter.mode(Colors.grey, BlendMode.modulate),
+								  child: IgnorePointer(
+								  	ignoring: (radioValue == "notifyOnDate"),
+								    child: Row(
+
+								    	children: [
+								    		SizedBox(
+								    				width: 50,
+								    				child: Text("${afterMilage.toInt()} km")
+								    		),
+
+												Padding(
+													padding: const EdgeInsets.only(top: 10),
+													child: TextFormField(
+														style: TextStyle(fontSize: 18),
+														maxLines: 1,
+														inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+														keyboardType: TextInputType.number,
+												//		controller: _priceTextEditingController,
+														textInputAction: TextInputAction.next,
+														decoration: InputDecoration(
+															labelText: S.of(context).price,
+															alignLabelWithHint: true,
+															labelStyle: TextStyle(),
+															filled: true,
+															fillColor: Colors.grey.withAlpha(120),
+														),
+														validator: (value) {
+															if (value.isEmpty) {
+																return S.of(context).cant_be_empty(S.of(context).price);
+															}
+															return null;
+														},
+													),
+												),
+
+								    		Slider(
+								    			min: 0,
+								    			max: 100,
+								    			value: afterMilage.toDouble(),
+								    			onChanged: (radioValue == "notifyOnDate") ? null : (val){
+														setState((){
+															afterMilage = val.round();
+														});
+													}
+												)
+								    	],
+								    ),
+								  ),
 								),
 
 

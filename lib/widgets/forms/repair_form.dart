@@ -37,7 +37,6 @@ class _RepairFormState extends State<RepairForm> {
   TextEditingController _milageTextEditingController = TextEditingController();
 
   DateTime date;
-  double milage = 15;
   List<String> items = [];
   bool warranty = true;
 
@@ -47,16 +46,18 @@ class _RepairFormState extends State<RepairForm> {
       _reasonTextEditingController.text = widget.repair.reason;
       _descriptionTextEditingController.text = widget.repair.description;
       _costTextEditingController.text = widget.repair.price.toString();
+      if (widget.milage != null){
+        _milageTextEditingController.text = widget.milage.toString();
+      }
 
-      milage = widget.repair.milage as double;
+
       date = widget.repair.date;
       items = widget.repair.items;
       warranty = widget.repair.warranty;
     } else {
       _costTextEditingController.text = "0";
       print(widget.milage);
-      if (widget.milage != null)
-        _milageTextEditingController.text = widget.milage.toString();
+
     }
 
     super.initState();
@@ -161,7 +162,7 @@ class _RepairFormState extends State<RepairForm> {
                       filled: true,
                       fillColor: Colors.grey.withAlpha(120),
                     ),
-                    format: DateFormat(S.of(context).date_format),
+                    format: DateFormat(S.of(context).date_format_to_show),
                     onChanged: (DateTime newDate) {
                       date = newDate;
                     },
@@ -260,6 +261,8 @@ class _RepairFormState extends State<RepairForm> {
                     if (_formKey.currentState.validate()) {
                       double price =
                           double.parse(_costTextEditingController.text);
+
+                      int milage = int.parse(_milageTextEditingController.text);
 
                       Repair next;
                       if (widget.repair != null) {
