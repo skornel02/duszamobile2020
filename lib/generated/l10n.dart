@@ -495,6 +495,16 @@ class S {
     );
   }
 
+  /// `repair`
+  String get repair {
+    return Intl.message(
+      'repair',
+      name: 'repair',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change car`
   String get change_car {
     return Intl.message(
@@ -1225,10 +1235,10 @@ class S {
     );
   }
 
-  /// `Refuel`
+  /// `refuel`
   String get refuel {
     return Intl.message(
-      'Refuel',
+      'refuel',
       name: 'refuel',
       desc: '',
       args: [],
