@@ -36,9 +36,6 @@ class _CarFormState extends State<CarForm> {
       _nameTextEditController.text = widget.car.name;
       _priceTextEditingController.text = widget.car.settings.cost.toString();
       _yearTextEditingController.text = widget.car.settings.year.toString();
-      if (widget.car.settings.image != null) {
-        file = File.fromRawPath(base64Decode(widget.car.settings.image));
-      }
       tireType = widget.car.tire;
     }
 
@@ -62,10 +59,6 @@ class _CarFormState extends State<CarForm> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  if (widget.car != null)
-                    RaisedButton(
-                        child: Text(S.of(context).change_car),
-                        onPressed: () => _handleGoToCarSelector(context)),
                   if (widget.car != null) Divider(),
                   Builder(builder: (context) {
                     if (file != null) {

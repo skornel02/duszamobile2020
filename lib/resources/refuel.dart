@@ -5,6 +5,8 @@ import 'package:uuid/uuid.dart';
 
 part 'refuel.g.dart';
 
+enum ConsumptionRating { BELLOW_AVERAGE, NORMAL, ABOVE_NORMAL, HIGH }
+
 @JsonSerializable()
 @immutable
 class Refuel extends Equatable {
@@ -49,7 +51,15 @@ class Refuel extends Equatable {
   double get pricePerLiter => paid / refueled;
 
   /// Efficiency is liters per 100 km
-  double get efficieny => ((milage - lastMilage) / 100) / refueled;
+  double get efficieny => refueled / ((milage - lastMilage) / 100);
+
+  ConsumptionRating getConsumptionRating(double averageConsumption) {
+    if (averageConsumption > efficieny) return ConsumptionRating.BELLOW_AVERAGE;
+    if (averageConsumption * 1.2 > efficieny) return ConsumptionRating.NORMAL;
+    if (averageConsumption * 1.6 > efficieny)
+      return ConsumptionRating.ABOVE_NORMAL;
+    return ConsumptionRating.HIGH;
+  }
 
   @override
   factory Refuel.fromJson(Map<String, dynamic> json) => _$RefuelFromJson(json);

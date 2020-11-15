@@ -82,6 +82,7 @@
   "not_warranty": "Not warranty ? ezt át kell írni",
   "refuels_page_title": "Refuels - {carName}",
   "refuels_page_menuitem": "Refuels",
+  "consumption_label": "Consumption in liter/100km",
   "repairs_page_menuitem": "Repairs",
   "reminders_page_menuitem": "Reminders",
   "e_vignette_page_menuitem": "E-Vignettes",

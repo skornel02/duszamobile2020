@@ -865,6 +865,16 @@ class S {
     );
   }
 
+  /// `Consumption in liter/100km`
+  String get consumption_label {
+    return Intl.message(
+      'Consumption in liter/100km',
+      name: 'consumption_label',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Repairs`
   String get repairs_page_menuitem {
     return Intl.message(
