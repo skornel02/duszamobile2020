@@ -36,6 +36,14 @@ class EVignette extends Equatable {
         area: area ?? eVignette.area);
   }
 
+  bool isActive(DateTime date) {
+    var dueDateTime = this.start.add(Duration(days: duration));
+    var dateDate = DateTime.utc(date.year, date.month, date.day);
+    var dueDate =
+        DateTime.utc(dueDateTime.year, dueDateTime.month, dueDateTime.day);
+    return dateDate.isAtSameMomentAs(dueDate) || dueDate.isAfter(dateDate);
+  }
+
   @override
   factory EVignette.fromJson(Map<String, dynamic> json) =>
       _$EVignetteFromJson(json);

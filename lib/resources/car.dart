@@ -1,9 +1,9 @@
-import 'package:duszamobile2020/resources/pojos/car_settings.dart';
-import 'package:duszamobile2020/resources/pojos/e_vignette.dart';
-import 'package:duszamobile2020/resources/pojos/refuel.dart';
-import 'package:duszamobile2020/resources/pojos/reminder.dart';
-import 'package:duszamobile2020/resources/pojos/repair.dart';
-import 'package:duszamobile2020/resources/pojos/tire_type.dart';
+import 'package:duszamobile2020/resources/car_settings.dart';
+import 'package:duszamobile2020/resources/e_vignette.dart';
+import 'package:duszamobile2020/resources/refuel.dart';
+import 'package:duszamobile2020/resources/reminder.dart';
+import 'package:duszamobile2020/resources/repair.dart';
+import 'package:duszamobile2020/resources/tire_type.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -74,6 +74,16 @@ class Car extends Equatable {
     } else {
       return refuels[refuels.length - 1].milage;
     }
+  }
+
+  List<Reminder> get getNotifications {
+    DateTime now = DateTime.now();
+    int milage = totalMilage;
+    List<Reminder> notifications = List();
+    for (var reminder in reminds) {
+      if (reminder.isDue(now, milage)) notifications.add(reminder);
+    }
+    return notifications;
   }
 
   double get runningCost {

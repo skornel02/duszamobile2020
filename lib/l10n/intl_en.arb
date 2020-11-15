@@ -8,7 +8,7 @@
   "add": "Add",
   "user_settings": "User settings",
   "google_login": "Google login",
-  "synchronise": "Synchronise",
+  "synchronise": "Synchronize",
   "calendar_synchronisation": "Calendar synchronisation",
   "dark_theme": "Dark theme",
   "price": "Price",
@@ -53,5 +53,15 @@
   "time_format": "yyyy-MM-dd – kk:mm",
   "last_change": "Last {area} change: {time}",
   "local_area": "local",
-  "remote_area": "remote"
+  "remote_area": "remote",
+  "are_you_sure": "Are you sure?",
+  "do_you_want_to": "You dou want to {do_something}?",
+  "do_remove_car": "remove car '{car_name}'",
+  "do_remove_repair": "remove repair log at {date}",
+  "do_remove_refuel": "remove refuel log at {date}",
+  "do_remove_e_vignette": "remove E-Vignette valid from {date}",
+  "date_format": "dd-MM-yyyy",
+  "notification_date": "Your reminder set for {date} has expired! {title}",
+  "notification_milage": "Your milage goal {milage} is over! {title}",
+  "notification_date_and_milage": "Check your reminder: {title}"
 }

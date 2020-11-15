@@ -19,7 +19,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'hu';
 
-  static m3(name) => "Üdvözlünk ${name}!";
+  static m11(name) => "Üdvözlünk ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -29,6 +29,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "main_page" : MessageLookupByLibrary.simpleMessage("Főoldal"),
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobil 2020"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("Felhasználói beállítások"),
-    "welcome" : m3
+    "welcome" : m11
   };
 }

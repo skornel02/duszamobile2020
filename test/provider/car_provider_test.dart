@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:duszamobile2020/provider/car_provider.dart';
-import 'package:duszamobile2020/resources/pojos/car.dart';
-import 'package:duszamobile2020/resources/pojos/car_settings.dart';
-import 'package:duszamobile2020/resources/pojos/e_vignette.dart';
-import 'package:duszamobile2020/resources/pojos/refuel.dart';
-import 'package:duszamobile2020/resources/pojos/reminder.dart';
-import 'package:duszamobile2020/resources/pojos/repair.dart';
-import 'package:duszamobile2020/resources/pojos/tire_type.dart';
+import 'package:duszamobile2020/resources/car.dart';
+import 'package:duszamobile2020/resources/car_settings.dart';
+import 'package:duszamobile2020/resources/e_vignette.dart';
+import 'package:duszamobile2020/resources/refuel.dart';
+import 'package:duszamobile2020/resources/reminder.dart';
+import 'package:duszamobile2020/resources/repair.dart';
+import 'package:duszamobile2020/resources/tire_type.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:uuid/uuid.dart';
 

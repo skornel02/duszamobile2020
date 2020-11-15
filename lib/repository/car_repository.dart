@@ -1,5 +1,5 @@
 import 'package:duszamobile2020/provider/car_provider.dart';
-import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/resources/car.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,20 +52,25 @@ class CarRepository {
       }
     }
     List<Car> newCars;
+    print("INDEX: $index");
     if (index == -1) {
       newCars = List<Car>.from(cars)..add(car);
     } else {
-      newCars = List<Car>.from(cars)..insert(index, car);
+      newCars = List<Car>.from(cars)..replaceRange(index, index + 1, [car]);
     }
 
     await updateCars(newCars);
   }
 
-  Future<void> removeCar(Car car) async {
+  Future<void> removeCar(Car car) {
+    return removeCarById(car.id);
+  }
+
+  Future<void> removeCarById(String id) async {
     var cars = await getCars();
-    List<Car> newCars;
+    List<Car> newCars = List();
     for (var matching in cars) {
-      if (matching.id != car.id) newCars.add(matching);
+      if (matching.id != id) newCars.add(matching);
     }
 
     await updateCars(newCars);

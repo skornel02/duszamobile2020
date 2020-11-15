@@ -18,3 +18,12 @@ class RefreshCars extends CarsEvent {
   @override
   List<Object> get props => ["carsEvent"];
 }
+
+class RemoveCar extends CarsEvent {
+  final String id;
+
+  RemoveCar(this.id);
+
+  @override
+  List<Object> get props => [id];
+}

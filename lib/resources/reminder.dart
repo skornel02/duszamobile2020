@@ -1,5 +1,7 @@
+import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:uuid/uuid.dart';
 
@@ -80,6 +82,19 @@ class Reminder extends Equatable {
   Reminder getSuggestion(DateTime date, int milage) {
     return Reminder.from(this,
         id: Uuid().v4(), date: date, startMilage: milage, completed: false);
+  }
+
+  String notificationText(DateTime date, int milage) {
+    bool dueToMilage = _isDueToMilage(milage);
+    bool dueToDate = _isDueToDate(date);
+    if (dueToDate && !dueToMilage) {
+      return S.current.notification_date(
+          DateFormat(S.current.date_format).format(date), name);
+    } else if (dueToMilage && !dueToDate) {
+      return S.current.notification_milage(milage, name);
+    } else {
+      return S.current.notification_date_and_milage(name);
+    }
   }
 
   @override

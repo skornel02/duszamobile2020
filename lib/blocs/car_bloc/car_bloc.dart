@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
-import 'package:duszamobile2020/resources/pojos/car.dart';
-import 'package:duszamobile2020/resources/pojos/car_settings.dart';
-import 'package:duszamobile2020/resources/pojos/e_vignette.dart';
-import 'package:duszamobile2020/resources/pojos/refuel.dart';
-import 'package:duszamobile2020/resources/pojos/reminder.dart';
-import 'package:duszamobile2020/resources/pojos/repair.dart';
+import 'package:duszamobile2020/resources/car.dart';
+import 'package:duszamobile2020/resources/car_settings.dart';
+import 'package:duszamobile2020/resources/e_vignette.dart';
+import 'package:duszamobile2020/resources/refuel.dart';
+import 'package:duszamobile2020/resources/reminder.dart';
+import 'package:duszamobile2020/resources/repair.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextRefuels.add(event.refuel);
       } else {
-        nextRefuels.insert(index, event.refuel);
+        nextRefuels.replaceRange(index, index + 1, [event.refuel]);
       }
       Car next = Car.from(original, refuels: nextRefuels);
       _repo.updateCar(next);
@@ -108,7 +108,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextRepairs.add(event.repair);
       } else {
-        nextRepairs.insert(index, event.repair);
+        nextRepairs.replaceRange(index, index + 1, [event.repair]);
       }
       Car next = Car.from(original, repairs: nextRepairs);
       _repo.updateCar(next);
@@ -133,7 +133,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextEVignettes.add(event.eVignette);
       } else {
-        nextEVignettes.insert(index, event.eVignette);
+        nextEVignettes.replaceRange(index, index + 1, [event.eVignette]);
       }
       Car next = Car.from(original, eVignettes: nextEVignettes);
       _repo.updateCar(next);
@@ -158,7 +158,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       if (index == -1) {
         nextReminders.add(event.reminder);
       } else {
-        nextReminders.insert(index, event.reminder);
+        nextReminders.replaceRange(index, index + 1, [event.reminder]);
       }
       Car next = Car.from(original, reminds: nextReminders);
       _repo.updateCar(next);

@@ -34,7 +34,7 @@ void defineRoutes(FluroRouter router) {
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/settings", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-        debugPrint(params["car_id"][0]);
+    debugPrint(params["car_id"][0]);
     return CarSettingsPage(params["car_id"][0]);
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/repairs", handler:
@@ -42,7 +42,7 @@ void defineRoutes(FluroRouter router) {
     return CarPage(id: params["car_id"][0], path: "repairs");
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/repairs/add", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return AddRefuelPage();
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/refuels", handler:

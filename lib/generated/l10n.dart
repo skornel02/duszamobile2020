@@ -125,10 +125,10 @@ class S {
     );
   }
 
-  /// `Synchronise`
+  /// `Synchronize`
   String get synchronise {
     return Intl.message(
-      'Synchronise',
+      'Synchronize',
       name: 'synchronise',
       desc: '',
       args: [],
@@ -582,6 +582,106 @@ class S {
       name: 'remote_area',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Are you sure?`
+  String get are_you_sure {
+    return Intl.message(
+      'Are you sure?',
+      name: 'are_you_sure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You dou want to {do_something}?`
+  String do_you_want_to(Object do_something) {
+    return Intl.message(
+      'You dou want to $do_something?',
+      name: 'do_you_want_to',
+      desc: '',
+      args: [do_something],
+    );
+  }
+
+  /// `remove car '{car_name}'`
+  String do_remove_car(Object car_name) {
+    return Intl.message(
+      'remove car \'$car_name\'',
+      name: 'do_remove_car',
+      desc: '',
+      args: [car_name],
+    );
+  }
+
+  /// `remove repair log at {date}`
+  String do_remove_repair(Object date) {
+    return Intl.message(
+      'remove repair log at $date',
+      name: 'do_remove_repair',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `remove refuel log at {date}`
+  String do_remove_refuel(Object date) {
+    return Intl.message(
+      'remove refuel log at $date',
+      name: 'do_remove_refuel',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `remove E-Vignette valid from {date}`
+  String do_remove_e_vignette(Object date) {
+    return Intl.message(
+      'remove E-Vignette valid from $date',
+      name: 'do_remove_e_vignette',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `dd-MM-yyyy`
+  String get date_format {
+    return Intl.message(
+      'dd-MM-yyyy',
+      name: 'date_format',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your reminder set for {date} has expired! {title}`
+  String notification_date(Object date, Object title) {
+    return Intl.message(
+      'Your reminder set for $date has expired! $title',
+      name: 'notification_date',
+      desc: '',
+      args: [date, title],
+    );
+  }
+
+  /// `Your milage goal {milage} is over! {title}`
+  String notification_milage(Object milage, Object title) {
+    return Intl.message(
+      'Your milage goal $milage is over! $title',
+      name: 'notification_milage',
+      desc: '',
+      args: [milage, title],
+    );
+  }
+
+  /// `Check your reminder: {title}`
+  String notification_date_and_milage(Object title) {
+    return Intl.message(
+      'Check your reminder: $title',
+      name: 'notification_date_and_milage',
+      desc: '',
+      args: [title],
     );
   }
 }
