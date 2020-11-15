@@ -1,6 +1,7 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/route/refuels_page.dart';
 import 'package:duszamobile2020/route/reminder_page.dart';
 import 'package:duszamobile2020/route/repairs_page.dart';
 import 'package:duszamobile2020/route/statistics_page.dart';
@@ -10,10 +11,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'evignettes_page.dart';
 
-class MainPage extends StatelessWidget {
+class CarPage extends StatelessWidget {
   final String path;
   final String id;
-  MainPage({@required this.id, this.path}) {
+  CarPage({@required this.id, this.path}) {
     debugPrint("Created Mainpage");
   }
 
@@ -127,7 +128,7 @@ class MainPage extends StatelessWidget {
                       case "repairs":
                         return RepairsPage();
                       case "refuels":
-                        return RepairsPage(); //RefuelsPage();
+                        return RefuelsPage();
                       case "reminders":
                         return RemindersPage();
                       case "evignettes":

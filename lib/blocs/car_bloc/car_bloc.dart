@@ -20,10 +20,11 @@ class CarBloc extends Bloc<CarEvent, CarState> {
   CarRepository _repo;
   StreamSubscription _carsSubscription;
 
-  CarBloc({@required String carId, @required CarRepository repo})
+  CarBloc({String carId, @required CarRepository repo})
       : super(InitialState()) {
     _carId = carId;
     _repo = repo;
+
     repo.getCar(carId).then((car) {
       if (car != null) {
         this.add(CarFound(car));
@@ -38,7 +39,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
     _carsSubscription = repo.carsCubit.listen((cars) {
       Car car;
       for (Car matching in cars) {
-        if (matching.id == car.id) {
+        if (matching.id == _carId) {
           car = matching;
           break;
         }

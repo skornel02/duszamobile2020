@@ -1,4 +1,6 @@
+import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class StatisticsPage extends StatelessWidget {
@@ -8,10 +10,20 @@ class StatisticsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [],
-      ),
+    return BlocBuilder<CarBloc, CarState>(
+      builder: (context, state) {
+        if (state is ReadyState) {
+          // TODO: Car statistics
+          return Scaffold(
+            body: Column(
+              children: [],
+            ),
+          );
+        }
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }

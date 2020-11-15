@@ -42,6 +42,8 @@ class CarRepository {
   }
 
   Future<void> updateCar(Car car) async {
+    if (car.id == null) throw "CAN ID CAN'T BE NULL, INVALID UPDATE CAR!";
+
     var cars = await getCars();
     int index = -1;
     for (int i = 0; i < cars.length; i++) {
