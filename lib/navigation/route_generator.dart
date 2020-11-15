@@ -28,7 +28,7 @@ Widget handleRefuelRoute(BuildContext context, Map<String, dynamic> params) {
   return WithCarBloc(
     carId: carId,
     onCarNotFound: carNotFoundEvent,
-    child: AddRefuelPage(carId),
+    child: RefuelsPage(carId),
   );
 }
 
@@ -37,7 +37,7 @@ Widget handleAddRefuelRoute(BuildContext context, Map<String, dynamic> params) {
   return WithCarBloc(
     carId: carId,
     onCarNotFound: carNotFoundEvent,
-    child: RefuelsPage(carId),
+    child: AddRefuelPage(carId),
   );
 }
 

@@ -18,8 +18,10 @@ class StatisticsPage extends StatelessWidget {
         if (state is ReadyState) {
           // TODO: Car statistics
           return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).statistics),),
-            drawer: carDrawer(context, id),
+            appBar: AppBar(
+              title: Text(S.of(context).statistics),
+            ),
+            drawer: carDrawer(context, id, selectedMenu: DrawerItem.STATISTICS),
             body: Column(
               children: [],
             ),
