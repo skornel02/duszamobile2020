@@ -42,7 +42,7 @@ class EVignetteItem extends StatelessWidget {
         return 'images/icon_baranya.png';
       case "Borsod-Abaúj-Zemplén megye":
         return 'images/icon_baz.png';
-      case "Fejér megyer":
+      case "Fejér megye":
         return 'images/icon_fejer.png';
       case "Csongrád-Csanád megye":
         return 'images/icon_csongrad-csanad.png';
@@ -104,13 +104,14 @@ class EVignetteItem extends StatelessWidget {
                   Text(S.of(context).expiration_date(
                       (eVignette.start == null || eVignette.duration == null)
                           ? "NULL"
-                          : DateFormat(S.of(context).date_format_to_show).format(
-                              eVignette.start
+                          : DateFormat(S.of(context).date_format_to_show)
+                              .format(eVignette.start
                                   .add(Duration(days: eVignette.duration))))),
                   SizedBox(
                     height: 50,
                     width: 50,
-                    child: Image.asset("assets/" + getImagePath(eVignette.area)),
+                    child:
+                        Image.asset("assets/" + getImagePath(eVignette.area)),
                   )
                 ],
               ),

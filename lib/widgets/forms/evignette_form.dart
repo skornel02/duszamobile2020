@@ -34,6 +34,17 @@ class _EVignetteFormState extends State<EVignetteForm> {
   void initState() {
     if (widget.eVignette != null) {
       startDate = widget.eVignette.start;
+      switch (widget.eVignette.duration) {
+        case 365:
+          currentExpiration = "expiration_yearly_country";
+          break;
+        case 31:
+          currentExpiration = "expiration_monthly_country";
+          break;
+        default:
+          currentExpiration = "expiration_weekly_country";
+          break;
+      }
       duration = widget.eVignette.duration;
       area = widget.eVignette.area;
     } else {
@@ -74,16 +85,6 @@ class _EVignetteFormState extends State<EVignetteForm> {
                         ],
                         onChanged: (val) {
                           setState(() {
-                            if (currentExpiration ==
-                                "expiration_yearly_country") {
-                              duration = 365;
-                            } else if (currentExpiration ==
-                                "expiration_monthly_country") {
-                              duration = 31;
-                            } else if (currentExpiration ==
-                                "expiration_weekly_country") {
-                              duration = 7;
-                            }
                             currentExpiration = val;
                           });
                         })
@@ -166,20 +167,31 @@ class _EVignetteFormState extends State<EVignetteForm> {
                       } else {
                         area = currentCounty;
                       }
+
+                      int realDuration;
+                      if (currentExpiration == "expiration_yearly_country") {
+                        realDuration = 365;
+                      } else if (currentExpiration ==
+                          "expiration_monthly_country") {
+                        realDuration = 31;
+                      } else {
+                        realDuration = 7;
+                      }
+
                       EVignette next;
                       if (widget.eVignette != null) {
                         next = EVignette.from(
                           widget.eVignette,
                           start: startDate,
                           area: area,
-                          duration: duration,
+                          duration: realDuration,
                         );
                       } else {
                         next = EVignette.create(
                           id: Uuid().v4(),
                           start: startDate,
                           area: area,
-                          duration: duration,
+                          duration: realDuration,
                         );
                       }
                       if (widget.eVignette == null) {
