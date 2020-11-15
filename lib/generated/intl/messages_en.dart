@@ -70,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dark_theme" : MessageLookupByLibrary.simpleMessage("Dark theme"),
     "date" : MessageLookupByLibrary.simpleMessage("Date"),
     "date_format" : MessageLookupByLibrary.simpleMessage("dd-MM-yyyy"),
+    "date_format_to_show" : MessageLookupByLibrary.simpleMessage("yyyy.MM.dd"),
     "description" : MessageLookupByLibrary.simpleMessage("Description"),
     "do_remove_car" : m2,
     "do_remove_e_vignette" : m3,

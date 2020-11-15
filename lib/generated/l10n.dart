@@ -715,6 +715,16 @@ class S {
     );
   }
 
+  /// `yyyy.MM.dd`
+  String get date_format_to_show {
+    return Intl.message(
+      'yyyy.MM.dd',
+      name: 'date_format_to_show',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Your reminder set for {date} has expired! {title}`
   String notification_date(Object date, Object title) {
     return Intl.message(

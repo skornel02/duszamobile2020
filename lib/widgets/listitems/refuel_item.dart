@@ -58,14 +58,13 @@ class RefuelItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(refuel.id),
-                Text(refuel.paid.toString()),
+                Text("${refuel.paid.toStringAsFixed(1)} "),
                 Text(refuel.milage.toString()),
               ],
             ),
             Align(
               alignment: Alignment.topRight,
-              child: Text(refuel.date.toString()),
+              child: Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
             )
           ],
         ),

@@ -67,6 +67,7 @@
   "do_remove_refuel": "remove refuel log at {date}",
   "do_remove_e_vignette": "remove E-Vignette valid from {date}",
   "date_format": "dd-MM-yyyy",
+  "date_format_to_show": "yyyy.MM.dd",
   "notification_date": "Your reminder set for {date} has expired! {title}",
   "notification_milage": "Your milage goal {milage} is over! {title}",
   "notification_date_and_milage": "Check your reminder: {title}",
