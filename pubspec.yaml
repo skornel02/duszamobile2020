@@ -67,7 +67,7 @@ flutter:
     - assets/
     - assets/langs/en.json
     - assets/langs/hu.json
-    - assets/images
+    - assets/images/
 
 flutter_intl:
   enabled: true

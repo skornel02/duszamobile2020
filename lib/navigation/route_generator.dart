@@ -1,12 +1,19 @@
 import 'package:duszamobile2020/route/add_car_page.dart';
 import 'package:duszamobile2020/route/add_evignette_page.dart';
 import 'package:duszamobile2020/route/add_refuel_page.dart';
+import 'package:duszamobile2020/route/add_reminder_page.dart';
 import 'package:duszamobile2020/route/car_settings_page.dart';
 import 'package:duszamobile2020/route/car_page.dart';
 import 'package:duszamobile2020/route/cars_page.dart';
+import 'package:duszamobile2020/route/edit_evignette_page.dart';
 import 'package:duszamobile2020/route/edit_refuel_page.dart';
+import 'package:duszamobile2020/route/edit_reminder.dart';
+import 'package:duszamobile2020/route/evignettes_page.dart';
 import 'package:duszamobile2020/route/refuels_page.dart';
+import 'package:duszamobile2020/route/reminder_page.dart';
+import 'package:duszamobile2020/route/repairs_page.dart';
 import 'package:duszamobile2020/route/settings_page.dart';
+import 'package:duszamobile2020/route/statistics_page.dart';
 import 'package:duszamobile2020/widgets/car_bloc_widget.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +29,42 @@ Widget handleRefuelRoute(BuildContext context, Map<String, dynamic> params) {
     carId: carId,
     onCarNotFound: carNotFoundEvent,
     child: RefuelsPage(carId),
+  );
+}
+
+Widget handleStatisticsRoute(BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: StatisticsPage(carId),
+  );
+}
+
+Widget handleRepairRoute(BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: RepairsPage(carId),
+  );
+}
+
+Widget handleEVignetteRoute(BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: EVignettesPage(carId),
+  );
+}
+
+Widget handleRemindersRoute(BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: RemindersPage(carId),
   );
 }
 
@@ -41,15 +84,14 @@ void defineRoutes(FluroRouter router) {
     return AddCarPage();
   }));
 
-  router.define("/cars/:car_id", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return CarPage(id: params["car_id"][0], path: "statistics");
-  }), transitionType: TransitionType.material);
+  router.define("/cars/:car_id",
+      handler: Handler(handlerFunc: handleStatisticsRoute),
+      transitionType: TransitionType.material);
 
   router.define("/cars/:car_id/statistics", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return CarPage(id: params["car_id"][0], path: "statistics");
-  }), transitionType: TransitionType.fadeIn);
+      Handler(handlerFunc: handleStatisticsRoute),
+      transitionType: TransitionType.fadeIn)
+  ;
 
   router.define("/cars/:car_id/settings", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -57,10 +99,9 @@ void defineRoutes(FluroRouter router) {
     return CarSettingsPage(params["car_id"][0]);
   }), transitionType: TransitionType.material);
 
-  router.define("/cars/:car_id/repairs", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return CarPage(id: params["car_id"][0], path: "repairs");
-  }), transitionType: TransitionType.fadeIn);
+  router.define("/cars/:car_id/repairs",
+      handler: Handler(handlerFunc: handleRepairRoute),
+      transitionType: TransitionType.fadeIn);
 
   router.define("/cars/:car_id/repairs/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -75,7 +116,7 @@ void defineRoutes(FluroRouter router) {
 
   router.define("/cars/:car_id/refuels/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return CarPage(id: params["car_id"][0], path: "refuels/add");
+    return AddRefuelPage(params["car_id"][0]);
   }), transitionType: TransitionType.material);
 
   router.define("/cars/:car_id/refuels/:refuel_id", handler:
@@ -83,18 +124,33 @@ void defineRoutes(FluroRouter router) {
     return EditRefuelPage(params["car_id"][0], params["refuel_id"][0]);
   }), transitionType: TransitionType.fadeIn);
 
-  router.define("/cars/:car_id/reminders", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return CarPage(id: params["car_id"][0], path: "reminders");
+  router.define("/cars/:car_id/reminders",
+      handler: Handler(handlerFunc: handleRemindersRoute),
+      transitionType: TransitionType.fadeIn
+  );
+
+  router.define("/cars/:car_id/reminders/add", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return AddReminderPage(params["car_id"][0]);
   }), transitionType: TransitionType.fadeIn);
 
-  router.define("/cars/:car_id/evignettes", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return CarPage(id: params["car_id"][0], path: "evignettes");
+  router.define("/cars/:car_id/reminders/:reminder_id", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return EditReminderPage(params["car_id"][0], params["reminder_id"][0]);
   }), transitionType: TransitionType.fadeIn);
+
+  router.define("/cars/:car_id/evignettes",
+      handler: Handler(handlerFunc: handleEVignetteRoute),
+      transitionType: TransitionType.fadeIn
+  );
 
   router.define("/cars/:car_id/evignettes/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return AddEVignettePage(params["car_id"][0]);
+  }), transitionType: TransitionType.material);
+
+  router.define("/cars/:car_id/evignettes/:evignette_id", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return EditEVignettePage(params["car_id"][0], params["evignette_id"][0]);
   }), transitionType: TransitionType.material);
 }

@@ -3,7 +3,6 @@ import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 

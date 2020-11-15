@@ -25,7 +25,7 @@ class RefuelsPage extends StatelessWidget {
           final car = state.car;
           return Scaffold(
             appBar: AppBar(
-              title: Text(S.of(context).refuels_page_title(car.name)),
+              title: Text(S.of(context).refuels),
             ),
             drawer: SafeArea(
               child: carDrawer(context, car.id),

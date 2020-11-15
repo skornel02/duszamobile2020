@@ -21,6 +21,9 @@ class _EVignetteFormState extends State<EVignetteForm> {
 	int duration;
 	String area;
 
+
+	String currentCounty;
+
 	@override
 	void initState() {
 		if (widget.eVignette != null) {

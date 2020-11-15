@@ -25,7 +25,7 @@ class _ReminderFormState extends State<ReminderForm> {
 	DateTime date;
 	int afterDays;
 	int startMilage;
-	int afterMilage;
+	int afterMilage = 15;
 	bool completed;
 
 
@@ -95,9 +95,6 @@ class _ReminderFormState extends State<ReminderForm> {
 									child: TextFormField(
 										style: TextStyle(fontSize: 18),
 										maxLines: 1,
-										inputFormatters: [
-											FilteringTextInputFormatter.digitsOnly
-										],
 										controller: _descriptionTextEditingController,
 										textInputAction: TextInputAction.next,
 										decoration: InputDecoration(
@@ -173,17 +170,17 @@ class _ReminderFormState extends State<ReminderForm> {
 									children: [
 										SizedBox(
 												width: 50,
-												child: Text(afterMilage.toStringAsFixed(1) + " km")
+												child: Text("${afterMilage.toInt()} km")
 										),
 										Slider(
-												min: 0,
-												max: 100,
-												value: afterMilage as double,
-												onChanged: (val){
-													setState((){
-														afterMilage = val.round();
-													});
-												})
+											min: 0,
+											max: 100,
+											value: afterMilage.toDouble(),
+											onChanged: (val){
+												setState((){
+													afterMilage = val.round();
+												});
+											})
 									],
 								),
 

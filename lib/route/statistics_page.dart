@@ -1,7 +1,8 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
+import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:duszamobile2020/widgets/car_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class StatisticsPage extends StatelessWidget {
   final String id;
@@ -17,6 +18,8 @@ class StatisticsPage extends StatelessWidget {
         if (state is ReadyState) {
           // TODO: Car statistics
           return Scaffold(
+            appBar: AppBar(title: Text(S.of(context).statistics),),
+            drawer: carDrawer(context, id),
             body: Column(
               children: [],
             ),

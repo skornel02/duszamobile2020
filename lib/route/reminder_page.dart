@@ -1,5 +1,7 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
+import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/car.dart';
+import 'package:duszamobile2020/widgets/car_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,6 +23,8 @@ class RemindersPage extends StatelessWidget {
         if (state is ReadyState) {
           final car = state.car;
           return Scaffold(
+            appBar: AppBar(title: Text(S.of(context).reminders),),
+            drawer: carDrawer(context, id),
             body: ListView.builder(
               itemCount: car.reminds.length,
               itemBuilder: (context, index) {
