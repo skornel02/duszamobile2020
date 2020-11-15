@@ -51,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m15(date) => "remove repair log at ${date}";
 
-  static m16(do_something) => "You dou want to ${do_something}?";
+  static m16(do_something) => "You do want to ${do_something}?";
 
   static m17(area) => "[E-Vignette] ${area} will expire";
 
@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m19(date) => "Valid until ${date}";
 
-  static m20(km) => "after ${km} km";
+  static m20(km) => "${km} km left";
 
   static m21(area, time) => "Last ${area} change: ${time}";
 
@@ -208,7 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcome" : m28,
     "year" : MessageLookupByLibrary.simpleMessage("Year"),
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
-    "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly"),
+    "yearly_regional" : MessageLookupByLibrary.simpleMessage("Yearly regional"),
     "yes" : MessageLookupByLibrary.simpleMessage("Yes")
   };
 }

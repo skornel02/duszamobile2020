@@ -295,10 +295,10 @@ class S {
     );
   }
 
-  /// `Weekly`
+  /// `Yearly regional`
   String get yearly_regional {
     return Intl.message(
-      'Weekly',
+      'Yearly regional',
       name: 'yearly_regional',
       desc: '',
       args: [],
@@ -785,10 +785,10 @@ class S {
     );
   }
 
-  /// `You dou want to {do_something}?`
+  /// `You do want to {do_something}?`
   String do_you_want_to(Object do_something) {
     return Intl.message(
-      'You dou want to $do_something?',
+      'You do want to $do_something?',
       name: 'do_you_want_to',
       desc: '',
       args: [do_something],
@@ -1315,10 +1315,10 @@ class S {
     );
   }
 
-  /// `after {km} km`
+  /// `{km} km left`
   String km_left(Object km) {
     return Intl.message(
-      'after $km km',
+      '$km km left',
       name: 'km_left',
       desc: '',
       args: [km],
