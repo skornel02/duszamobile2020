@@ -1164,6 +1164,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!`
+  String get settings_description {
+    return Intl.message(
+      'Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!',
+      name: 'settings_description',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

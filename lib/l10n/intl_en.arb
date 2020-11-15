@@ -111,5 +111,6 @@
   "e_vignette_expiration_reminder": "[E-Vignette] {area} will expire",
   "automatically_generated": "Automatically generated",
   "both": "Both",
-  "refuel": "Refuel"
+  "refuel": "Refuel",
+  "settings_description": "Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!"
 }

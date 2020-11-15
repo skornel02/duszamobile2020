@@ -26,8 +26,8 @@ class SettingsPage extends StatelessWidget {
                 onPressed: () => NotificationService.showNotificationWithReminders(),
               ),
 
-              Text("TItle"),
-              Text("Egy kis leírás"),
+              Text(S.of(context).title),
+              Text(S.of(context).settings_description),
               GoogleSync(),
               LanguageChanger(),
               SwitchListTile(

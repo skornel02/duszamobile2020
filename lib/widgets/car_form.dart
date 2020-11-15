@@ -34,8 +34,8 @@ class _CarFormState extends State<CarForm> {
   void initState() {
     if (widget.car != null) {
       _nameTextEditController.text = widget.car.name;
-      _priceTextEditingController.text = widget.car.settings.cost.toString();
-      _yearTextEditingController.text = widget.car.settings.year.toString();
+      if(widget.car.settings.cost != null) _priceTextEditingController.text = widget.car.settings.cost.toString();
+      if(widget.car.settings.year != null)_yearTextEditingController.text = widget.car.settings.year.toString();
       tireType = widget.car.tire;
     }
 
@@ -59,7 +59,6 @@ class _CarFormState extends State<CarForm> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  if (widget.car != null) Divider(),
                   Builder(builder: (context) {
                     if (file != null) {
                       return Padding(
@@ -151,87 +150,75 @@ class _CarFormState extends State<CarForm> {
                     ),
                   ),
                   Divider(),
-                  ExpandablePanel(
-                    header: Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Container(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: TextField(
+                      style: TextStyle(fontSize: 18),
+                      maxLines: 1,
+                      keyboardType: TextInputType.number,
+                      controller: _priceTextEditingController,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                        labelText: S
+                            .of(context)
+                            .price, // helperText: "Oktatási azonositó",
+                        alignLabelWithHint: true,
+                        labelStyle: TextStyle(),
+                        filled: true,
+                        fillColor: Colors.grey.withAlpha(120),
+                      ),
                     ),
-                    expanded: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: TextField(
-                            style: TextStyle(fontSize: 18),
-                            maxLines: 1,
-                            keyboardType: TextInputType.number,
-                            controller: _priceTextEditingController,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                              labelText: S
-                                  .of(context)
-                                  .price, // helperText: "Oktatási azonositó",
-                              alignLabelWithHint: true,
-                              labelStyle: TextStyle(),
-                              filled: true,
-                              fillColor: Colors.grey.withAlpha(120),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: TextField(
-                            style: TextStyle(fontSize: 18),
-                            maxLines: 1,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly
-                            ],
-                            keyboardType: TextInputType.number,
-                            controller: _yearTextEditingController,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                              labelText: S.of(context).year,
-                              alignLabelWithHint: true,
-                              labelStyle: TextStyle(),
-                              filled: true,
-                              fillColor: Colors.grey.withAlpha(120),
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Text("${S.of(context).tire_type}:"),
-                            DropdownButton(
-                                value: tireType,
-                                items: [
-                                  DropdownMenuItem(
-                                      child:
-                                          Text(S.of(context).tire_type_winter),
-                                      value: TireType.WINTER),
-                                  DropdownMenuItem(
-                                      child:
-                                          Text(S.of(context).tire_type_summer),
-                                      value: TireType.SUMMER),
-                                  DropdownMenuItem(
-                                      child: Text(
-                                          S.of(context).tire_type_all_year),
-                                      value: TireType.ALL_YEAR),
-                                  DropdownMenuItem(
-                                      child:
-                                          Text(S.of(context).tire_type_other),
-                                      value: TireType.NOT_SPECIFIED),
-                                ],
-                                onChanged: (val) {
-                                  setState(() {
-                                    tireType = val;
-                                  });
-                                })
-                          ],
-                        ),
-                      ],
-                    ),
-                    iconPlacement: ExpandablePanelIconPlacement.left,
                   ),
-                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: TextField(
+                      style: TextStyle(fontSize: 18),
+                      maxLines: 1,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
+                      keyboardType: TextInputType.number,
+                      controller: _yearTextEditingController,
+                      textInputAction: TextInputAction.next,
+                      decoration: InputDecoration(
+                        labelText: S.of(context).year,
+                        alignLabelWithHint: true,
+                        labelStyle: TextStyle(),
+                        filled: true,
+                        fillColor: Colors.grey.withAlpha(120),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Text("${S.of(context).tire_type}:"),
+                      DropdownButton(
+                          value: tireType,
+                          items: [
+                            DropdownMenuItem(
+                                child:
+                                Text(S.of(context).tire_type_winter),
+                                value: TireType.WINTER),
+                            DropdownMenuItem(
+                                child:
+                                Text(S.of(context).tire_type_summer),
+                                value: TireType.SUMMER),
+                            DropdownMenuItem(
+                                child: Text(
+                                    S.of(context).tire_type_all_year),
+                                value: TireType.ALL_YEAR),
+                            DropdownMenuItem(
+                                child:
+                                Text(S.of(context).tire_type_other),
+                                value: TireType.NOT_SPECIFIED),
+                          ],
+                          onChanged: (val) {
+                            setState(() {
+                              tireType = val;
+                            });
+                          })
+                    ],
+                  ),
                   RaisedButton(
                     child: Text(widget.car == null
                         ? S.of(context).create

@@ -122,7 +122,7 @@ class RefuelsPage extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(FontAwesomeIcons.plus),
         onPressed: () => _onAdd(context),
       ),
     );

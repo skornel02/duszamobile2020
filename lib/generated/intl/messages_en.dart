@@ -162,6 +162,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "repairs" : MessageLookupByLibrary.simpleMessage("Repairs"),
     "repairs_page_menuitem" : MessageLookupByLibrary.simpleMessage("Repairs"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
+    "settings_description" : MessageLookupByLibrary.simpleMessage("Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!"),
     "statistics" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "statistics_page_menuitem" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "suggestion" : MessageLookupByLibrary.simpleMessage("Suggestion"),

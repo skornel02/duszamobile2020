@@ -46,7 +46,7 @@ class CarsPage extends StatelessWidget {
           },
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: Icon(FontAwesomeIcons.plus),
           onPressed: () {
             Navigator.pushNamed(context, "/cars/add");
           },
