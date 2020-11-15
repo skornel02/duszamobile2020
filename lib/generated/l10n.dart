@@ -105,6 +105,26 @@ class S {
     );
   }
 
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `User settings`
   String get user_settings {
     return Intl.message(
@@ -1105,6 +1125,16 @@ class S {
     );
   }
 
+  /// `Upcoming`
+  String get upcoming {
+    return Intl.message(
+      'Upcoming',
+      name: 'upcoming',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Suggestion`
   String get suggestion {
     return Intl.message(
@@ -1140,6 +1170,26 @@ class S {
     return Intl.message(
       'Automatically generated',
       name: 'automatically_generated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to complete '{name}'?`
+  String complete_reminder(Object name) {
+    return Intl.message(
+      'Are you sure you want to complete \'$name\'?',
+      name: 'complete_reminder',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Do you want to repeat this reminder?`
+  String get repeat_this_reminder_again {
+    return Intl.message(
+      'Do you want to repeat this reminder?',
+      name: 'repeat_this_reminder_again',
       desc: '',
       args: [],
     );

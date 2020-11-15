@@ -95,6 +95,7 @@ class Reminder extends Equatable {
   }
 
   Reminder getSuggestion(DateTime date, int milage) {
+    print("Suggested new date: $date ; startMilage: $milage");
     return Reminder.from(this,
         id: Uuid().v4(), date: date, startMilage: milage, completed: false);
   }

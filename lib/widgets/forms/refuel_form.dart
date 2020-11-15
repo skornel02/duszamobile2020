@@ -153,7 +153,9 @@ class _RefuelFormState extends State<RefuelForm> {
                       child: TextFormField(
                         style: TextStyle(fontSize: 18),
                         maxLines: 1,
-                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                         keyboardType: TextInputType.number,
                         controller: _refuelTextEditingController,
                         textInputAction: TextInputAction.next,
@@ -166,13 +168,14 @@ class _RefuelFormState extends State<RefuelForm> {
                         ),
                         validator: (value) {
                           if (value.isEmpty) {
-                            return S.of(context).cant_be_empty(S.of(context).refuel);
+                            return S
+                                .of(context)
+                                .cant_be_empty(S.of(context).refuel);
                           }
                           return null;
                         },
                       ),
                     ),
-
                     Slider(
                         min: 0,
                         max: 100,
