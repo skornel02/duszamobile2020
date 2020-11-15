@@ -185,11 +185,11 @@ class S {
     );
   }
 
-  /// `Milometer`
-  String get milometer {
+  /// `Language`
+  String get language {
     return Intl.message(
-      'Milometer',
-      name: 'milometer',
+      'Language',
+      name: 'language',
       desc: '',
       args: [],
     );
@@ -1290,6 +1290,26 @@ class S {
     return Intl.message(
       'General statistics',
       name: 'general_statistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Test notification`
+  String get test_notification {
+    return Intl.message(
+      'Test notification',
+      name: 'test_notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My JSON export`
+  String get export_json {
+    return Intl.message(
+      'My JSON export',
+      name: 'export_json',
       desc: '',
       args: [],
     );
