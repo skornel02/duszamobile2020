@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RemindersPage extends StatelessWidget {
-  RemindersPage({Key key}) : super(key: key) {
+  final String id;
+  RemindersPage(this.id, {Key key}) : super(key: key) {
     debugPrint("Created RemindersPage");
   }
 

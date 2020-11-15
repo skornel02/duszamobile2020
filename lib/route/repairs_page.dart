@@ -6,7 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:duszamobile2020/widgets/listitems/repair_item.dart';
 
 class RepairsPage extends StatelessWidget {
-  RepairsPage({Key key}) : super(key: key) {
+  final String id;
+
+  RepairsPage(this.id, {Key key}) : super(key: key) {
     debugPrint("Created RepairsPage");
   }
 

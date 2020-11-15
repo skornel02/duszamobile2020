@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RefuelsPage extends StatelessWidget {
-  RefuelsPage({Key key}) : super(key: key) {
+  final String id;
+
+  RefuelsPage(this.id, {Key key}) : super(key: key) {
     debugPrint("Created RefuelsPage");
   }
 

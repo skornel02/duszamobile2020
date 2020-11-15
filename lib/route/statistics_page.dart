@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class StatisticsPage extends StatelessWidget {
-  StatisticsPage({Key key}) : super(key: key) {
+  final String id;
+
+  StatisticsPage(this.id, {Key key}) : super(key: key) {
     debugPrint("Created StatisticsPage");
   }
 

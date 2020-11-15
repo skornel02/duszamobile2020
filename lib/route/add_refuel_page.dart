@@ -1,130 +1,41 @@
-import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
+import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/resources/refuel.dart';
+import 'package:duszamobile2020/widgets/refuel_form.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddRefuelPage extends StatefulWidget {
-  AddRefuelPage({Key key}) : super(key: key);
+GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 
-  @override
-  _AddRefuelPageState createState() => _AddRefuelPageState();
-}
-
-class _AddRefuelPageState extends State<AddRefuelPage> {
-  TextEditingController textEditingControllerPrice = TextEditingController();
-  TextEditingController textEditingControllerTotalMilage =
-      TextEditingController();
-  TextEditingController textEditingControllerLastMilage =
-      TextEditingController();
-
-  double refuelAmount = 15;
-
-  bool isLastRefuelRecorded = true;
+class AddRefuelPage extends StatelessWidget {
+  final String id;
+  AddRefuelPage(this.id);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).add_refuel),
-        leading: CloseButton(),
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            children: [
-              InputDatePickerFormField(
-                firstDate: DateTime.now().subtract(Duration(days: 365)),
-                lastDate: DateTime.now(),
-                onDateSaved: (DateTime date) {},
-              ),
-              Row(
-                children: [
-                  Text(refuelAmount.toString()),
-                  Slider(
-                      min: 0,
-                      max: 200,
-                      value: refuelAmount,
-                      onChanged: (val) {
-                        setState(() {
-                          refuelAmount = val;
-                        });
-                      })
-                ],
-              ),
-              Divider(),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: TextField(
-                  autofocus: true,
-                  style: TextStyle(fontSize: 18),
-                  maxLines: 1,
-                  controller: textEditingControllerPrice,
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    labelText: S
-                        .of(context)
-                        .price, // helperText: "Oktatási azonositó",
-                    alignLabelWithHint: true,
-                    labelStyle: TextStyle(),
-                    filled: true,
-                    fillColor: Colors.grey.withAlpha(120),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: TextField(
-                  style: TextStyle(fontSize: 18),
-                  maxLines: 1,
-                  controller: textEditingControllerTotalMilage,
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    labelText: S
-                        .of(context)
-                        .milometer, // helperText: "Oktatási azonositó",
-                    alignLabelWithHint: true,
-                    labelStyle: TextStyle(),
-                    filled: true,
-                    fillColor: Colors.grey.withAlpha(120),
-                  ),
-                ),
-              ),
-              CheckboxListTile(
-                  title: Text(S.of(context).last_refuel_was_recorded),
-                  value: isLastRefuelRecorded,
-                  onChanged: (val) {
-                    setState(() {
-                      isLastRefuelRecorded = val;
-                    });
-                  }),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: TextField(
-                  enabled: isLastRefuelRecorded,
-                  style: TextStyle(fontSize: 18),
-                  maxLines: 1,
-                  controller: textEditingControllerLastMilage,
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    labelText: "Valami",
-                    alignLabelWithHint: true,
-                    labelStyle: TextStyle(),
-                    filled: true,
-                    fillColor: Colors.grey.withAlpha(120),
-                  ),
-                ),
-              ),
-              Divider(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("${S.of(context).liter_price}: 0"),
-                  Text("${S.of(context).consumption}: 0"),
-                ],
-              )
-            ],
-          ),
+    return BlocProvider(
+      create: (_) => CarBloc(
+          carId: id, repo: RepositoryProvider.of<CarRepository>(context)),
+      child: Scaffold(
+        key: _profileScaffoldKey,
+        appBar: AppBar(
+          title: Text(S.of(context).add_refuel),
         ),
+        body: BlocBuilder<CarBloc, CarState>(
+          builder: (context, state){
+            debugPrint("Current state of carbloc: " + state.toString());
+            if(state is ReadyState){
+              return RefuelForm(
+                callback: (Refuel refuel) async {
+                  BlocProvider.of<CarBloc>(context).add(SaveRefuelItem(refuel));
+                  Navigator.pop(context);
+                },
+              );
+            }
+            return Center(child: CircularProgressIndicator(),);
+          },
+        )
       ),
     );
   }

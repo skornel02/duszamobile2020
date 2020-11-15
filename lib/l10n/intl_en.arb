@@ -43,6 +43,7 @@
   "repairs": "Repairs",
   "change_car": "Change car",
   "add_refuel": "Add refuel",
+  "edit_refuel": "Edit refuel",
   "my_cars": "My cars",
   "add_car": "Add car",
   "car_settings": "Car settings",
@@ -63,5 +64,7 @@
   "date_format": "dd-MM-yyyy",
   "notification_date": "Your reminder set for {date} has expired! {title}",
   "notification_milage": "Your milage goal {milage} is over! {title}",
-  "notification_date_and_milage": "Check your reminder: {title}"
+  "notification_date_and_milage": "Check your reminder: {title}",
+  "date": "Date"
+
 }

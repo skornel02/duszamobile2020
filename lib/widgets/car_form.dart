@@ -17,7 +17,7 @@ class CarForm extends StatefulWidget {
   final Future<void> Function(Car car) callback;
   final Car car;
 
-  CarForm({@required this.callback, this.car});
+  CarForm({@required this.callback, this.car, Key key}) : super(key: key);
 
   @override
   _CarFormState createState() => _CarFormState();
