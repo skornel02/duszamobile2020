@@ -53,7 +53,7 @@ class _ReminderFormState extends State<ReminderForm> {
       afterDays = widget.reminder.afterDays ?? 1;
       _milageTextEditingController.text =
           widget.reminder.startMilage.toString();
-      completed = widget.reminder.completed;
+      completed = widget.reminder.completed ?? false;
 
       if (widget.reminder.afterDays != null &&
           widget.reminder.afterMilage != null) {

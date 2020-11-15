@@ -141,15 +141,7 @@ class _CarFormState extends State<CarForm> {
                       print(val);
                     },
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Row(
-                      children: [
-                        Text("optional"),
-                      ],
-                    ),
-                  ),
-                  Divider(),
+
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: TextField(
