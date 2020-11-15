@@ -20,7 +20,7 @@ class EditReminderPage extends StatelessWidget {
     return Scaffold(
       key: _profileScaffoldKey,
       appBar: AppBar(
-        title: Text(S.of(context).add_reminder),
+        title: Text(S.of(context).edit_reminder),
       ),
       body: BlocBuilder<CarBloc, CarState>(
         builder: (context, state) {
