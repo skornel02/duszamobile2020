@@ -93,7 +93,13 @@
   "back_to_cars_menuitem": "Choose different car",
   "currency": "{efficiency} $",
   "expiration_date": "Valid until {date}",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "expiration": "Expiration",
 
+  "expiration_weekly_country": "Weekly country",
+  "expiration_monthly_country": "Monthly country",
+  "expiration_yearly_country": "Yearly country",
+  "expiration_yearly_county": "Yearly county",
 
+  "county": "County"
 }

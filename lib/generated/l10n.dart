@@ -984,6 +984,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Expiration`
+  String get expiration {
+    return Intl.message(
+      'Expiration',
+      name: 'expiration',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weekly country`
+  String get expiration_weekly_country {
+    return Intl.message(
+      'Weekly country',
+      name: 'expiration_weekly_country',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monthly country`
+  String get expiration_monthly_country {
+    return Intl.message(
+      'Monthly country',
+      name: 'expiration_monthly_country',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yearly country`
+  String get expiration_yearly_country {
+    return Intl.message(
+      'Yearly country',
+      name: 'expiration_yearly_country',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yearly county`
+  String get expiration_yearly_county {
+    return Intl.message(
+      'Yearly county',
+      name: 'expiration_yearly_county',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `County`
+  String get county {
+    return Intl.message(
+      'County',
+      name: 'county',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

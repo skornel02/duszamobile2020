@@ -1,4 +1,5 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:duszamobile2020/constants/evignette_constants.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/e_vignette.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,8 @@ class _EVignetteFormState extends State<EVignetteForm> {
 	String area;
 
 
+	String currentExpiration = "expiration_weekly_country";
+	bool countyChooserVisible = false;
 	String currentCounty;
 
 	@override
@@ -47,6 +50,74 @@ class _EVignetteFormState extends State<EVignetteForm> {
 						padding: const EdgeInsets.all(16),
 						child: Column(
 							children: [
+								Row(
+									children: [
+										Text("${S.of(context).expiration}:"),
+										DropdownButton(
+												value: currentExpiration,
+												items: [
+													DropdownMenuItem(
+															child:
+															Text(S.of(context).expiration_weekly_country),
+															value: "expiration_weekly_country"),
+													DropdownMenuItem(
+															child:
+															Text(S.of(context).expiration_monthly_country),
+															value: "expiration_monthly_country"),
+													DropdownMenuItem(
+															child: Text(
+																	S.of(context).expiration_yearly_country),
+															value: "expiration_yearly_country"),
+													DropdownMenuItem(
+															child:
+															Text(S.of(context).expiration_yearly_county),
+															value: "expiration_yearly_county"),
+												],
+												onChanged: (val) {
+													setState(() {
+														if(currentExpiration == "expiration_yearly_country"){
+															countyChooserVisible = false;
+															duration = 365;
+														}else if(currentExpiration == "expiration_yearly_county"){
+															countyChooserVisible = true;
+															duration = 365;
+														}
+														else if(currentExpiration == "expiration_monthly_country"){
+															countyChooserVisible = false;
+															duration = 31;
+														}else if(currentExpiration == "expiration_weekly_country"){
+															countyChooserVisible = false;
+															duration = 7;
+														}
+														currentExpiration = val;
+													});
+												})
+									],
+								),
+
+								if(countyChooserVisible) Row(
+									children: [
+										Text("${S.of(context).county}:"),
+										Builder(
+											builder: (c){
+												List<DropdownMenuItem> items = [];
+												for(String s in supportedCounty){
+													items.add(DropdownMenuItem(child: Text(s), value: s,));
+												}
+
+												return DropdownButton(
+														value: currentCounty,
+														items: items,
+														onChanged: (val) {
+															setState(() {
+																currentCounty = val;
+															});
+														});
+											},
+										)
+									],
+								),
+
 
 								DateTimeField(
 									initialValue: startDate,
@@ -82,6 +153,11 @@ class _EVignetteFormState extends State<EVignetteForm> {
 											: S.of(context).save),
 									onPressed: () {
 										if (_formKey.currentState.validate()) {
+											if(currentExpiration != "expiration_yearly_county"){
+												area = "Országos";
+											}else{
+												area = currentCounty;
+											}
 											EVignette next;
 											if (widget.eVignette != null) {
 												next = EVignette.from(

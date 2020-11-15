@@ -59,7 +59,18 @@ class Reminder extends Equatable {
         completed: completed ?? reminder.completed);
   }
 
+  int get milageLeft {
+     return startMilage;
+  }
+
+  int get daysLeft {
+    if(date == null) return null;
+    return date.add(Duration(days: afterDays)).difference(DateTime.now()).inDays;
+  }
+
+
   bool _isDueToDate(DateTime date) {
+    if(date == null || this.date == null){return false;}
     if (afterDays == null) return false;
     var dueDateTime = this.date.add(Duration(days: afterDays));
     var dateDate = DateTime.utc(date.year, date.month, date.day);
