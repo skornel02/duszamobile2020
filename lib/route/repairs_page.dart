@@ -25,8 +25,10 @@ class RepairsPage extends StatelessWidget {
         if (state is ReadyState) {
           final car = state.car;
           return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).refuels),),
-            drawer: carDrawer(context, id),
+            appBar: AppBar(
+              title: Text(S.of(context).repairs),
+            ),
+            drawer: carDrawer(context, id, selectedMenu: DrawerItem.REPAIR),
             body: Column(
               children: [
                 Container(

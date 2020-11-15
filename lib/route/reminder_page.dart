@@ -23,13 +23,15 @@ class RemindersPage extends StatelessWidget {
         if (state is ReadyState) {
           final car = state.car;
           return Scaffold(
-            appBar: AppBar(title: Text(S.of(context).reminders),),
-            drawer: carDrawer(context, id),
+            appBar: AppBar(
+              title: Text(S.of(context).reminders),
+            ),
+            drawer: carDrawer(context, id, selectedMenu: DrawerItem.REMINDER),
             body: ListView.builder(
-              itemCount: car.reminds.length,
-              itemBuilder: (context, index) {
-              return Text(car.reminds[index].name);
-            }),
+                itemCount: car.reminds.length,
+                itemBuilder: (context, index) {
+                  return Text(car.reminds[index].name);
+                }),
             floatingActionButton: FloatingActionButton(
               child: Icon(FontAwesomeIcons.plus),
               onPressed: () => _onAdd(context, car),

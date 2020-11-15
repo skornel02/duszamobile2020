@@ -26,7 +26,7 @@ class EVignettesPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(S.of(context).evignettes),
         ),
-        drawer: carDrawer(context, id),
+        drawer: carDrawer(context, id, selectedMenu: DrawerItem.E_VIGNETTE),
         body: BlocBuilder<CarBloc, CarState>(
           builder: (context, state) {
             if (state is ReadyState) {
