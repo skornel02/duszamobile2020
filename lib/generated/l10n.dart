@@ -704,6 +704,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Refuels - {carName}`
+  String refuels_page_title(Object carName) {
+    return Intl.message(
+      'Refuels - $carName',
+      name: 'refuels_page_title',
+      desc: '',
+      args: [carName],
+    );
+  }
+
+  /// `Refuels`
+  String get refuels_page_menuitem {
+    return Intl.message(
+      'Refuels',
+      name: 'refuels_page_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Repairs`
+  String get repairs_page_menuitem {
+    return Intl.message(
+      'Repairs',
+      name: 'repairs_page_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminders`
+  String get reminders_page_menuitem {
+    return Intl.message(
+      'Reminders',
+      name: 'reminders_page_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `E-Vignettes`
+  String get e_vignette_page_menuitem {
+    return Intl.message(
+      'E-Vignettes',
+      name: 'e_vignette_page_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statistics`
+  String get statistics_page_menuitem {
+    return Intl.message(
+      'Statistics',
+      name: 'statistics_page_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car settings`
+  String get car_settings_page_menuitem {
+    return Intl.message(
+      'Car settings',
+      name: 'car_settings_page_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `User/App settings`
+  String get user_settings_page_menuitem {
+    return Intl.message(
+      'User/App settings',
+      name: 'user_settings_page_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose different car`
+  String get back_to_cars_menuitem {
+    return Intl.message(
+      'Choose different car',
+      name: 'back_to_cars_menuitem',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

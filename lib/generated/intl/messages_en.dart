@@ -41,7 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m10(milage, title) => "Your milage goal ${milage} is over! ${title}";
 
-  static m11(name) => "Welcome ${name}!";
+  static m11(carName) => "Refuels - ${carName}";
+
+  static m12(name) => "Welcome ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -49,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_car" : MessageLookupByLibrary.simpleMessage("Add car"),
     "add_refuel" : MessageLookupByLibrary.simpleMessage("Add refuel"),
     "are_you_sure" : MessageLookupByLibrary.simpleMessage("Are you sure?"),
+    "back_to_cars_menuitem" : MessageLookupByLibrary.simpleMessage("Choose different car"),
     "bought" : MessageLookupByLibrary.simpleMessage("Bought"),
     "calendar_synchronisation" : MessageLookupByLibrary.simpleMessage("Calendar synchronisation"),
     "cant_be_empty" : m0,
@@ -56,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "car_editor" : MessageLookupByLibrary.simpleMessage("Car editor"),
     "car_name" : MessageLookupByLibrary.simpleMessage("Car name"),
     "car_settings" : MessageLookupByLibrary.simpleMessage("Car settings"),
+    "car_settings_page_menuitem" : MessageLookupByLibrary.simpleMessage("Car settings"),
     "change_car" : MessageLookupByLibrary.simpleMessage("Change car"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Cheese"),
     "consumption" : MessageLookupByLibrary.simpleMessage("Consumption"),
@@ -68,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "do_remove_refuel" : m4,
     "do_remove_repair" : m5,
     "do_you_want_to" : m6,
+    "e_vignette_page_menuitem" : MessageLookupByLibrary.simpleMessage("E-Vignettes"),
     "edit" : MessageLookupByLibrary.simpleMessage("Edit"),
     "edit_car" : MessageLookupByLibrary.simpleMessage("Edit car"),
     "edit_refuel" : MessageLookupByLibrary.simpleMessage("Edit refuel"),
@@ -90,13 +95,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "other_regions" : MessageLookupByLibrary.simpleMessage("Other regions"),
     "price" : MessageLookupByLibrary.simpleMessage("Price"),
     "refuels" : MessageLookupByLibrary.simpleMessage("Refuels"),
+    "refuels_page_menuitem" : MessageLookupByLibrary.simpleMessage("Refuels"),
+    "refuels_page_title" : m11,
     "region" : MessageLookupByLibrary.simpleMessage("Region"),
     "regional" : MessageLookupByLibrary.simpleMessage("Regional"),
     "reminders" : MessageLookupByLibrary.simpleMessage("Reminders"),
+    "reminders_page_menuitem" : MessageLookupByLibrary.simpleMessage("Reminders"),
     "remote_area" : MessageLookupByLibrary.simpleMessage("remote"),
     "repairs" : MessageLookupByLibrary.simpleMessage("Repairs"),
+    "repairs_page_menuitem" : MessageLookupByLibrary.simpleMessage("Repairs"),
     "save" : MessageLookupByLibrary.simpleMessage("Save"),
     "statistics" : MessageLookupByLibrary.simpleMessage("Statistics"),
+    "statistics_page_menuitem" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "synchronise" : MessageLookupByLibrary.simpleMessage("Synchronize"),
     "time_format" : MessageLookupByLibrary.simpleMessage("yyyy-MM-dd – kk:mm"),
     "tire_type" : MessageLookupByLibrary.simpleMessage("Tyre type"),
@@ -107,8 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobile 2020"),
     "type" : MessageLookupByLibrary.simpleMessage("Type"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("User settings"),
+    "user_settings_page_menuitem" : MessageLookupByLibrary.simpleMessage("User/App settings"),
     "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
-    "welcome" : m11,
+    "welcome" : m12,
     "year" : MessageLookupByLibrary.simpleMessage("Year"),
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
     "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly")

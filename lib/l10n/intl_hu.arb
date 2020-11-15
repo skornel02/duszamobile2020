@@ -5,5 +5,13 @@
     "welcome": "Üdvözlünk {name}!",
     "export": "Exportálás",
     "add": "Hozzáadás",
-    "user_settings": "Felhasználói beállítások"
+    "user_settings": "Felhasználói beállítások",
+    "refuels_page_menuitem": "Tankolások",
+    "repairs_page_menuitem": "Szervizek",
+    "reminders_page_menuitem": "Értesitők",
+    "e_vignette_page_menuitem": "Autópálya matricáks",
+    "statistics_page_menuitem": "Statisztikák",
+    "car_settings_page_menuitem": "Autó beállítások",
+    "user_settings_page_menuitem": "Felhasználói beállitás",
+    "back_to_cars_menuitem": "Másik autó választása"
 }

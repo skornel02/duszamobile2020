@@ -65,6 +65,14 @@
   "notification_date": "Your reminder set for {date} has expired! {title}",
   "notification_milage": "Your milage goal {milage} is over! {title}",
   "notification_date_and_milage": "Check your reminder: {title}",
-  "date": "Date"
-
+  "date": "Date",
+  "refuels_page_title": "Refuels - {carName}",
+  "refuels_page_menuitem": "Refuels",
+  "repairs_page_menuitem": "Repairs",
+  "reminders_page_menuitem": "Reminders",
+  "e_vignette_page_menuitem": "E-Vignettes",
+  "statistics_page_menuitem": "Statistics",
+  "car_settings_page_menuitem": "Car settings",
+  "user_settings_page_menuitem": "User/App settings",
+  "back_to_cars_menuitem": "Choose different car"
 }

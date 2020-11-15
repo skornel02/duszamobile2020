@@ -1,9 +1,7 @@
-import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/cubits/locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class LanguageChanger extends StatefulWidget {
   @override
