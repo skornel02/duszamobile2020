@@ -43,6 +43,17 @@ Widget handleAddRefuelRoute(BuildContext context, Map<String, dynamic> params) {
   );
 }
 
+Widget handleEditRefuelRoute(
+    BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  String refuelId = params["refuel_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: EditRefuelPage(carId, refuelId),
+  );
+}
+
 Widget handleStatisticsRoute(
     BuildContext context, Map<String, dynamic> params) {
   String carId = params["car_id"][0];
@@ -62,6 +73,26 @@ Widget handleRepairRoute(BuildContext context, Map<String, dynamic> params) {
   );
 }
 
+Widget handleAddRepairRoute(BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: AddRepairPage(carId),
+  );
+}
+
+Widget handleEditRepairRoute(
+    BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  String refuelId = params["repair_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: EditRepairPage(carId, refuelId),
+  );
+}
+
 Widget handleEVignetteRoute(BuildContext context, Map<String, dynamic> params) {
   String carId = params["car_id"][0];
   return WithCarBloc(
@@ -71,12 +102,54 @@ Widget handleEVignetteRoute(BuildContext context, Map<String, dynamic> params) {
   );
 }
 
+Widget handleAddEVignetteRoute(
+    BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: AddEVignettePage(carId),
+  );
+}
+
+Widget handleEditEVignetteRoute(
+    BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  String refuelId = params["evignette_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: EditEVignettePage(carId, refuelId),
+  );
+}
+
 Widget handleRemindersRoute(BuildContext context, Map<String, dynamic> params) {
   String carId = params["car_id"][0];
   return WithCarBloc(
     carId: carId,
     onCarNotFound: carNotFoundEvent,
     child: RemindersPage(carId),
+  );
+}
+
+Widget handleAddReminderRoute(
+    BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: AddReminderPage(carId),
+  );
+}
+
+Widget handleEditReminderRoute(
+    BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  String refuelId = params["reminder_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: EditReminderPage(carId, refuelId),
   );
 }
 
@@ -96,33 +169,45 @@ void defineRoutes(FluroRouter router) {
     return AddCarPage();
   }));
 
-  router.define("/cars/:car_id",
-      handler: Handler(handlerFunc: handleStatisticsRoute),
-      transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id",
+    handler: Handler(handlerFunc: handleStatisticsRoute),
+    transitionType: TransitionType.material,
+  );
 
-  router.define("/cars/:car_id/statistics",
-      handler: Handler(handlerFunc: handleStatisticsRoute),
-      transitionType: TransitionType.fadeIn);
+  router.define(
+    "/cars/:car_id/statistics",
+    handler: Handler(handlerFunc: handleStatisticsRoute),
+    transitionType: TransitionType.fadeIn,
+  );
 
-  router.define("/cars/:car_id/settings", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    debugPrint(params["car_id"][0]);
-    return CarSettingsPage(params["car_id"][0]);
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/settings",
+    handler: Handler(
+        handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      debugPrint(params["car_id"][0]);
+      return CarSettingsPage(params["car_id"][0]);
+    }),
+    transitionType: TransitionType.material,
+  );
 
-  router.define("/cars/:car_id/repairs",
-      handler: Handler(handlerFunc: handleRepairRoute),
-      transitionType: TransitionType.fadeIn);
+  router.define(
+    "/cars/:car_id/repairs",
+    handler: Handler(handlerFunc: handleRepairRoute),
+    transitionType: TransitionType.fadeIn,
+  );
 
-  router.define("/cars/:car_id/repairs/add", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return AddRepairPage(params["car_id"][0]);
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/repairs/add",
+    handler: Handler(handlerFunc: handleAddRepairRoute),
+    transitionType: TransitionType.material,
+  );
 
-  router.define("/cars/:car_id/repairs/:repair_id", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return EditRepairPage(params["car_id"][0], params["repair_id"][0]);
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/repairs/:repair_id",
+    handler: Handler(handlerFunc: handleEditRepairRoute),
+    transitionType: TransitionType.material,
+  );
 
   router.define(
     "/cars/:car_id/refuels",
@@ -136,36 +221,45 @@ void defineRoutes(FluroRouter router) {
     transitionType: TransitionType.material,
   );
 
-  router.define("/cars/:car_id/refuels/:refuel_id", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return EditRefuelPage(params["car_id"][0], params["refuel_id"][0]);
-  }), transitionType: TransitionType.fadeIn);
+  router.define(
+    "/cars/:car_id/refuels/:refuel_id",
+    handler: Handler(handlerFunc: handleEditRefuelRoute),
+    transitionType: TransitionType.fadeIn,
+  );
 
-  router.define("/cars/:car_id/reminders",
-      handler: Handler(handlerFunc: handleRemindersRoute),
-      transitionType: TransitionType.fadeIn);
+  router.define(
+    "/cars/:car_id/reminders",
+    handler: Handler(handlerFunc: handleRemindersRoute),
+    transitionType: TransitionType.fadeIn,
+  );
 
-  router.define("/cars/:car_id/reminders/add", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return AddReminderPage(params["car_id"][0]);
-  }), transitionType: TransitionType.fadeIn);
+  router.define(
+    "/cars/:car_id/reminders/add",
+    handler: Handler(handlerFunc: handleAddReminderRoute),
+    transitionType: TransitionType.fadeIn,
+  );
 
-  router.define("/cars/:car_id/reminders/:reminder_id", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return EditReminderPage(params["car_id"][0], params["reminder_id"][0]);
-  }), transitionType: TransitionType.fadeIn);
+  router.define(
+    "/cars/:car_id/reminders/:reminder_id",
+    handler: Handler(handlerFunc: handleEditReminderRoute),
+    transitionType: TransitionType.fadeIn,
+  );
 
-  router.define("/cars/:car_id/evignettes",
-      handler: Handler(handlerFunc: handleEVignetteRoute),
-      transitionType: TransitionType.fadeIn);
+  router.define(
+    "/cars/:car_id/evignettes",
+    handler: Handler(handlerFunc: handleEVignetteRoute),
+    transitionType: TransitionType.fadeIn,
+  );
 
-  router.define("/cars/:car_id/evignettes/add", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return AddEVignettePage(params["car_id"][0]);
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/evignettes/add",
+    handler: Handler(handlerFunc: handleAddEVignetteRoute),
+    transitionType: TransitionType.material,
+  );
 
-  router.define("/cars/:car_id/evignettes/:evignette_id", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return EditEVignettePage(params["car_id"][0], params["evignette_id"][0]);
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/evignettes/:evignette_id",
+    handler: Handler(handlerFunc: handleEditEVignetteRoute),
+    transitionType: TransitionType.material,
+  );
 }

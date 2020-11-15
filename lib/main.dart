@@ -32,8 +32,13 @@ void main() async {
 
   CarRepository carRepository = new CarRepository();
 
+
+  carRepository.getCars().then((value) => debugPrint("ca212r: " + value.length.toString()));
+
   (await carRepository.getCars()).forEach((car) {
+    debugPrint("car: " + car.name);
     car.getNotifications.forEach((reminder) {
+      debugPrint("SAdasnd: " + reminder.name);
       NotificationService.showNotificationWithReminder(reminder);
     });
   });

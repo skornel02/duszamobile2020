@@ -42,9 +42,9 @@ class Reminder extends Equatable {
     String description,
     List<String> items,
     DateTime date,
-    int afterDays,
+    @required int afterDays,
     int startMilage,
-    int afterMilage,
+    @required int afterMilage,
     bool completed,
   }) {
     return Reminder.create(
@@ -53,24 +53,28 @@ class Reminder extends Equatable {
         description: description ?? reminder.description,
         items: items ?? reminder.items,
         date: date ?? reminder.date,
-        afterDays: afterDays ?? reminder.afterDays,
+        afterDays: afterDays,
         startMilage: startMilage ?? reminder.startMilage,
-        afterMilage: afterMilage ?? reminder.afterMilage,
+        afterMilage: afterMilage,
         completed: completed ?? reminder.completed);
   }
 
   int get milageLeft {
-     return startMilage;
+    return startMilage;
   }
 
   int get daysLeft {
-    if(date == null) return null;
-    return date.add(Duration(days: afterDays)).difference(DateTime.now()).inDays;
+    if (date == null) return null;
+    return date
+        .add(Duration(days: afterDays))
+        .difference(DateTime.now())
+        .inDays;
   }
 
-
   bool _isDueToDate(DateTime date) {
-    if(date == null || this.date == null){return false;}
+    if (date == null || this.date == null) {
+      return false;
+    }
     if (afterDays == null) return false;
     var dueDateTime = this.date.add(Duration(days: afterDays));
     var dateDate = DateTime.utc(date.year, date.month, date.day);

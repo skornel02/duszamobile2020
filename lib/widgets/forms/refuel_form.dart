@@ -69,6 +69,9 @@ class _RefuelFormState extends State<RefuelForm> {
       });
     });
 
+    _doCalculateConsumption();
+    _doCalculateLiterPrice();
+
     super.initState();
   }
 
