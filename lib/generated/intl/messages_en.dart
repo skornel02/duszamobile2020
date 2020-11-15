@@ -39,27 +39,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(date) => "remove refuel log at ${date}";
 
-  static m10(date) => "remove repair log at ${date}";
+  static m10(title) => "remove reminder with title \'${title}\'";
 
-  static m11(do_something) => "You dou want to ${do_something}?";
+  static m11(date) => "remove repair log at ${date}";
 
-  static m12(area) => "[E-Vignette] ${area} will expire";
+  static m12(do_something) => "You dou want to ${do_something}?";
 
-  static m13(date) => "Valid until ${date}";
+  static m13(area) => "[E-Vignette] ${area} will expire";
 
-  static m14(area, time) => "Last ${area} change: ${time}";
+  static m14(date) => "Valid until ${date}";
 
-  static m15(price) => "Liter price: ${price} \$";
+  static m15(area, time) => "Last ${area} change: ${time}";
 
-  static m16(date, title) => "Your reminder set for ${date} has expired! ${title}";
+  static m16(price) => "Liter price: ${price} \$";
 
-  static m17(title) => "Check your reminder: ${title}";
+  static m17(date, title) => "Your reminder set for ${date} has expired! ${title}";
 
-  static m18(milage, title) => "Your milage goal ${milage} is over! ${title}";
+  static m18(title) => "Check your reminder: ${title}";
 
-  static m19(carName) => "Refuels - ${carName}";
+  static m19(milage, title) => "Your milage goal ${milage} is over! ${title}";
 
-  static m20(name) => "Welcome ${name}!";
+  static m20(carName) => "Refuels - ${carName}";
+
+  static m21(name) => "Welcome ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "are_you_sure" : MessageLookupByLibrary.simpleMessage("Are you sure?"),
     "automatically_generated" : MessageLookupByLibrary.simpleMessage("Automatically generated"),
     "back_to_cars_menuitem" : MessageLookupByLibrary.simpleMessage("Choose different car"),
+    "both" : MessageLookupByLibrary.simpleMessage("Both"),
     "bought" : MessageLookupByLibrary.simpleMessage("Bought"),
     "calendar_synchronisation" : MessageLookupByLibrary.simpleMessage("Calendar synchronisation"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -100,9 +103,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "do_remove_car" : m7,
     "do_remove_e_vignette" : m8,
     "do_remove_refuel" : m9,
-    "do_remove_repair" : m10,
-    "do_you_want_to" : m11,
-    "e_vignette_expiration_reminder" : m12,
+    "do_remove_reminder" : m10,
+    "do_remove_repair" : m11,
+    "do_you_want_to" : m12,
+    "e_vignette_expiration_reminder" : m13,
     "e_vignette_page_menuitem" : MessageLookupByLibrary.simpleMessage("E-Vignettes"),
     "edit" : MessageLookupByLibrary.simpleMessage("Edit"),
     "edit_car" : MessageLookupByLibrary.simpleMessage("Edit car"),
@@ -110,17 +114,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_reminder" : MessageLookupByLibrary.simpleMessage("Edit reminder"),
     "evignettes" : MessageLookupByLibrary.simpleMessage("EVignettes"),
     "expiration" : MessageLookupByLibrary.simpleMessage("Expiration"),
-    "expiration_date" : m13,
+    "expiration_date" : m14,
     "expiration_monthly" : MessageLookupByLibrary.simpleMessage("Monthly"),
     "expiration_weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
     "expiration_yearly" : MessageLookupByLibrary.simpleMessage("Annual"),
     "expired" : MessageLookupByLibrary.simpleMessage("Expired"),
     "export" : MessageLookupByLibrary.simpleMessage("Export"),
     "google_login" : MessageLookupByLibrary.simpleMessage("Google login"),
-    "last_change" : m14,
+    "last_change" : m15,
     "last_milage" : MessageLookupByLibrary.simpleMessage("Last refuel milage"),
     "last_refuel_was_recorded" : MessageLookupByLibrary.simpleMessage("Last refuel was recorded"),
-    "liter_price" : m15,
+    "liter_price" : m16,
     "local_area" : MessageLookupByLibrary.simpleMessage("local"),
     "main_page" : MessageLookupByLibrary.simpleMessage("Main page"),
     "milage" : MessageLookupByLibrary.simpleMessage("Current milage"),
@@ -129,9 +133,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "more_regions" : MessageLookupByLibrary.simpleMessage("More regions"),
     "my_cars" : MessageLookupByLibrary.simpleMessage("My cars"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
-    "notification_date" : m16,
-    "notification_date_and_milage" : m17,
-    "notification_milage" : m18,
+    "notification_date" : m17,
+    "notification_date_and_milage" : m18,
+    "notification_milage" : m19,
     "notify_after_kilometers" : MessageLookupByLibrary.simpleMessage("Notify after kilometers"),
     "notify_on_date" : MessageLookupByLibrary.simpleMessage("Notify on date"),
     "only_annual_for_county" : MessageLookupByLibrary.simpleMessage("Only country wide available"),
@@ -140,7 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "reason" : MessageLookupByLibrary.simpleMessage("Reason"),
     "refuels" : MessageLookupByLibrary.simpleMessage("Refuels"),
     "refuels_page_menuitem" : MessageLookupByLibrary.simpleMessage("Refuels"),
-    "refuels_page_title" : m19,
+    "refuels_page_title" : m20,
     "region" : MessageLookupByLibrary.simpleMessage("Region"),
     "regional" : MessageLookupByLibrary.simpleMessage("Regional"),
     "remind_about_e_vignette" : MessageLookupByLibrary.simpleMessage("Do you want to create a reminder when the E-Vignette expires?"),
@@ -166,7 +170,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "user_settings_page_menuitem" : MessageLookupByLibrary.simpleMessage("User/App settings"),
     "warranty" : MessageLookupByLibrary.simpleMessage("Under warranty"),
     "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
-    "welcome" : m20,
+    "welcome" : m21,
     "year" : MessageLookupByLibrary.simpleMessage("Year"),
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
     "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly")

@@ -70,6 +70,7 @@
   "do_remove_car": "remove car '{car_name}'",
   "do_remove_repair": "remove repair log at {date}",
   "do_remove_refuel": "remove refuel log at {date}",
+  "do_remove_reminder": "remove reminder with title '{title}'",
   "do_remove_e_vignette": "remove E-Vignette valid from {date}",
   "date_format": "dd-MM-yyyy",
   "date_format_to_show": "yyyy.MM.dd",
@@ -105,5 +106,6 @@
   "suggestion": "Suggestion",
   "remind_about_e_vignette": "Do you want to create a reminder when the E-Vignette expires?",
   "e_vignette_expiration_reminder": "[E-Vignette] {area} will expire",
-  "automatically_generated": "Automatically generated"
+  "automatically_generated": "Automatically generated",
+  "both": "Both"
 }

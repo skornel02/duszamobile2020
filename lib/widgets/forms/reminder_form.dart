@@ -3,6 +3,7 @@ import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -21,7 +22,7 @@ class _ReminderFormState extends State<ReminderForm> {
 	TextEditingController _nameTextEditingController = TextEditingController();
 	TextEditingController _descriptionTextEditingController = TextEditingController();
 
-	List<String> items;
+	List<String> items = [];
 	DateTime date;
 	int afterDays;
 	int startMilage;
@@ -29,8 +30,7 @@ class _ReminderFormState extends State<ReminderForm> {
 	bool completed;
 
 
-	bool notifyOnDate = false;
-	bool notifyAfterKilometers = true;
+	String radioValue = "notifyOnDate";
 
 
 	@override
@@ -39,6 +39,11 @@ class _ReminderFormState extends State<ReminderForm> {
 			_nameTextEditingController.text = widget.reminder.name;
 			_descriptionTextEditingController.text = widget.reminder.description;
 
+			items = widget.reminder.items;
+			date = widget.reminder.date;
+			afterDays = widget.reminder.afterDays;
+			startMilage = widget.reminder.startMilage;
+			completed = widget.reminder.completed;
 			super.initState();
 		}
 	}
@@ -49,7 +54,7 @@ class _ReminderFormState extends State<ReminderForm> {
 			key: _formKey,
 			child: SingleChildScrollView(
 				child: SizedBox(
-					height: MediaQuery
+					/*height: MediaQuery
 							.of(context)
 							.size
 							.height -
@@ -58,6 +63,7 @@ class _ReminderFormState extends State<ReminderForm> {
 									.padding
 									.top -
 							kToolbarHeight * 2,
+					*/
 					child: Padding(
 						padding: const EdgeInsets.all(16),
 						child: Column(
@@ -113,20 +119,46 @@ class _ReminderFormState extends State<ReminderForm> {
 								),
 
 								Divider(),
-
-								CheckboxListTile(
+								RadioListTile(
+										groupValue: radioValue,
 										title: Text(S
 												.of(context)
 												.notify_on_date),
-										value: notifyOnDate,
+										value: "notifyOnDate",
 										onChanged: (val){
 											setState((){
-												notifyOnDate = val;
+												radioValue = val;
 											});
 										}
 								),
+								RadioListTile(
+										groupValue: radioValue,
+										title: Text(S
+												.of(context)
+												.notify_after_kilometers),
+										value: "notifyAfterKilometers",
+										onChanged: (val){
+											setState((){
+												radioValue = val;
+											});
+										}
+								),
+								RadioListTile(
+										groupValue: radioValue,
+										title: Text(S
+												.of(context)
+												.both),
+										value: "both",
+										onChanged: (val){
+											setState((){
+												radioValue = val;
+											});
+										}
+								),
+
+
 								DateTimeField(
-									enabled: notifyOnDate,
+									enabled: (radioValue == "notifyOnDate" || radioValue == "both"),
 									initialValue: date,
 									style: TextStyle(fontSize: 18),
 									decoration: InputDecoration(
@@ -151,21 +183,21 @@ class _ReminderFormState extends State<ReminderForm> {
 												initialDate: currentValue ?? DateTime.now(),
 												lastDate: DateTime.now().add(Duration(days: 365)));
 									},
+									validator: (value) {
+										if(radioValue == "notifyOnDate" || radioValue == "both"){
+											if (value == null) {
+												return S
+														.of(context)
+														.cant_be_empty(S.of(context).date);
+											}
+										}
+										return null;
+									},
 								),
 
 								Divider(),
 
-								CheckboxListTile(
-										title: Text(S
-												.of(context)
-												.notify_after_kilometers),
-										value: notifyAfterKilometers,
-										onChanged: (val){
-											setState((){
-												notifyAfterKilometers = val;
-											});
-										}
-								),
+								// TODO cant be disabled
 								Row(
 									children: [
 										SizedBox(
@@ -184,9 +216,53 @@ class _ReminderFormState extends State<ReminderForm> {
 									],
 								),
 
+
+
+
 								//TODO: Add items widget
 
-								Spacer(),
+								Tags(
+									textField: TagsTextField(
+										textStyle: TextStyle(fontSize: 18),
+										constraintSuggestion: false,
+										onSubmitted: (String str) {
+											setState(() {
+												items.add(str);
+											});
+										},
+									),
+								),
+								Padding(
+								  padding: const EdgeInsets.all(8.0),
+								  child: Tags(
+								  	itemCount: items.length,
+								  	itemBuilder: (int index) {
+								  		final item = items[index];
+								  		return ItemTags(
+								  			pressEnabled: false,
+								  			key: Key(index.toString()),
+								  			index: index,
+								  			title: item,
+								  			active: true,
+								  			textStyle: TextStyle(
+								  				fontSize: 16,
+								  			),
+								  			removeButton: ItemTagsRemoveButton(
+								  				onRemoved: () {
+								  					setState(() {
+								  						items.removeAt(index);
+								  					});
+								  					return true;
+								  				},
+								  			),
+								  			onPressed: (item) => print(item),
+								  			onLongPressed: (item) => print(item),
+								  		);
+								  	}
+								  ),
+								),
+
+
 
 								RaisedButton(
 									child: Text(widget.reminder == null

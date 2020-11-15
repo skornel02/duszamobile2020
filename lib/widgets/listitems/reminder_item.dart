@@ -5,6 +5,7 @@ import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
 class ReminderItem extends StatelessWidget {
@@ -24,10 +25,9 @@ class ReminderItem extends StatelessWidget {
     showConfirmAlert(
       context,
       title: S.of(context).are_you_sure,
-      description: S.of(context).do_you_want_to(S.of(context).do_remove_refuel(
-          DateFormat(S.of(context).date_format).format(reminder.date))),
+      description: S.of(context).do_you_want_to(S.of(context).do_remove_reminder(reminder.name)),
       onAccept: () {
-        BlocProvider.of<CarBloc>(context).add(RemoveRefuelItem(reminder.id));
+        BlocProvider.of<CarBloc>(context).add(RemoveReminderItem(reminder.id));
       },
     );
   }
@@ -62,6 +62,16 @@ class ReminderItem extends StatelessWidget {
                       : ""
                   ),
                 )
+              ],
+            ),
+            Spacer(),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                IconButton(
+                  icon: Icon(FontAwesomeIcons.times),
+                  onPressed: () => _onRemove(context),
+                ),
               ],
             ),
           ],

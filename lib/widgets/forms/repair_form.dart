@@ -38,7 +38,7 @@ class _RepairFormState extends State<RepairForm> {
 
   DateTime date;
   double milage = 15;
-  List<String> items = ["REMOVEME"];
+  List<String> items = [];
   bool warranty = true;
 
   @override
@@ -192,23 +192,28 @@ class _RepairFormState extends State<RepairForm> {
                       });
                     }),
                 Divider(),
-                Tags(
-                  textField: TagsTextField(
-                    textStyle: TextStyle(fontSize: 18),
-                    constraintSuggestion: false,
-                    suggestions: widget.suggestions,
-                    onSubmitted: (String str) {
-                      setState(() {
-                        items.add(str);
-                      });
-                    },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Tags(
+                    textField: TagsTextField(
+                      textStyle: TextStyle(fontSize: 18),
+                      constraintSuggestion: false,
+                      suggestions: widget.suggestions,
+                      onSubmitted: (String str) {
+                        setState(() {
+                          items.add(str);
+                        });
+                      },
+                    ),
                   ),
                 ),
                 Tags(
+
                     itemCount: items.length,
                     itemBuilder: (int index) {
                       final item = items[index];
                       return ItemTags(
+                        pressEnabled: false,
                         key: Key(index.toString()),
                         index: index,
                         title: item,
@@ -229,22 +234,20 @@ class _RepairFormState extends State<RepairForm> {
                       );
                     }),
                 Divider(),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: TextFormField(
-                      style: TextStyle(fontSize: 18),
-                      maxLines: null,
-                      maxLength: 200,
-                      controller: _descriptionTextEditingController,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(
-                        labelText: S.of(context).description,
-                        alignLabelWithHint: true,
-                        labelStyle: TextStyle(),
-                        filled: true,
-                        fillColor: Colors.grey.withAlpha(120),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 18),
+                    maxLines: null,
+                    maxLength: 200,
+                    controller: _descriptionTextEditingController,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      labelText: S.of(context).description,
+                      alignLabelWithHint: true,
+                      labelStyle: TextStyle(),
+                      filled: true,
+                      fillColor: Colors.grey.withAlpha(120),
                     ),
                   ),
                 ),
