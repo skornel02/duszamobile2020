@@ -124,5 +124,7 @@
   "total_spending": "Total spending",
   "petrol_price_over_time": "Petrol price change",
   "filter": "Filter",
-  "general_statistics": "General statistics"
+  "general_statistics": "General statistics",
+  "days_left": "{day} days left",
+  "km_left": "{km} km left"
 }

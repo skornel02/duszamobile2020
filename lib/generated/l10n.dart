@@ -1294,6 +1294,26 @@ class S {
       args: [],
     );
   }
+
+  /// `{day} days left`
+  String days_left(Object day) {
+    return Intl.message(
+      '$day days left',
+      name: 'days_left',
+      desc: '',
+      args: [day],
+    );
+  }
+
+  /// `{km} km left`
+  String km_left(Object km) {
+    return Intl.message(
+      '$km km left',
+      name: 'km_left',
+      desc: '',
+      args: [km],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

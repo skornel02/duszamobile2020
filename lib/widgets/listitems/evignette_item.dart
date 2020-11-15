@@ -82,7 +82,7 @@ class EVignetteItem extends StatelessWidget {
       child: InkWell(
         onTap: () => _onOpen(context),
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(3),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
