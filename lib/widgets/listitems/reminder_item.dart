@@ -1,7 +1,6 @@
 import 'package:duszamobile2020/alerts.dart';
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
-import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,6 +56,8 @@ class ReminderItem extends StatelessWidget {
           },
         );
 
+        break;
+      default:
         break;
     }
   }

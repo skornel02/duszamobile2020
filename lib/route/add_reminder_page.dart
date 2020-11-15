@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
-import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:duszamobile2020/widgets/forms/reminder_form.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +27,7 @@ class AddReminderPage extends StatelessWidget {
             final car = state.car;
             return ReminderForm(
               currentMilage: car.totalMilage,
+              suggestions: car.knownTags,
               callback: (Reminder reminder) async {
                 print("NEW REMINDER: $reminder");
                 print("JSON: ${json.encode(reminder.toJson())}");

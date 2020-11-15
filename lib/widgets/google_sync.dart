@@ -112,6 +112,8 @@ class _GoogleSyncState extends State<GoogleSync> {
                 },
               )
             ]);
+          default:
+            return Container();
         }
       },
     );

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
-import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:duszamobile2020/widgets/forms/reminder_form.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +25,10 @@ class EditReminderPage extends StatelessWidget {
         builder: (context, state) {
           debugPrint("Current state of carbloc: " + state.toString());
           if (state is ReadyState) {
+            final car = state.car;
             return ReminderForm(
               reminder: state.car.getReminderById(reminderId),
+              suggestions: car.knownTags,
               callback: (Reminder reminder) async {
                 print("UPDATED REMINDER: $reminder");
                 print("JSON: ${json.encode(reminder.toJson())}");

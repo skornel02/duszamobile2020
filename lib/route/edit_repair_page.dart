@@ -1,5 +1,4 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
-import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/repair.dart';
 import 'package:duszamobile2020/widgets/forms/repair_form.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +24,10 @@ class EditRepairPage extends StatelessWidget {
         builder: (context, state) {
           debugPrint("Current state of carbloc: " + state.toString());
           if (state is ReadyState) {
+            final car = state.car;
             return RepairForm(
               repair: state.car.getRepairById(repairId),
+              suggestions: car.knownTags,
               callback: (Repair repair) async {
                 BlocProvider.of<CarBloc>(context).add(SaveRepairItem(repair));
                 Navigator.pop(context);

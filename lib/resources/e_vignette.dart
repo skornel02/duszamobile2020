@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:uuid/uuid.dart';
 
 part 'e_vignette.g.dart';
 
@@ -13,11 +12,12 @@ class EVignette extends Equatable {
   final int duration;
   final String area;
 
-  EVignette.create(
-      {@required this.id,
-      @required this.start,
-      @required this.duration,
-      @required this.area});
+  EVignette.create({
+    @required this.id,
+    @required this.start,
+    @required this.duration,
+    @required this.area,
+  });
 
   EVignette(this.id, this.start, this.duration, this.area);
 

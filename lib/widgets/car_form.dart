@@ -42,10 +42,6 @@ class _CarFormState extends State<CarForm> {
     super.initState();
   }
 
-  void _handleGoToCarSelector(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(context, "/cars", (a) => false);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Form(

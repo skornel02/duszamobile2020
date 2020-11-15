@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:uuid/uuid.dart';
 
 part 'car_settings.g.dart';
 
@@ -13,8 +12,11 @@ class CarSettings extends Equatable {
   final double cost;
   final int year;
 
-  CarSettings.create(
-      {@required this.image, @required this.cost, @required this.year});
+  CarSettings.create({
+    @required this.image,
+    @required this.cost,
+    @required this.year,
+  });
 
   CarSettings(this.image, this.cost, this.year);
 
@@ -31,9 +33,10 @@ class CarSettings extends Equatable {
     int year,
   }) {
     return CarSettings.create(
-        image: image ?? settings.image,
-        cost: cost ?? settings.cost,
-        year: year ?? settings.year);
+      image: image ?? settings.image,
+      cost: cost ?? settings.cost,
+      year: year ?? settings.year,
+    );
   }
 
   @override

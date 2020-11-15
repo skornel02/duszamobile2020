@@ -1,4 +1,5 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:duszamobile2020/constants/common_items.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,12 @@ class ReminderForm extends StatefulWidget {
   final Future<void> Function(Reminder reminder) callback;
   final Reminder reminder;
   final int currentMilage;
+  final List<String> suggestions;
   ReminderForm({
     @required this.callback,
     this.reminder,
     this.currentMilage,
+    @required this.suggestions,
     Key key,
   }) : super(key: key);
 
@@ -280,6 +283,7 @@ class _ReminderFormState extends State<ReminderForm> {
                 textField: TagsTextField(
                   textStyle: TextStyle(fontSize: 18),
                   constraintSuggestion: false,
+                  suggestions: [...widget.suggestions, ...commonItems],
                   onSubmitted: (String str) {
                     setState(() {
                       items.add(str);
