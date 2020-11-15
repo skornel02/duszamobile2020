@@ -18,7 +18,7 @@ class EVignetteItem extends StatelessWidget {
     ReadyState state = BlocProvider.of<CarBloc>(context).state;
     print("Opening eVignette #${eVignette.id}");
     Navigator.pushNamed(
-        context, "/cars/${state.car.id}/evignette/${eVignette.id}");
+        context, "/cars/${state.car.id}/evignettes/${eVignette.id}");
   }
 
   void _onRemove(BuildContext context) {

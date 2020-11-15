@@ -203,10 +203,11 @@ void defineRoutes(FluroRouter router) {
     transitionType: TransitionType.material,
   );
 
-  router.define("/cars/:car_id/repairs/:repair_id", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return EditRepairPage(params["car_id"][0], params["repair_id"][0]);
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/repairs/:repair_id",
+    handler: Handler(handlerFunc: handleEditRepairRoute),
+    transitionType: TransitionType.material,
+  );
 
   router.define(
     "/cars/:car_id/refuels",
