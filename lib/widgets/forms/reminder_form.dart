@@ -324,10 +324,7 @@ class _ReminderFormState extends State<ReminderForm> {
                     ? S.of(context).create
                     : S.of(context).save),
                 onPressed: () {
-                  print("form");
                   if (_formKey.currentState.validate()) {
-                    print("valid");
-
                     print(radioValue);
                     int afterMilage = radioValue == "notifyOnDate"
                         ? null

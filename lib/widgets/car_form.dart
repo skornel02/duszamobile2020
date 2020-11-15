@@ -34,8 +34,10 @@ class _CarFormState extends State<CarForm> {
   void initState() {
     if (widget.car != null) {
       _nameTextEditController.text = widget.car.name;
-      if(widget.car.settings.cost != null) _priceTextEditingController.text = widget.car.settings.cost.toString();
-      if(widget.car.settings.year != null)_yearTextEditingController.text = widget.car.settings.year.toString();
+      if (widget.car.settings.cost != null)
+        _priceTextEditingController.text = widget.car.settings.cost.toString();
+      if (widget.car.settings.year != null)
+        _yearTextEditingController.text = widget.car.settings.year.toString();
       tireType = widget.car.tire;
     }
 
@@ -95,8 +97,8 @@ class _CarFormState extends State<CarForm> {
                       ),
                       iconSize: 80,
                       onPressed: () async {
-                        PickedFile pickedImage = await _picker.getImage(
-                            source: ImageSource.gallery);
+                        PickedFile pickedImage =
+                            await _picker.getImage(source: ImageSource.gallery);
                         if (pickedImage != null) {
                           setState(() {
                             file = File(pickedImage.path);
@@ -133,7 +135,6 @@ class _CarFormState extends State<CarForm> {
                     print(val);
                   },
                 ),
-
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: TextField(
@@ -158,9 +159,7 @@ class _CarFormState extends State<CarForm> {
                   child: TextField(
                     style: TextStyle(fontSize: 18),
                     maxLines: 1,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly
-                    ],
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
                     controller: _yearTextEditingController,
                     textInputAction: TextInputAction.next,
@@ -180,20 +179,16 @@ class _CarFormState extends State<CarForm> {
                         value: tireType,
                         items: [
                           DropdownMenuItem(
-                              child:
-                              Text(S.of(context).tire_type_winter),
+                              child: Text(S.of(context).tire_type_winter),
                               value: TireType.WINTER),
                           DropdownMenuItem(
-                              child:
-                              Text(S.of(context).tire_type_summer),
+                              child: Text(S.of(context).tire_type_summer),
                               value: TireType.SUMMER),
                           DropdownMenuItem(
-                              child: Text(
-                                  S.of(context).tire_type_all_year),
+                              child: Text(S.of(context).tire_type_all_year),
                               value: TireType.ALL_YEAR),
                           DropdownMenuItem(
-                              child:
-                              Text(S.of(context).tire_type_other),
+                              child: Text(S.of(context).tire_type_other),
                               value: TireType.NOT_SPECIFIED),
                         ],
                         onChanged: (val) {
@@ -225,23 +220,24 @@ class _CarFormState extends State<CarForm> {
                       Car next;
 
                       if (widget.car != null) {
-                        print("OLD ID: ${widget.car.id}");
                         next = Car.from(
                           widget.car,
                           name: _nameTextEditController.value.text,
+                          tire: tireType,
                           settings: CarSettings.create(
-                              image: img, cost: cost, year: year),
+                            image: img,
+                            cost: cost,
+                            year: year,
+                          ),
                         );
-                        print("NEW ID: ${next.id}");
                       } else {
-                        next =
-                            Car.fromName(_nameTextEditController.value.text,
-                                settings: CarSettings.create(
-                                  image: img,
-                                  cost: cost,
-                                  year: year,
-                                ),
-                                tire: tireType);
+                        next = Car.fromName(_nameTextEditController.value.text,
+                            settings: CarSettings.create(
+                              image: img,
+                              cost: cost,
+                              year: year,
+                            ),
+                            tire: tireType);
                       }
 
                       widget.callback(next);

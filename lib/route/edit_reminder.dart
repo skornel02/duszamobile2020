@@ -23,15 +23,12 @@ class EditReminderPage extends StatelessWidget {
       ),
       body: BlocBuilder<CarBloc, CarState>(
         builder: (context, state) {
-          debugPrint("Current state of carbloc: " + state.toString());
           if (state is ReadyState) {
             final car = state.car;
             return ReminderForm(
               reminder: state.car.getReminderById(reminderId),
               suggestions: car.knownTags,
               callback: (Reminder reminder) async {
-                print("UPDATED REMINDER: $reminder");
-                print("JSON: ${json.encode(reminder.toJson())}");
                 BlocProvider.of<CarBloc>(context)
                     .add(SaveReminderItem(reminder));
                 Navigator.pop(context);
