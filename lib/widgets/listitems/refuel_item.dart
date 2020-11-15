@@ -32,54 +32,50 @@ class RefuelItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.only(left: 7, right: 7, top: 3, bottom: 3),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      elevation: 5,
-      child: InkWell(
-        onTap: () => _onOpen(context),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
+    return Container(
+      height: 100,
+      child: Card(
+
+        margin: EdgeInsets.only(left: 7, right: 7, top: 3, bottom: 3),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        elevation: 5,
+        child: InkWell(
+          onTap: () => _onOpen(context),
+          child: Stack(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(3),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width - 60,
-                      child: Wrap(
-                          alignment: WrapAlignment.start,
-                          runSpacing: 1.4,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 2,
-                          children: [] //tagWidgets
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(refuel.refueled.toString() + " l", style: TextStyle(fontSize: 16),),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Text("-", style: TextStyle(fontSize: 16)),
+                    ),
+                    Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}", style: TextStyle(fontSize: 16)),
+                    Spacer(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
+                        Text(refuel.milage.toString() + " km"),
+                      ],
+                    )
                   ],
                 ),
-                Text(refuel.milage.toString() + " km"),
-                Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}"),
-
-              ],
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
-            ),
-
-            Align(
-              alignment: Alignment.bottomRight,
-              child: IconButton(
-                icon: Icon(FontAwesomeIcons.times),
-                onPressed: () => _onRemove(context),
               ),
-            ),
 
-          ],
+
+            ],
+          ),
+
         ),
-
       ),
     );
   }

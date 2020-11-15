@@ -39,59 +39,64 @@ class RepairItem extends StatelessWidget {
       elevation: 5,
       child: InkWell(
         onTap: () => _onOpen(context),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width - 60,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4),
-                        child: Tags(
-                          alignment: WrapAlignment.start,
-                            itemCount: repair.items.length,
-                            itemBuilder: (int index) {
-                              final item = repair.items[index];
-                              return ItemTags(
-                                pressEnabled: false,
-                                key: Key(index.toString()),
-                                index: index,
-                                title: item,
-                                active: true,
-                                textStyle: TextStyle(
-                                  fontSize: 12,
-                                ),
-                                onPressed: (item) => print(item),
-                                onLongPressed: (item) => print(item),
-                              );
-                            }),
+        child: Padding(
+          padding: const EdgeInsets.all(3),
+          child: Stack(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width - 60,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: Tags(
+                            alignment: WrapAlignment.start,
+                              itemCount: repair.items.length,
+                              itemBuilder: (int index) {
+                                final item = repair.items[index];
+                                return ItemTags(
+                                  pressEnabled: false,
+                                  key: Key(index.toString()),
+                                  index: index,
+                                  title: item,
+                                  active: true,
+                                  textStyle: TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                  onPressed: (item) => print(item),
+                                  onLongPressed: (item) => print(item),
+                                );
+                              }),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Text(
-                    "${S.of(context).currency(repair.price.toStringAsFixed(2))}"),
-                Text(repair.milage.toString() + " km"),
-              ],
-            ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Text(DateFormat(S.of(context).date_format_to_show)
-                  .format(repair.date)),
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                icon: Icon(FontAwesomeIcons.times),
-                onPressed: () => _onRemove(context),
+                    ],
+                  ),
+
+                  Text(repair.reason),
+                  Text(
+                      "${S.of(context).currency(repair.price.toStringAsFixed(2))}"),
+                  Text(repair.milage.toString() + " km"),
+                ],
               ),
-            ),
-          ],
+              Align(
+                alignment: Alignment.topRight,
+                child: Text(DateFormat(S.of(context).date_format_to_show)
+                    .format(repair.date)),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: IconButton(
+                  icon: Icon(FontAwesomeIcons.times),
+                  onPressed: () => _onRemove(context),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -105,7 +105,6 @@ class RefuelsPage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return RefuelItem(
                           car.refuels[index],
-                          index: index,
                         );
                       },
                     ),

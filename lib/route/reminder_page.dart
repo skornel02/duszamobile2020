@@ -61,7 +61,6 @@ class RemindersPage extends StatelessWidget {
                       return ReminderItem(
                         active[index],
                         ReminderItemType.ACTIVE,
-                        index: index,
                       );
                     },
                   ),
@@ -80,7 +79,6 @@ class RemindersPage extends StatelessWidget {
                       return ReminderItem(
                         upcoming[index],
                         ReminderItemType.UPCOMING,
-                        index: index,
                       );
                     },
                   ),
@@ -99,7 +97,6 @@ class RemindersPage extends StatelessWidget {
                       return ReminderItem(
                         expired[index],
                         ReminderItemType.EXPIRED,
-                        index: index,
                       );
                     },
                   ),

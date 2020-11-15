@@ -22,21 +22,13 @@ class SettingsPage extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-
-                RaisedButton(
-                  child: Text("Test notification"),
-                  onPressed: () => NotificationService.showNotificationWithReminders(),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, bottom: 10),
-                  child: Text(S.of(context).title),
-                ),
-
-                Text(S.of(context).settings_description, textAlign: TextAlign.center,),
                 Padding(
                   padding: const EdgeInsets.all(10),
-                  child: GoogleSync(),
+                  child: SizedBox(
+
+                      child: GoogleSync()
+                  )
+                  ,
                 ),
                 LanguageChanger(),
                 SwitchListTile(
@@ -47,6 +39,11 @@ class SettingsPage extends StatelessWidget {
                     DynamicTheme.of(context)
                         .setBrightness(val ? Brightness.dark : Brightness.light);
                   },
+                ),
+
+                RaisedButton(
+                  child: Text("Test notification"),
+                  onPressed: () => NotificationService.showNotificationWithReminders(),
                 ),
               ],
             ),

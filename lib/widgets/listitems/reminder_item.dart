@@ -5,6 +5,7 @@ import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
@@ -14,9 +15,7 @@ class ReminderItem extends StatelessWidget {
   final Reminder reminder;
   final ReminderItemType type;
 
-  final int index;
-
-  ReminderItem(this.reminder, this.type, {@required this.index});
+  ReminderItem(this.reminder, this.type);
 
   void _onOpen(BuildContext context) async {
     final carBloc = BlocProvider.of<CarBloc>(context);
@@ -56,7 +55,6 @@ class ReminderItem extends StatelessWidget {
             carBloc.add(SaveReminderItem(completed));
           },
         );
-
         break;
     }
   }
@@ -84,37 +82,68 @@ class ReminderItem extends StatelessWidget {
           onTap: () => _onOpen(context),
           child: Row(
             children: [
-              Text(
-                (index + 1).toString(),
-                style: TextStyle(fontSize: 30),
-              ),
               Stack(
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width - 60,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: Tags(
+                              alignment: WrapAlignment.start,
+                              itemCount: reminder.items.length,
+                              itemBuilder: (int index) {
+                                final item = reminder.items[index];
+                                return ItemTags(
+                                  pressEnabled: false,
+                                  key: Key(index.toString()),
+                                  index: index,
+                                  title: item,
+                                  active: true,
+                                  textStyle: TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                  onPressed: (item) => print(item),
+                                  onLongPressed: (item) => print(item),
+                                );
+                              }),
+                        ),
+                      ),
                       Text(reminder.name),
                       Text(reminder.description),
+
+                      if(reminder.afterDays != null) Text(reminder.daysLeft.toString() + " days "),
+                      if(reminder.afterMilage != null)Text(reminder.milageLeft.toString() + " km"),
+
                       //  Text(reminder?.daysLeft?.toString() ?? ""),
                       //   Text(reminder?.milageLeft?.toString() ?? ""),
                     ],
                   ),
+
+
                 ],
               ),
               Spacer(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(reminder.date != null
-                      ? DateFormat(S.of(context).date_format_to_show)
-                          .format(reminder.date)
-                      : ""),
-                  IconButton(
-                    icon: Icon(FontAwesomeIcons.times),
-                    onPressed: () => _onRemove(context),
-                  ),
-                ],
+
+              Padding(
+                padding: const EdgeInsets.only(right: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(reminder.date != null
+                        ? DateFormat(S.of(context).date_format_to_show)
+                            .format(reminder.date)
+                        : ""),
+                    IconButton(
+                      icon: Icon(FontAwesomeIcons.times),
+                      onPressed: () => _onRemove(context),
+                    ),
+                  ],
+                ),
               ),
+
             ],
           )),
     );

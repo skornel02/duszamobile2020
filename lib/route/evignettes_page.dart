@@ -24,7 +24,6 @@ class EVignettesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).evignettes),),
-      ),
       drawer: carDrawer(context, id, selectedMenu: DrawerItem.E_VIGNETTE),
       body: BlocBuilder<CarBloc, CarState>(
         builder: (context, state) {
