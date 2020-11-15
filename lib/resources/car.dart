@@ -90,6 +90,18 @@ class Car extends Equatable {
     return refuels.firstWhere((e) => e.id == id);
   }
 
+  Repair getRepairById(String id){
+    return repairs.firstWhere((e) => e.id == id);
+  }
+
+  Reminder getReminderById(String id){
+    return reminds.firstWhere((e) => e.id == id);
+  }
+
+  EVignette getEVignetteById(String id){
+    return eVignettes.firstWhere((e) => e.id == id);
+  }
+
   double get runningCost {
     double totalRepairs = 0;
     for (var repair in repairs) {

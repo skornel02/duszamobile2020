@@ -1,5 +1,7 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
+import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/car.dart';
+import 'package:duszamobile2020/widgets/car_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,10 +25,13 @@ class RepairsPage extends StatelessWidget {
         if (state is ReadyState) {
           final car = state.car;
           return Scaffold(
+            appBar: AppBar(title: Text(S.of(context).refuels),),
+            drawer: carDrawer(context, id),
             body: Column(
               children: [
                 Container(
                   height: 200,
+                  // statisztikák helye
                 ),
                 Expanded(
                   child: ListView.builder(

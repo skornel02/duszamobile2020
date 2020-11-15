@@ -16,10 +16,11 @@ enum DrawerItem {
   STATISTICS,
 }
 
-Drawer carDrawer(BuildContext context, String carId,
+Widget carDrawer(BuildContext context, String carId,
     {DrawerItem selectedMenu}) {
-  return Drawer(
-    child: Column(
+  return SafeArea(
+    child: Drawer(
+        child: Column(
       children: [
         BlocBuilder<CarBloc, CarState>(
           builder: (context, state) {
@@ -127,6 +128,6 @@ Drawer carDrawer(BuildContext context, String carId,
           },
         ),
       ],
-    ),
+    )),
   );
 }

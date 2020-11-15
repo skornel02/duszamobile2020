@@ -315,6 +315,16 @@ class S {
     );
   }
 
+  /// `Description`
+  String get description {
+    return Intl.message(
+      'Description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Year`
   String get year {
     return Intl.message(
@@ -470,6 +480,46 @@ class S {
     return Intl.message(
       'Add refuel',
       name: 'add_refuel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add reminder`
+  String get add_reminder {
+    return Intl.message(
+      'Add reminder',
+      name: 'add_reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add eVignette`
+  String get add_evignette {
+    return Intl.message(
+      'Add eVignette',
+      name: 'add_evignette',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add repair`
+  String get add_repair {
+    return Intl.message(
+      'Add repair',
+      name: 'add_repair',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit reminder`
+  String get edit_reminder {
+    return Intl.message(
+      'Edit reminder',
+      name: 'edit_reminder',
       desc: '',
       args: [],
     );
@@ -742,6 +792,66 @@ class S {
       name: 'date',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `Notify on date`
+  String get notify_on_date {
+    return Intl.message(
+      'Notify on date',
+      name: 'notify_on_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notify after kilometers`
+  String get notify_after_kilometers {
+    return Intl.message(
+      'Notify after kilometers',
+      name: 'notify_after_kilometers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reason`
+  String get reason {
+    return Intl.message(
+      'Reason',
+      name: 'reason',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Warranty`
+  String get warranty {
+    return Intl.message(
+      'Warranty',
+      name: 'warranty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not warranty ? ezt át kell írni`
+  String get not_warranty {
+    return Intl.message(
+      'Not warranty ? ezt át kell írni',
+      name: 'not_warranty',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Refuels - {carName}`
+  String refuels_page_title(Object carName) {
+    return Intl.message(
+      'Refuels - $carName',
+      name: 'refuels_page_title',
+      desc: '',
+      args: [carName],
     );
   }
 
