@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:duszamobile2020/alerts.dart';
 import 'package:duszamobile2020/blocs/cars_bloc/cars_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/resources/car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,8 +15,9 @@ class CarItem extends StatelessWidget {
 
   CarItem({this.car});
 
-  void _onOpen(BuildContext context) {
+  void _onOpen(BuildContext context) async {
     print("Opening car #${car.id}");
+    await setSelectedCar(car.id);
     Navigator.pushNamed(context, "/cars/${car.id}");
   }
 

@@ -1,10 +1,11 @@
 import 'package:duszamobile2020/blocs/google_bloc/bloc/google_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/widgets/google_sync.dart';
 import 'package:duszamobile2020/widgets/language_changer.dart';
+import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -22,6 +23,15 @@ class SettingsPage extends StatelessWidget {
               Text("Egy kis leírás"),
               GoogleSync(),
               LanguageChanger(),
+              SwitchListTile(
+                value: DynamicTheme.of(context).brightness == Brightness.dark,
+                title: Text(S.of(context).dark_theme),
+                onChanged: (val) async {
+                  setDarkMode(val);
+                  DynamicTheme.of(context)
+                      .setBrightness(val ? Brightness.dark : Brightness.light);
+                },
+              ),
             ],
           ),
         ),
@@ -31,16 +41,6 @@ class SettingsPage extends StatelessWidget {
 }
 
 /*
-import 'package:flutter/material.dart';
-import 'package:duszamobile2020/generated/l10n.dart';
-
-class SettingsPage extends StatefulWidget {
-	SettingsPage({Key key}) : super(key: key);
-
-	@override
-	_SettingsPageState createState()=> _SettingsPageState();
-}
-
 class _SettingsPageState extends State<SettingsPage> {
 
 	bool calendarSync = true;
@@ -56,11 +56,6 @@ class _SettingsPageState extends State<SettingsPage> {
 				child: Column(
 					children: [
 						RaisedButton(
-								child: Text(S.of(context).google_login),
-								onPressed: (){
-
-								}),
-						RaisedButton(
 								child: Text(S.of(context).synchronise),
 								onPressed: (){
 
@@ -73,14 +68,6 @@ class _SettingsPageState extends State<SettingsPage> {
 								});
 							},
 						),
-
-						Divider(),
-
-						RaisedButton(
-								child: Text(S.of(context).export),
-								onPressed: (){
-
-								})
 					],
 				),
 			),
