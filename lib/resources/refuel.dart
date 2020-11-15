@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:uuid/uuid.dart';
 
 part 'refuel.g.dart';
 
@@ -17,16 +16,23 @@ class Refuel extends Equatable {
   final int lastMilage;
   final int milage;
 
-  Refuel.create(
-      {@required this.id,
-      @required this.date,
-      @required this.refueled,
-      @required this.paid,
-      @required this.lastMilage,
-      @required this.milage});
+  Refuel.create({
+    @required this.id,
+    @required this.date,
+    @required this.refueled,
+    @required this.paid,
+    @required this.lastMilage,
+    @required this.milage,
+  });
 
-  Refuel(this.id, this.date, this.refueled, this.paid, this.lastMilage,
-      this.milage);
+  Refuel(
+    this.id,
+    this.date,
+    this.refueled,
+    this.paid,
+    this.lastMilage,
+    this.milage,
+  );
 
   /// Static copy constructor with overriding.
   factory Refuel.from(

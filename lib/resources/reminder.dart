@@ -20,19 +20,29 @@ class Reminder extends Equatable {
   final int afterMilage;
   final bool completed;
 
-  Reminder.create(
-      {@required this.id,
-      @required this.name,
-      @required this.description,
-      @required this.items,
-      @required this.date,
-      this.afterDays,
-      @required this.startMilage,
-      this.afterMilage,
-      @required this.completed});
+  Reminder.create({
+    @required this.id,
+    @required this.name,
+    @required this.description,
+    @required this.items,
+    @required this.date,
+    this.afterDays,
+    @required this.startMilage,
+    this.afterMilage,
+    @required this.completed,
+  });
 
-  Reminder(this.id, this.name, this.description, this.items, this.date,
-      this.afterDays, this.startMilage, this.afterMilage, this.completed);
+  Reminder(
+    this.id,
+    this.name,
+    this.description,
+    this.items,
+    this.date,
+    this.afterDays,
+    this.startMilage,
+    this.afterMilage,
+    this.completed,
+  );
 
   /// Static copy constructor with overriding.
   factory Reminder.from(
@@ -48,15 +58,16 @@ class Reminder extends Equatable {
     bool completed,
   }) {
     return Reminder.create(
-        id: id ?? reminder.id,
-        name: name ?? reminder.name,
-        description: description ?? reminder.description,
-        items: items ?? reminder.items,
-        date: date ?? reminder.date,
-        afterDays: afterDays,
-        startMilage: startMilage ?? reminder.startMilage,
-        afterMilage: afterMilage,
-        completed: completed ?? reminder.completed);
+      id: id ?? reminder.id,
+      name: name ?? reminder.name,
+      description: description ?? reminder.description,
+      items: items ?? reminder.items,
+      date: date ?? reminder.date,
+      afterDays: afterDays,
+      startMilage: startMilage ?? reminder.startMilage,
+      afterMilage: afterMilage,
+      completed: completed ?? reminder.completed,
+    );
   }
 
   int get milageLeft {
@@ -96,20 +107,39 @@ class Reminder extends Equatable {
 
   Reminder getSuggestion(DateTime date, int milage) {
     print("Suggested new date: $date ; startMilage: $milage");
-    return Reminder.from(this,
-        id: Uuid().v4(), date: date, startMilage: milage, completed: false);
+    return Reminder.from(
+      this,
+      id: Uuid().v4(),
+      date: date,
+      startMilage: milage,
+      completed: false,
+      afterDays: afterDays,
+      afterMilage: afterMilage,
+    );
   }
 
   String notificationText(DateTime date, int milage) {
     bool dueToMilage = _isDueToMilage(milage);
     bool dueToDate = _isDueToDate(date);
     if (dueToDate && !dueToMilage) {
-      return S.current.notification_date(
-          DateFormat(S.current.date_format).format(date), name);
+      try {
+        return S.current.notification_date(
+            DateFormat(S.current.date_format).format(date), name);
+      } catch (err) {
+        return name;
+      }
     } else if (dueToMilage && !dueToDate) {
-      return S.current.notification_milage(milage, name);
+      try {
+        return S.current.notification_milage(milage, name);
+      } catch (err) {
+        return name;
+      }
     } else {
-      return S.current.notification_date_and_milage(name);
+      try {
+        return S.current.notification_date_and_milage(name);
+      } catch (err) {
+        return name;
+      }
     }
   }
 

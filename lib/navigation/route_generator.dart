@@ -4,7 +4,6 @@ import 'package:duszamobile2020/route/add_refuel_page.dart';
 import 'package:duszamobile2020/route/add_reminder_page.dart';
 import 'package:duszamobile2020/route/add_repair_page.dart';
 import 'package:duszamobile2020/route/car_settings_page.dart';
-import 'package:duszamobile2020/route/car_page.dart';
 import 'package:duszamobile2020/route/cars_page.dart';
 import 'package:duszamobile2020/route/edit_evignette_page.dart';
 import 'package:duszamobile2020/route/edit_refuel_page.dart';

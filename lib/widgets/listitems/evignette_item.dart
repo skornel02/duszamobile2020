@@ -2,7 +2,6 @@ import 'package:duszamobile2020/alerts.dart';
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/e_vignette.dart';
-import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -82,41 +81,45 @@ class EVignetteItem extends StatelessWidget {
       elevation: 5,
       child: InkWell(
         onTap: () => _onOpen(context),
-        child: Row(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(eVignette.area == "Országos"
-                    ? "Országos matrica"
-                    : "Megyei matrica"),
-                if (eVignette.area != "Országos") Text(eVignette.area),
-                Text(eVignette.duration == 365
-                    ? "Éves"
-                    : "${eVignette.duration} napos"),
-              ],
-            ),
-            Spacer(),
-            Column(
-              children: [
-                Text(S.of(context).expiration_date(
-                    (eVignette.start == null || eVignette.duration == null)
-                        ? "NULL"
-                        : DateFormat(S.of(context).date_format_to_show).format(
-                            eVignette.start
-                                .add(Duration(days: eVignette.duration))))),
-                SizedBox(
-                  height: 50,
-                  width: 50,
-                  child: Image.asset("assets/" + getImagePath(eVignette.area)),
-                )
-              ],
-            ),
-            IconButton(
-              icon: Icon(FontAwesomeIcons.times),
-              onPressed: () => _onRemove(context),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(eVignette.area == "Országos"
+                      ? "Országos matrica"
+                      : "Megyei matrica"),
+                  if (eVignette.area != "Országos") Text(eVignette.area),
+                  Text(eVignette.duration == 365
+                      ? "Éves"
+                      : "${eVignette.duration} napos"),
+                ],
+              ),
+              Spacer(),
+              Column(
+                children: [
+                  Text(S.of(context).expiration_date(
+                      (eVignette.start == null || eVignette.duration == null)
+                          ? "NULL"
+                          : DateFormat(S.of(context).date_format_to_show).format(
+                              eVignette.start
+                                  .add(Duration(days: eVignette.duration))))),
+                  SizedBox(
+                    height: 50,
+                    width: 50,
+                    child: Image.asset("assets/" + getImagePath(eVignette.area)),
+                  )
+                ],
+              ),
+              IconButton(
+                icon: Icon(FontAwesomeIcons.times),
+                onPressed: () => _onRemove(context),
+              ),
+            ],
+          ),
         ),
       ),
     );

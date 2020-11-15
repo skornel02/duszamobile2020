@@ -28,7 +28,7 @@ Future<String> getStartingPage() async {
   //   prefs.setString("firstOpen", DateTime.now().toIso8601String());
   //   return "/intro";
   // }
-  final carId = prefs.getString("selectedCar");
+  // final carId = prefs.getString("selectedCar");
   // if (carId != null) return "/cars/$carId";
 
   return "/cars";

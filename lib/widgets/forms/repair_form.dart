@@ -1,9 +1,7 @@
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
+import 'package:duszamobile2020/constants/common_items.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
-import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:duszamobile2020/resources/repair.dart';
-import 'package:duszamobile2020/widgets/item_chip.dart';
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tags/flutter_tags.dart';
@@ -19,7 +17,7 @@ class RepairForm extends StatefulWidget {
     @required this.callback,
     this.repair,
     this.milage,
-    this.suggestions,
+    @required this.suggestions,
     Key key,
   }) : super(key: key);
 
@@ -48,6 +46,8 @@ class _RepairFormState extends State<RepairForm> {
       _costTextEditingController.text = widget.repair.price.toString();
       if (widget.milage != null) {
         _milageTextEditingController.text = widget.milage.toString();
+      } else {
+        _milageTextEditingController.text = widget.repair.milage.toString();
       }
 
       date = widget.repair.date;
@@ -188,7 +188,7 @@ class _RepairFormState extends State<RepairForm> {
                   textField: TagsTextField(
                     textStyle: TextStyle(fontSize: 18),
                     constraintSuggestion: false,
-                    suggestions: widget.suggestions,
+                    suggestions: [...widget.suggestions, ...commonItems],
                     onSubmitted: (String str) {
                       setState(() {
                         items.add(str);

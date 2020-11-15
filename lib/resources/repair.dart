@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:uuid/uuid.dart';
 
 part 'repair.g.dart';
 
@@ -29,8 +28,16 @@ class Repair extends Equatable {
     @required this.warranty,
   });
 
-  Repair(this.id, this.date, this.milage, this.price, this.reason, this.items,
-      this.description, this.warranty);
+  Repair(
+    this.id,
+    this.date,
+    this.milage,
+    this.price,
+    this.reason,
+    this.items,
+    this.description,
+    this.warranty,
+  );
 
   /// Static copy constructor with overriding.
   factory Repair.from(

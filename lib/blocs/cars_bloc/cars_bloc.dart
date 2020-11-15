@@ -36,11 +36,10 @@ class CarsBloc extends Bloc<CarsEvent, CarsState> {
   Stream<CarsState> mapEventToState(
     CarsEvent event,
   ) async* {
-    print('event $event');
     if (event is CarsLoaded) {
       yield ReadyState(event.cars);
     } else if (event is RefreshCars) {
-      print("refreshing...");
+      print("refreshing cars...");
       yield ReadyState(await _repository.getCars());
     } else if (event is RemoveCar) {
       _repository.removeCarById(event.id);

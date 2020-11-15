@@ -1,6 +1,5 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
-import 'package:duszamobile2020/resources/car.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:duszamobile2020/widgets/car_drawer.dart';
 import 'package:duszamobile2020/widgets/listitems/reminder_item.dart';
@@ -15,7 +14,7 @@ class RemindersPage extends StatelessWidget {
   }
 
   void _onAdd(BuildContext context) {
-    Navigator.pushNamed(context, "/cars/${id}/reminders/add");
+    Navigator.pushNamed(context, "/cars/$id/reminders/add");
   }
 
   @override
