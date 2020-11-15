@@ -58,7 +58,7 @@ class CarItem extends StatelessWidget {
                 style: TextStyle(fontSize: 30),
               ),
               trailing: IconButton(
-                icon: Icon(FontAwesomeIcons.removeFormat),
+                icon: Icon(FontAwesomeIcons.times),
                 onPressed: () => _onRemove(context),
               ),
             ),

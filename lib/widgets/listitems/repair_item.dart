@@ -5,6 +5,7 @@ import 'package:duszamobile2020/resources/repair.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tags/flutter_tags.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
 class RepairItem extends StatelessWidget {
@@ -77,7 +78,14 @@ class RepairItem extends StatelessWidget {
               alignment: Alignment.topRight,
               child: Text(DateFormat(S.of(context).date_format_to_show)
                   .format(repair.date)),
-            )
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.times),
+                onPressed: () => _onRemove(context),
+              ),
+            ),
           ],
         ),
       ),

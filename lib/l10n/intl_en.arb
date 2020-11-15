@@ -70,6 +70,7 @@
   "do_remove_car": "remove car '{car_name}'",
   "do_remove_repair": "remove repair log at {date}",
   "do_remove_refuel": "remove refuel log at {date}",
+  "do_remove_reminder": "remove reminder with title '{title}'",
   "do_remove_e_vignette": "remove E-Vignette valid from {date}",
   "date_format": "dd-MM-yyyy",
   "date_format_to_show": "yyyy.MM.dd",
@@ -99,5 +100,6 @@
   "expiration_yearly_country": "Yearly country",
   "expiration_yearly_county": "Yearly county",
   "county": "County",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "both": "Both"
 }

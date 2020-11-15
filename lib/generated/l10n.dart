@@ -745,6 +745,16 @@ class S {
     );
   }
 
+  /// `remove reminder with title '{title}'`
+  String do_remove_reminder(Object title) {
+    return Intl.message(
+      'remove reminder with title \'$title\'',
+      name: 'do_remove_reminder',
+      desc: '',
+      args: [title],
+    );
+  }
+
   /// `remove E-Vignette valid from {date}`
   String do_remove_e_vignette(Object date) {
     return Intl.message(
@@ -1040,6 +1050,16 @@ class S {
     return Intl.message(
       'Cancel',
       name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Both`
+  String get both {
+    return Intl.message(
+      'Both',
+      name: 'both',
       desc: '',
       args: [],
     );

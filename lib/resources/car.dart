@@ -115,9 +115,11 @@ class Car extends Equatable {
   List<String> get knownTags {
     List<String> tags = List();
     for (var repair in repairs) {
+      if(repair.items == null) continue;
       repair.items.forEach((element) => tags.add(element));
     }
     for (var reminder in reminds) {
+      if(reminder.items == null) continue;
       reminder.items.forEach((element) => tags.add(element));
     }
     return tags.toSet().toList();
