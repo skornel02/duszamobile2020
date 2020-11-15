@@ -23,7 +23,9 @@ class EVignettesPage extends StatelessWidget {
       create: (_) => CarBloc(
           carId: id, repo: RepositoryProvider.of<CarRepository>(context)),
       child: Scaffold(
-        appBar: AppBar(title: Text(S.of(context).evignettes),),
+        appBar: AppBar(
+          title: Text(S.of(context).evignettes),
+        ),
         drawer: carDrawer(context, id),
         body: BlocBuilder<CarBloc, CarState>(
           builder: (context, state) {

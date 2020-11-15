@@ -18,25 +18,29 @@ class AddRefuelPage extends StatelessWidget {
       create: (_) => CarBloc(
           carId: carId, repo: RepositoryProvider.of<CarRepository>(context)),
       child: Scaffold(
-        key: _profileScaffoldKey,
-        appBar: AppBar(
-          title: Text(S.of(context).add_refuel),
-        ),
-        body: BlocBuilder<CarBloc, CarState>(
-          builder: (context, state){
-            debugPrint("Current state of carbloc: " + state.toString());
-            if(state is ReadyState){
-              return RefuelForm(
-                callback: (Refuel refuel) async {
-                  BlocProvider.of<CarBloc>(context).add(SaveRefuelItem(refuel));
-                  Navigator.pop(context);
-                },
+          key: _profileScaffoldKey,
+          appBar: AppBar(
+            title: Text(S.of(context).add_refuel),
+          ),
+          body: BlocBuilder<CarBloc, CarState>(
+            builder: (context, state) {
+              debugPrint("Current state of carbloc: " + state.toString());
+              if (state is ReadyState) {
+                final car = state.car;
+                return RefuelForm(
+                  callback: (Refuel refuel) async {
+                    BlocProvider.of<CarBloc>(context)
+                        .add(SaveRefuelItem(refuel));
+                    Navigator.pop(context);
+                  },
+                  refuels: car.refuels,
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
               );
-            }
-            return Center(child: CircularProgressIndicator(),);
-          },
-        )
-      ),
+            },
+          )),
     );
   }
 }

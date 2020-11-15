@@ -28,11 +28,21 @@ Widget handleRefuelRoute(BuildContext context, Map<String, dynamic> params) {
   return WithCarBloc(
     carId: carId,
     onCarNotFound: carNotFoundEvent,
+    child: AddRefuelPage(carId),
+  );
+}
+
+Widget handleAddRefuelRoute(BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
     child: RefuelsPage(carId),
   );
 }
 
-Widget handleStatisticsRoute(BuildContext context, Map<String, dynamic> params) {
+Widget handleStatisticsRoute(
+    BuildContext context, Map<String, dynamic> params) {
   String carId = params["car_id"][0];
   return WithCarBloc(
     carId: carId,
@@ -88,10 +98,9 @@ void defineRoutes(FluroRouter router) {
       handler: Handler(handlerFunc: handleStatisticsRoute),
       transitionType: TransitionType.material);
 
-  router.define("/cars/:car_id/statistics", handler:
-      Handler(handlerFunc: handleStatisticsRoute),
-      transitionType: TransitionType.fadeIn)
-  ;
+  router.define("/cars/:car_id/statistics",
+      handler: Handler(handlerFunc: handleStatisticsRoute),
+      transitionType: TransitionType.fadeIn);
 
   router.define("/cars/:car_id/settings", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -114,10 +123,11 @@ void defineRoutes(FluroRouter router) {
     transitionType: TransitionType.fadeIn,
   );
 
-  router.define("/cars/:car_id/refuels/add", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return AddRefuelPage(params["car_id"][0]);
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/refuels/add",
+    handler: Handler(handlerFunc: handleAddRefuelRoute),
+    transitionType: TransitionType.material,
+  );
 
   router.define("/cars/:car_id/refuels/:refuel_id", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -126,23 +136,21 @@ void defineRoutes(FluroRouter router) {
 
   router.define("/cars/:car_id/reminders",
       handler: Handler(handlerFunc: handleRemindersRoute),
-      transitionType: TransitionType.fadeIn
-  );
+      transitionType: TransitionType.fadeIn);
 
   router.define("/cars/:car_id/reminders/add", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return AddReminderPage(params["car_id"][0]);
   }), transitionType: TransitionType.fadeIn);
 
   router.define("/cars/:car_id/reminders/:reminder_id", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return EditReminderPage(params["car_id"][0], params["reminder_id"][0]);
   }), transitionType: TransitionType.fadeIn);
 
   router.define("/cars/:car_id/evignettes",
       handler: Handler(handlerFunc: handleEVignetteRoute),
-      transitionType: TransitionType.fadeIn
-  );
+      transitionType: TransitionType.fadeIn);
 
   router.define("/cars/:car_id/evignettes/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -150,7 +158,7 @@ void defineRoutes(FluroRouter router) {
   }), transitionType: TransitionType.material);
 
   router.define("/cars/:car_id/evignettes/:evignette_id", handler:
-  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return EditEVignettePage(params["car_id"][0], params["evignette_id"][0]);
   }), transitionType: TransitionType.material);
 }

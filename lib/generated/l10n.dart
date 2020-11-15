@@ -185,23 +185,23 @@ class S {
     );
   }
 
-  /// `Liter price`
-  String get liter_price {
+  /// `Liter price: {price} $`
+  String liter_price(Object price) {
     return Intl.message(
-      'Liter price',
+      'Liter price: $price \$',
       name: 'liter_price',
       desc: '',
-      args: [],
+      args: [price],
     );
   }
 
-  /// `Consumption`
-  String get consumption {
+  /// `Efficiency: {efficiency} l/100km`
+  String consumption(Object efficiency) {
     return Intl.message(
-      'Consumption',
+      'Efficiency: $efficiency l/100km',
       name: 'consumption',
       desc: '',
-      args: [],
+      args: [efficiency],
     );
   }
 
@@ -575,6 +575,26 @@ class S {
     );
   }
 
+  /// `Current milage`
+  String get milage {
+    return Intl.message(
+      'Current milage',
+      name: 'milage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last refuel milage`
+  String get last_milage {
+    return Intl.message(
+      'Last refuel milage',
+      name: 'last_milage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{item} can't be empty!`
   String cant_be_empty(Object item) {
     return Intl.message(
@@ -592,6 +612,26 @@ class S {
       name: 'cant_be_over',
       desc: '',
       args: [item, amount],
+    );
+  }
+
+  /// `{item} must be a valid integer`
+  String cant_be_not_int(Object item) {
+    return Intl.message(
+      '$item must be a valid integer',
+      name: 'cant_be_not_int',
+      desc: '',
+      args: [item],
+    );
+  }
+
+  /// `{item} must be a valid number`
+  String cant_be_not_double(Object item) {
+    return Intl.message(
+      '$item must be a valid number',
+      name: 'cant_be_not_double',
+      desc: '',
+      args: [item],
     );
   }
 
