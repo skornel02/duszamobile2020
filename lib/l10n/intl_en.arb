@@ -25,7 +25,7 @@
   "weekly": "Weekly",
   "monthly": "Monthly",
   "yearly_countrywide": "Yearly countrywide",
-  "yearly_regional": "Weekly",
+  "yearly_regional": "Yearly regional",
   "other_regions": "Other regions",
   "more_regions": "More regions",
   "bought": "Bought",
@@ -74,7 +74,7 @@
   "local_area": "local",
   "remote_area": "remote",
   "are_you_sure": "Are you sure?",
-  "do_you_want_to": "You dou want to {do_something}?",
+  "do_you_want_to": "You do want to {do_something}?",
   "do_remove_car": "remove car '{car_name}'",
   "do_remove_repair": "remove repair log at {date}",
   "do_remove_refuel": "remove refuel log at {date}",
@@ -127,7 +127,7 @@
   "filter": "Filter",
   "general_statistics": "General statistics",
   "days_left": "{day} days left",
-  "km_left": "after {km} km",
+  "km_left": "{km} km left",
   "test_notification": "Test notification",
   "export_json": "My JSON export"
 }

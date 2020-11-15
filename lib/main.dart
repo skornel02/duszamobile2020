@@ -32,18 +32,11 @@ void main() async {
 
   CarRepository carRepository = new CarRepository();
 
-  carRepository
-      .getCars()
-      .then((value) => debugPrint("ca212r: " + value.length.toString()));
-
   (await carRepository.getCars()).forEach((car) {
-    debugPrint("car: " + car.name);
     car.getNotifications.forEach((reminder) {
-      debugPrint("SAdasnd: " + reminder.name);
       NotificationService.showNotificationWithReminder(reminder);
     });
   });
-
 
   runApp(App(
     defaultLocale: defaultLocale,
@@ -151,7 +144,7 @@ class DesignWrapper extends StatelessWidget {
             defaultBrightness:
                 defaultDarkMode ? Brightness.dark : Brightness.light,
             data: (brightness) => new ThemeData(
-              fontFamily: 'Manrope',
+                  fontFamily: 'Manrope',
                   appBarTheme: AppBarTheme(centerTitle: true),
                   floatingActionButtonTheme: null,
                   brightness: brightness,

@@ -4,7 +4,6 @@ import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 
 class RefuelItem extends StatelessWidget {

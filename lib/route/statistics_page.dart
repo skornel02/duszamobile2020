@@ -4,8 +4,6 @@ import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/widgets/car_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:intl/intl.dart';
 
 class StatisticsPage extends StatefulWidget {
   final String id;
