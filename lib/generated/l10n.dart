@@ -595,6 +595,16 @@ class S {
     );
   }
 
+  /// `After milage`
+  String get after_milage {
+    return Intl.message(
+      'After milage',
+      name: 'after_milage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{item} can't be empty!`
   String cant_be_empty(Object item) {
     return Intl.message(
@@ -652,6 +662,16 @@ class S {
       name: 'cant_be_smaller',
       desc: '',
       args: [item, otherItem],
+    );
+  }
+
+  /// `{targetDate} must be after {date}`
+  String cant_be_before(Object targetDate, Object date) {
+    return Intl.message(
+      '$targetDate must be after $date',
+      name: 'cant_be_before',
+      desc: '',
+      args: [targetDate, date],
     );
   }
 
