@@ -954,6 +954,26 @@ class S {
       args: [efficiency],
     );
   }
+
+  /// `Valid until {date}`
+  String expiration_date(Object date) {
+    return Intl.message(
+      'Valid until $date',
+      name: 'expiration_date',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

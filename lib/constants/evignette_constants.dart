@@ -1,4 +1,5 @@
 const List<String> supportedCounty = [
+	"Országos",
 	"Bács-Kiskun megye",
 	"Baranya megye",
 	"Borsod-Abaúj-Zemplén megye",

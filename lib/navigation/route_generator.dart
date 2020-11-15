@@ -2,6 +2,7 @@ import 'package:duszamobile2020/route/add_car_page.dart';
 import 'package:duszamobile2020/route/add_evignette_page.dart';
 import 'package:duszamobile2020/route/add_refuel_page.dart';
 import 'package:duszamobile2020/route/add_reminder_page.dart';
+import 'package:duszamobile2020/route/add_repair_page.dart';
 import 'package:duszamobile2020/route/car_settings_page.dart';
 import 'package:duszamobile2020/route/car_page.dart';
 import 'package:duszamobile2020/route/cars_page.dart';
@@ -114,7 +115,7 @@ void defineRoutes(FluroRouter router) {
 
   router.define("/cars/:car_id/repairs/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return AddRefuelPage(params["car_id"][0]);
+    return AddRepairPage(params["car_id"][0]);
   }), transitionType: TransitionType.material);
 
   router.define(

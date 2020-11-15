@@ -9,7 +9,9 @@ import 'package:intl/intl.dart';
 class RefuelItem extends StatelessWidget {
   final Refuel refuel;
 
-  RefuelItem(this.refuel);
+  final int index;
+
+  RefuelItem(this.refuel, {@required this.index});
 
   void _onOpen(BuildContext context) {
     ReadyState state = BlocProvider.of<CarBloc>(context).state;
@@ -37,38 +39,43 @@ class RefuelItem extends StatelessWidget {
       elevation: 5,
       child: InkWell(
         onTap: () => _onOpen(context),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
+          children: [
+            Text(index.toString()),
+            Stack(
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width - 60,
-                      child: Wrap(
-                          alignment: WrapAlignment.start,
-                          runSpacing: 1.4,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 2,
-                          children: [] //tagWidgets
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          width: MediaQuery.of(context).size.width - 60,
+                          child: Wrap(
+                              alignment: WrapAlignment.start,
+                              runSpacing: 1.4,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              spacing: 2,
+                              children: [] //tagWidgets
                           ),
+                        ),
+                      ],
                     ),
+                    Text(refuel.milage.toString() + " km"),
+                    Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}"),
+
                   ],
                 ),
-                Text(refuel.milage.toString() + " km"),
-                Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}"),
-
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
+                )
               ],
             ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
-            )
           ],
-        ),
+        )
       ),
     );
   }

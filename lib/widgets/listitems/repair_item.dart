@@ -79,14 +79,15 @@ class RepairItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text(repair.id),
-                Text(repair.price.toString()),
-                Text(repair.milage.toString()),
+
+                Text("${S.of(context).currency(repair.price.toStringAsFixed(2))}"),
+                Text(repair.milage.toString() + " km"),
+
               ],
             ),
             Align(
               alignment: Alignment.topRight,
-              child: Text(repair.date.toString()),
+              child: Text(DateFormat(S.of(context).date_format_to_show).format(repair.date)),
             )
           ],
         ),

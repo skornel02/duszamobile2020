@@ -1,7 +1,9 @@
+
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:duszamobile2020/resources/repair.dart';
+import 'package:duszamobile2020/widgets/item_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -57,7 +59,7 @@ class _RepairFormState extends State<RepairForm> {
 				child: SizedBox(
 					height: MediaQuery.of(context).size.height -
 							MediaQuery.of(context).padding.top -
-							kToolbarHeight*2,
+							kToolbarHeight,
 					child: Padding(
 						padding: const EdgeInsets.all(16),
 						child: Column(
@@ -188,34 +190,103 @@ class _RepairFormState extends State<RepairForm> {
 									},
 								),
 
-								Row(
-									children: [
-										RadioListTile(
-											title: Text(S.of(context).warranty),
-											value: true,
-											groupValue: warranty,
-											onChanged: (val){
-												setState(() {
-												  warranty = val;
-												});
-											}
-										),
-										RadioListTile(
-												title: Text(S.of(context).not_warranty),
-												value: false,
-												groupValue: warranty,
-												onChanged: (val){
-													setState(() {
-														warranty = val;
-													});
-												}
-										)
-									],
+								Container(
+								//	width: MediaQuery.of(context).size.width,
+								  child: Column(
+								  	mainAxisSize: MainAxisSize.min,
+								  	children: [
+								  		RadioListTile(
+								  			title: Text(S.of(context).warranty),
+								  			value: true,
+								  			groupValue: warranty,
+								  			onChanged: (val){
+								  				setState(() {
+								  				  warranty = val;
+								  				});
+								  			}
+								  		),
+								  		RadioListTile(
+								  				title: Text(S.of(context).not_warranty),
+								  				value: false,
+								  				groupValue: warranty,
+								  				onChanged: (val){
+								  					setState(() {
+								  						warranty = val;
+								  					});
+								  				}
+								  		)
+								  	],
+								  ),
 								),
 
 								Divider(),
 
 								//TODO: tétel hozzáadás widget
+
+								Builder(builder: (c){
+
+
+									List<Widget> chips = [];
+
+
+									for(int i = 0; i < items.length; i++){
+									  String s = items[i];
+										chips.add(ItemChip.item(index: i, text: s, onClick: (){
+											setState(() {
+												items.remove(s);
+											});
+										}));
+									}
+
+									/*
+									chips.add(GestureDetector(
+										onTap: (){
+											TextEditingController itemTextEditingController = TextEditingController();
+											AlertDialog alert = AlertDialog(
+												title: Text("Tétel létrehozás"),
+												content: TextField(
+													controller: itemTextEditingController,
+												),
+												actions: [
+													RaisedButton(
+														child: Text(S.of(context).cancel),
+															onPressed: (){
+																Navigator.pop(context);
+															}),
+													RaisedButton(
+															child: Text(S.of(context).add),
+															onPressed: (){
+																setState(() {
+																  items.add(itemTextEditingController.text);
+																});
+																Navigator.pop(context);
+															}),
+												],
+											);
+
+											showDialog(
+												context: context,
+												builder: (context) {
+													return alert;
+												},
+											);
+										},
+									  child: ItemChip.add(onClick: (){
+
+									  }),
+									));
+									*/
+
+									debugPrint("samvoia: " + chips.length.toString());
+
+
+									return Container(width: 200, color: Colors.red,
+									  child: Wrap(
+									  	children: chips,
+									  ),
+									);
+								}),
+
 
 								Spacer(),
 
