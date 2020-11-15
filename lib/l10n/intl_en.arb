@@ -18,6 +18,7 @@
   "last_refuel_was_recorded": "Last refuel was recorded",
   "liter_price": "Liter price: {price} $",
   "consumption": "Efficiency: {efficiency} l/100km",
+  "spending_format": "{item}: {amount} $",
   "type": "Type",
   "regional": "Regional",
   "region": "Region",
@@ -117,5 +118,7 @@
   "complete_reminder": "Are you sure you want to complete '{name}'?",
   "repeat_this_reminder_again": "Do you want to repeat this reminder?",
   "both": "Both",
-  "refuel": "Refuel"
+  "refuel": "Refuel",
+  "total_spending": "Total spending",
+  "petrol_price_over_time": "Petrol price change"
 }

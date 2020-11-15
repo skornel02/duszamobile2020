@@ -225,6 +225,16 @@ class S {
     );
   }
 
+  /// `{item}: {amount} $`
+  String spending_format(Object item, Object amount) {
+    return Intl.message(
+      '$item: $amount \$',
+      name: 'spending_format',
+      desc: '',
+      args: [item, amount],
+    );
+  }
+
   /// `Type`
   String get type {
     return Intl.message(
@@ -1220,6 +1230,26 @@ class S {
     return Intl.message(
       'Refuel',
       name: 'refuel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total spending`
+  String get total_spending {
+    return Intl.message(
+      'Total spending',
+      name: 'total_spending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Petrol price change`
+  String get petrol_price_over_time {
+    return Intl.message(
+      'Petrol price change',
+      name: 'petrol_price_over_time',
       desc: '',
       args: [],
     );
