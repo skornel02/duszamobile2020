@@ -14,7 +14,7 @@
   "calendar_synchronisation": "Calendar synchronisation",
   "dark_theme": "Dark theme",
   "price": "Price",
-  "milometer": "Milometer",
+  "language": "Language",
   "last_refuel_was_recorded": "Last refuel was recorded",
   "liter_price": "Liter price: {price} $",
   "consumption": "Efficiency: {efficiency} l/100km",
@@ -126,5 +126,7 @@
   "filter": "Filter",
   "general_statistics": "General statistics",
   "days_left": "{day} days left",
-  "km_left": "{km} km left"
+  "km_left": "{km} km left",
+  "test_notification": "Test notification",
+  "export_json": "My JSON export"
 }
