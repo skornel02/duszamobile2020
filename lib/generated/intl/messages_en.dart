@@ -81,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "change_car" : MessageLookupByLibrary.simpleMessage("Change car"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Cheese"),
     "consumption" : m4,
+    "consumption_label" : MessageLookupByLibrary.simpleMessage("Consumption in liter/100km"),
     "create" : MessageLookupByLibrary.simpleMessage("Create"),
     "currency" : m5,
     "dark_theme" : MessageLookupByLibrary.simpleMessage("Dark theme"),

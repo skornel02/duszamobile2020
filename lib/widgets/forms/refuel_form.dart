@@ -144,6 +144,7 @@ class _RefuelFormState extends State<RefuelForm> {
                           setState(() {
                             refuelAmount = val;
                             _doCalculateLiterPrice();
+                            _doCalculateConsumption();
                           });
                         })
                   ],
