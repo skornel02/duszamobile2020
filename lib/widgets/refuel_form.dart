@@ -10,7 +10,9 @@ import 'package:uuid/uuid.dart';
 class RefuelForm extends StatefulWidget {
   final Future<void> Function(Refuel refuel) callback;
   final Refuel refuel;
-  RefuelForm({@required this.callback, this.refuel, Key key}) : super(key: key);
+  final List<Refuel> refuels;
+  RefuelForm({@required this.callback, this.refuel, this.refuels, Key key})
+      : super(key: key);
 
   @override
   _RefuelFormState createState() => _RefuelFormState();
@@ -26,28 +28,77 @@ class _RefuelFormState extends State<RefuelForm> {
 
   double refuelAmount = 15;
 
-  bool isLastRefuelRecorded = true;
+  double literPrice = 0;
+  double consumption = 0;
+
+  bool autoFillLastRecord;
   DateTime date;
 
   @override
   void initState() {
+    autoFillLastRecord = widget.refuels != null && widget.refuels.isNotEmpty;
+
     if (widget.refuel != null) {
       _priceTextEditingController.text = widget.refuel.paid.toString();
       _milageTextEditingController.text = widget.refuel.milage.toString();
       _lastMilageTextEditingController.text =
           widget.refuel.lastMilage.toString();
       refuelAmount = widget.refuel.refueled;
-      if (widget.refuel.lastMilage != null) {
-        isLastRefuelRecorded = true;
-      }
+      autoFillLastRecord = false;
       date = widget.refuel.date;
     }
+
+    if (autoFillLastRecord) {
+      _doCalculateAutoFill();
+    }
+
+    _priceTextEditingController.addListener(() {
+      setState(() {
+        _doCalculateConsumption();
+        _doCalculateLiterPrice();
+      });
+    });
+    _milageTextEditingController.addListener(() {
+      setState(() {
+        _doCalculateConsumption();
+      });
+    });
+    _lastMilageTextEditingController.addListener(() {
+      setState(() {
+        _doCalculateConsumption();
+      });
+    });
 
     super.initState();
   }
 
+  _doCalculateAutoFill() {
+    List<Refuel> refuels = widget.refuels;
+    int maxMilage = -1;
+    for (var refuel in refuels) {
+      if (refuel.milage > maxMilage) maxMilage = refuel.milage;
+    }
+    _lastMilageTextEditingController.text = maxMilage.toString();
+  }
+
+  _doCalculateLiterPrice() {
+    double price = double.tryParse(_priceTextEditingController.text) ?? 0;
+    double fuel = refuelAmount ?? 0;
+
+    literPrice = price / fuel;
+  }
+
+  _doCalculateConsumption() {
+    int milage = int.tryParse(_milageTextEditingController.text) ?? 0;
+    int lastMilage = int.tryParse(_lastMilageTextEditingController.text) ?? 0;
+    double fuel = refuelAmount ?? 0;
+    consumption = fuel / ((milage - lastMilage) / 100);
+  }
+
   @override
   Widget build(BuildContext context) {
+    print("AUTOFILL: $autoFillLastRecord");
+
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
@@ -93,6 +144,7 @@ class _RefuelFormState extends State<RefuelForm> {
                         onChanged: (val) {
                           setState(() {
                             refuelAmount = val;
+                            _doCalculateLiterPrice();
                           });
                         })
                   ],
@@ -103,13 +155,12 @@ class _RefuelFormState extends State<RefuelForm> {
                   child: TextFormField(
                     style: TextStyle(fontSize: 18),
                     maxLines: 1,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
                     controller: _priceTextEditingController,
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
-                      labelText: S
-                          .of(context)
-                          .price, // helperText: "Oktatási azonositó",
+                      labelText: S.of(context).price,
                       alignLabelWithHint: true,
                       labelStyle: TextStyle(),
                       filled: true,
@@ -145,7 +196,7 @@ class _RefuelFormState extends State<RefuelForm> {
                       if (value.isEmpty) {
                         return S
                             .of(context)
-                            .cant_be_empty(S.of(context).milometer);
+                            .cant_be_empty(S.of(context).milage);
                       }
                       return null;
                     },
@@ -153,20 +204,27 @@ class _RefuelFormState extends State<RefuelForm> {
                 ),
                 CheckboxListTile(
                     title: Text(S.of(context).last_refuel_was_recorded),
-                    value: isLastRefuelRecorded,
+                    value: widget.refuels != null &&
+                        widget.refuels.isNotEmpty &&
+                        autoFillLastRecord,
                     onChanged: (val) {
                       setState(() {
-                        isLastRefuelRecorded = val;
+                        if (widget.refuels == null || widget.refuels.isEmpty)
+                          return null;
+                        autoFillLastRecord = val;
+                        if (autoFillLastRecord) _doCalculateAutoFill();
                       });
                     }),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: TextFormField(
-                    enabled: isLastRefuelRecorded,
+                    enabled: !autoFillLastRecord,
                     style: TextStyle(fontSize: 18),
                     maxLines: 1,
                     controller: _lastMilageTextEditingController,
                     textInputAction: TextInputAction.next,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: "Valami",
                       alignLabelWithHint: true,
@@ -175,6 +233,10 @@ class _RefuelFormState extends State<RefuelForm> {
                       fillColor: Colors.grey.withAlpha(120),
                     ),
                     validator: (value) {
+                      if (int.tryParse(value) == null)
+                        return S
+                            .of(context)
+                            .cant_be_not_int(S.of(context).last_milage);
                       return null;
                     },
                   ),
@@ -183,8 +245,12 @@ class _RefuelFormState extends State<RefuelForm> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("${S.of(context).liter_price}: 0"),
-                    Text("${S.of(context).consumption}: 0"),
+                    Text(S
+                        .of(context)
+                        .liter_price(literPrice.toStringAsFixed(2))),
+                    Text(S
+                        .of(context)
+                        .consumption(consumption.toStringAsFixed(2))),
                   ],
                 ),
                 Spacer(),

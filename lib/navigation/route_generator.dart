@@ -25,6 +25,15 @@ Widget handleRefuelRoute(BuildContext context, Map<String, dynamic> params) {
   );
 }
 
+Widget handleAddRefuelRoute(BuildContext context, Map<String, dynamic> params) {
+  String carId = params["car_id"][0];
+  return WithCarBloc(
+    carId: carId,
+    onCarNotFound: carNotFoundEvent,
+    child: AddRefuelPage(carId),
+  );
+}
+
 void defineRoutes(FluroRouter router) {
   router.define("/settings", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -73,10 +82,11 @@ void defineRoutes(FluroRouter router) {
     transitionType: TransitionType.fadeIn,
   );
 
-  router.define("/cars/:car_id/refuels/add", handler:
-      Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return CarPage(id: params["car_id"][0], path: "refuels/add");
-  }), transitionType: TransitionType.material);
+  router.define(
+    "/cars/:car_id/refuels/add",
+    handler: Handler(handlerFunc: handleAddRefuelRoute),
+    transitionType: TransitionType.material,
+  );
 
   router.define("/cars/:car_id/refuels/:refuel_id", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {

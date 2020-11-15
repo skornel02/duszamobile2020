@@ -1,13 +1,55 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-Drawer carDrawer(BuildContext context, String carId) {
+enum DrawerItem {
+  REFUEL,
+  REPAIR,
+  REMINDER,
+  E_VIGNETTE,
+  STATISTICS,
+}
+
+Drawer carDrawer(BuildContext context, String carId,
+    {DrawerItem selectedMenu}) {
   return Drawer(
     child: Column(
       children: [
+        BlocBuilder<CarBloc, CarState>(
+          builder: (context, state) {
+            String carName = "LOADING";
+            Uint8List imageBytes;
+            if (state is ReadyState) {
+              final car = state.car;
+              carName = car.name;
+              if (car.settings.image != null)
+                imageBytes = base64.decode(car.settings.image);
+            }
+            return DrawerHeader(
+              child: Column(
+                children: [
+                  Text(carName, style: TextStyle(fontSize: 18)),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: 150, minHeight: 10),
+                    child: imageBytes != null
+                        ? Image.memory(imageBytes)
+                        : Container(
+                            height: 2,
+                          ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
         ListTile(
+          selected: selectedMenu == DrawerItem.REFUEL,
           leading: Icon(FontAwesomeIcons.gasPump),
           title: Text(S.of(context).refuels_page_menuitem),
           onTap: () {
@@ -17,6 +59,7 @@ Drawer carDrawer(BuildContext context, String carId) {
           },
         ),
         ListTile(
+          selected: selectedMenu == DrawerItem.REPAIR,
           leading: Icon(FontAwesomeIcons.screwdriver),
           title: Text(S.of(context).repairs_page_menuitem),
           onTap: () {
@@ -26,6 +69,7 @@ Drawer carDrawer(BuildContext context, String carId) {
           },
         ),
         ListTile(
+          selected: selectedMenu == DrawerItem.REMINDER,
           leading: Icon(FontAwesomeIcons.clock),
           title: Text(S.of(context).reminders_page_menuitem),
           onTap: () {
@@ -35,6 +79,7 @@ Drawer carDrawer(BuildContext context, String carId) {
           },
         ),
         ListTile(
+          selected: selectedMenu == DrawerItem.E_VIGNETTE,
           leading: Icon(FontAwesomeIcons.stickyNote),
           title: Text(S.of(context).e_vignette_page_menuitem),
           onTap: () {
@@ -44,6 +89,7 @@ Drawer carDrawer(BuildContext context, String carId) {
           },
         ),
         ListTile(
+          selected: selectedMenu == DrawerItem.STATISTICS,
           leading: Icon(FontAwesomeIcons.chartPie),
           title: Text(S.of(context).statistics_page_menuitem),
           onTap: () {

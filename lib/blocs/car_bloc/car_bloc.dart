@@ -72,8 +72,6 @@ class CarBloc extends Bloc<CarEvent, CarState> {
     } else if (event is SaveRefuelItem) {
       Car original = await _repo.getCar(_carId);
 
-      print("ORIGINAL REFUELS ${original.refuels.toString()}");
-
       int index = -1;
       for (int i = 0; i < original.refuels.length; i++) {
         Refuel refuel = original.refuels[i];
@@ -83,9 +81,6 @@ class CarBloc extends Bloc<CarEvent, CarState> {
         }
       }
 
-      print("input: ${event.refuel}");
-      print("index: $index");
-
       List<Refuel> nextRefuels = List.from(original.refuels);
       if (index == -1) {
         nextRefuels.add(event.refuel);
@@ -93,7 +88,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
         nextRefuels.replaceRange(index, index + 1, [event.refuel]);
       }
 
-      print("NEXT REFUELS ${nextRefuels.toString()}");
+      nextRefuels.sort((a, b) => a.milage.compareTo(b.milage));
 
       Car next = Car.from(original, refuels: nextRefuels);
       _repo.updateCar(next);

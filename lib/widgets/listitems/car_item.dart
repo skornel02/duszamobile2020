@@ -47,7 +47,7 @@ class CarItem extends StatelessWidget {
             ConstrainedBox(
               constraints: BoxConstraints(maxHeight: 150, minHeight: 10),
               child: imageBytes != null
-                  ? Image.memory(imageBytes)
+                  ? Center(child: Image.memory(imageBytes))
                   : Container(
                       height: 2,
                     ),
