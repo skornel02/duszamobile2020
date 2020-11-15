@@ -133,9 +133,9 @@ class CarPage extends StatelessWidget {
                       case "repairs/add":
                         return RepairsPage(id);
                       case "refuels":
-                        return RefuelsPage(id); //RefuelsPage();
+                        return RefuelsPage(id);
                       case "refuels/add":
-                        return AddRefuelPage(id); //RefuelsPage();
+                        return AddRefuelPage(id);
                       case "reminders":
                         return RemindersPage(id);
                       case "reminders/add":

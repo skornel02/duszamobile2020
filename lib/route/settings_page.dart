@@ -1,8 +1,10 @@
 import 'package:duszamobile2020/blocs/google_bloc/bloc/google_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/widgets/google_sync.dart';
+import 'package:duszamobile2020/widgets/language_changer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -19,6 +21,7 @@ class SettingsPage extends StatelessWidget {
               Text("TItle"),
               Text("Egy kis leírás"),
               GoogleSync(),
+              LanguageChanger(),
             ],
           ),
         ),
@@ -69,25 +72,6 @@ class _SettingsPageState extends State<SettingsPage> {
 									calendarSync = val;
 								});
 							},
-						),
-						SwitchListTile(value: darkTheme,
-							title: Text(S.of(context).dark_theme),
-							onChanged: (val){
-								setState(() {
-									darkTheme = val;
-								});
-							},
-						),
-						DropdownButton(
-							onChanged: (val){
-								setState(() {
-									langVal = val;
-								});
-							},
-							value: langVal,
-							items: [DropdownMenuItem(child: Text("Magyar"), value: "hu",),
-								DropdownMenuItem(child: Text("English"), value: "en",)
-							],
 						),
 
 						Divider(),
