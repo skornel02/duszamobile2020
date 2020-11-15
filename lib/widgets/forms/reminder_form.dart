@@ -21,12 +21,13 @@ class _ReminderFormState extends State<ReminderForm> {
 
 	TextEditingController _nameTextEditingController = TextEditingController();
 	TextEditingController _descriptionTextEditingController = TextEditingController();
+	TextEditingController _afterMilageTextEditingController = TextEditingController();
+
 
 	List<String> items = [];
 	DateTime date;
 	int afterDays;
 	int startMilage;
-	int afterMilage = 15;
 	bool completed;
 
 
@@ -38,7 +39,8 @@ class _ReminderFormState extends State<ReminderForm> {
 		if(widget.reminder != null){
 			_nameTextEditingController.text = widget.reminder.name;
 			_descriptionTextEditingController.text = widget.reminder.description;
-
+			_afterMilageTextEditingController.text = widget.reminder.afterMilage.toString();
+			
 			items = widget.reminder.items;
 			date = widget.reminder.date;
 			afterDays = widget.reminder.afterDays;
@@ -53,296 +55,263 @@ class _ReminderFormState extends State<ReminderForm> {
 		return Form(
 			key: _formKey,
 			child: SingleChildScrollView(
-				child: SizedBox(
-					/*height: MediaQuery
-							.of(context)
-							.size
-							.height -
-							MediaQuery
-									.of(context)
-									.padding
-									.top -
-							kToolbarHeight * 2,
-					*/
-					child: Padding(
-						padding: const EdgeInsets.all(16),
-						child: Column(
-							children: [
-								Padding(
-									padding: const EdgeInsets.only(top: 10),
-									child: TextFormField(
-										style: TextStyle(fontSize: 18),
-										maxLines: 1,
-										controller: _nameTextEditingController,
-										textInputAction: TextInputAction.next,
-										decoration: InputDecoration(
-											labelText: S
-													.of(context)
-													.name,
-											alignLabelWithHint: true,
-											labelStyle: TextStyle(),
-											filled: true,
-											fillColor: Colors.grey.withAlpha(120),
-										),
-										validator: (value){
-											if(value.isEmpty){
-												return S
-														.of(context)
-														.cant_be_empty(S
-														.of(context)
-														.name);
-											}
-											return null;
-										},
-									),
-								),
-								Padding(
-									padding: const EdgeInsets.only(top: 10),
-									child: TextFormField(
-										style: TextStyle(fontSize: 18),
-										maxLines: 1,
-										controller: _descriptionTextEditingController,
-										textInputAction: TextInputAction.next,
-										decoration: InputDecoration(
-											labelText: S
-													.of(context)
-													.description,
-											alignLabelWithHint: true,
-											labelStyle: TextStyle(),
-											filled: true,
-											fillColor: Colors.grey.withAlpha(120),
-										),
-										validator: (value){
-											return null;
-										},
-									),
-								),
-
-								Divider(),
-								RadioListTile(
-										groupValue: radioValue,
-										title: Text(S
-												.of(context)
-												.notify_on_date),
-										value: "notifyOnDate",
-										onChanged: (val){
-											setState((){
-												radioValue = val;
-											});
-										}
-								),
-								RadioListTile(
-										groupValue: radioValue,
-										title: Text(S
-												.of(context)
-												.notify_after_kilometers),
-										value: "notifyAfterKilometers",
-										onChanged: (val){
-											setState((){
-												radioValue = val;
-											});
-										}
-								),
-								RadioListTile(
-										groupValue: radioValue,
-										title: Text(S
-												.of(context)
-												.both),
-										value: "both",
-										onChanged: (val){
-											setState((){
-												radioValue = val;
-											});
-										}
-								),
-
-
-								DateTimeField(
-									enabled: (radioValue == "notifyOnDate" || radioValue == "both"),
-									initialValue: date,
+				child: Padding(
+					padding: const EdgeInsets.all(16),
+					child: Column(
+						children: [
+							Padding(
+								padding: const EdgeInsets.only(top: 10),
+								child: TextFormField(
 									style: TextStyle(fontSize: 18),
+									maxLines: 1,
+									controller: _nameTextEditingController,
+									textInputAction: TextInputAction.next,
 									decoration: InputDecoration(
 										labelText: S
 												.of(context)
-												.date,
+												.name,
 										alignLabelWithHint: true,
 										labelStyle: TextStyle(),
 										filled: true,
 										fillColor: Colors.grey.withAlpha(120),
 									),
-									format: DateFormat(S
-											.of(context)
-											.date_format_to_show),
-									onChanged: (DateTime newDate){
-										date = newDate;
-									},
-									onShowPicker: (context, currentValue){
-										return showDatePicker(
-												context: context,
-												firstDate: DateTime.now(),
-												initialDate: currentValue ?? DateTime.now(),
-												lastDate: DateTime.now().add(Duration(days: 365)));
-									},
-									validator: (value) {
-										if(radioValue == "notifyOnDate" || radioValue == "both"){
-											if (value == null) {
-												return S
-														.of(context)
-														.cant_be_empty(S.of(context).date);
-											}
+									validator: (value){
+										if(value.isEmpty){
+											return S
+													.of(context)
+													.cant_be_empty(S
+													.of(context)
+													.name);
 										}
 										return null;
 									},
 								),
-
-								Divider(),
-
-								// TODO cant be disabled
-								ColorFiltered(
-									colorFilter: ColorFilter.mode(Colors.grey, BlendMode.modulate),
-								  child: IgnorePointer(
-								  	ignoring: (radioValue == "notifyOnDate"),
-								    child: Row(
-
-								    	children: [
-								    		SizedBox(
-								    				width: 50,
-								    				child: Text("${afterMilage.toInt()} km")
-								    		),
-
-												Padding(
-													padding: const EdgeInsets.only(top: 10),
-													child: TextFormField(
-														style: TextStyle(fontSize: 18),
-														maxLines: 1,
-														inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-														keyboardType: TextInputType.number,
-												//		controller: _priceTextEditingController,
-														textInputAction: TextInputAction.next,
-														decoration: InputDecoration(
-															labelText: S.of(context).price,
-															alignLabelWithHint: true,
-															labelStyle: TextStyle(),
-															filled: true,
-															fillColor: Colors.grey.withAlpha(120),
-														),
-														validator: (value) {
-															if (value.isEmpty) {
-																return S.of(context).cant_be_empty(S.of(context).price);
-															}
-															return null;
-														},
-													),
-												),
-
-								    		Slider(
-								    			min: 0,
-								    			max: 100,
-								    			value: afterMilage.toDouble(),
-								    			onChanged: (radioValue == "notifyOnDate") ? null : (val){
-														setState((){
-															afterMilage = val.round();
-														});
-													}
-												)
-								    	],
-								    ),
-								  ),
-								),
-
-
-
-
-								//TODO: Add items widget
-
-								Tags(
-									textField: TagsTextField(
-										textStyle: TextStyle(fontSize: 18),
-										constraintSuggestion: false,
-										onSubmitted: (String str) {
-											setState(() {
-												items.add(str);
-											});
-										},
+							),
+							Padding(
+								padding: const EdgeInsets.only(top: 10),
+								child: TextFormField(
+									style: TextStyle(fontSize: 18),
+									maxLines: 1,
+									controller: _descriptionTextEditingController,
+									textInputAction: TextInputAction.next,
+									decoration: InputDecoration(
+										labelText: S
+												.of(context)
+												.description,
+										alignLabelWithHint: true,
+										labelStyle: TextStyle(),
+										filled: true,
+										fillColor: Colors.grey.withAlpha(120),
 									),
-								),
-								Padding(
-								  padding: const EdgeInsets.all(8.0),
-								  child: Tags(
-								  	itemCount: items.length,
-								  	itemBuilder: (int index) {
-								  		final item = items[index];
-								  		return ItemTags(
-								  			pressEnabled: false,
-								  			key: Key(index.toString()),
-								  			index: index,
-								  			title: item,
-								  			active: true,
-								  			textStyle: TextStyle(
-								  				fontSize: 16,
-								  			),
-								  			removeButton: ItemTagsRemoveButton(
-								  				onRemoved: () {
-								  					setState(() {
-								  						items.removeAt(index);
-								  					});
-								  					return true;
-								  				},
-								  			),
-								  			onPressed: (item) => print(item),
-								  			onLongPressed: (item) => print(item),
-								  		);
-								  	}
-								  ),
-								),
-
-
-
-								RaisedButton(
-									child: Text(widget.reminder == null
-											? S
-											.of(context)
-											.create
-											: S
-											.of(context)
-											.save),
-									onPressed: (){
-										if(_formKey.currentState.validate()){
-											Reminder next;
-
-											if(widget.reminder != null){
-												next = Reminder.from(
-													widget.reminder,
-													name: _nameTextEditingController.text,
-													description: _descriptionTextEditingController.text,
-													date: date,
-													items: items,
-													startMilage: startMilage,
-													afterMilage: afterMilage,
-													afterDays: afterDays,
-													completed: completed,
-
-												);
-												print("NEW ID: ${next.id}");
-											}else{
-												next = Reminder.create(
-													id: Uuid().v4(),
-													name: _nameTextEditingController.text,
-													description: _descriptionTextEditingController.text,
-													date: date,
-													items: items,
-													startMilage: startMilage,
-													afterMilage: afterMilage,
-													afterDays: afterDays,
-													completed: completed,
-												);
-											}
-											widget.callback(next);
-										}
+									validator: (value){
+										return null;
 									},
 								),
-							],
-						),
+							),
+
+							Divider(),
+							RadioListTile(
+									groupValue: radioValue,
+									title: Text(S
+											.of(context)
+											.notify_on_date),
+									value: "notifyOnDate",
+									onChanged: (val){
+										setState((){
+											radioValue = val;
+										});
+									}
+							),
+							RadioListTile(
+									groupValue: radioValue,
+									title: Text(S
+											.of(context)
+											.notify_after_kilometers),
+									value: "notifyAfterKilometers",
+									onChanged: (val){
+										setState((){
+											radioValue = val;
+										});
+									}
+							),
+							RadioListTile(
+									groupValue: radioValue,
+									title: Text(S
+											.of(context)
+											.both),
+									value: "both",
+									onChanged: (val){
+										setState((){
+											radioValue = val;
+										});
+									}
+							),
+
+
+							DateTimeField(
+								enabled: (radioValue == "notifyOnDate" || radioValue == "both"),
+								initialValue: date,
+								style: TextStyle(fontSize: 18),
+								decoration: InputDecoration(
+									labelText: S
+											.of(context)
+											.date,
+									alignLabelWithHint: true,
+									labelStyle: TextStyle(),
+									filled: true,
+									fillColor: Colors.grey.withAlpha(120),
+								),
+								format: DateFormat(S
+										.of(context)
+										.date_format_to_show),
+								onChanged: (DateTime newDate){
+									date = newDate;
+								},
+								onShowPicker: (context, currentValue){
+									return showDatePicker(
+											context: context,
+											firstDate: DateTime.now(),
+											initialDate: currentValue ?? DateTime.now(),
+											lastDate: DateTime.now().add(Duration(days: 365)));
+								},
+								validator: (value) {
+									if(radioValue == "notifyOnDate" || radioValue == "both"){
+										if (value == null) {
+											return S
+													.of(context)
+													.cant_be_empty(S.of(context).date);
+										}
+									}
+									return null;
+								},
+							),
+
+							Divider(),
+
+
+							Padding(
+								padding: const EdgeInsets.only(top: 10),
+								child: TextFormField(
+									enabled: (radioValue == "notifyOnDate"),
+									style: TextStyle(fontSize: 18),
+									maxLines: 1,
+									inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+									keyboardType: TextInputType.number,
+									controller: _afterMilageTextEditingController,
+									textInputAction: TextInputAction.next,
+									decoration: InputDecoration(
+										labelText: S.of(context).milage,
+										alignLabelWithHint: true,
+										labelStyle: TextStyle(),
+										filled: true,
+										fillColor: Colors.grey.withAlpha(120),
+									),
+									validator: (value) {
+										if (value.isEmpty) {
+											return S.of(context).cant_be_empty(S.of(context).milage);
+										}
+										return null;
+									},
+								),
+							),
+
+
+
+
+
+
+
+							//TODO: Add items widget
+
+							Tags(
+								textField: TagsTextField(
+									textStyle: TextStyle(fontSize: 18),
+									constraintSuggestion: false,
+									onSubmitted: (String str) {
+										setState(() {
+											items.add(str);
+										});
+									},
+								),
+							),
+							Padding(
+								padding: const EdgeInsets.all(8.0),
+								child: Tags(
+										itemCount: items.length,
+										itemBuilder: (int index) {
+											final item = items[index];
+											return ItemTags(
+												pressEnabled: false,
+												key: Key(index.toString()),
+												index: index,
+												title: item,
+												active: true,
+												textStyle: TextStyle(
+													fontSize: 16,
+												),
+												removeButton: ItemTagsRemoveButton(
+													onRemoved: () {
+														setState(() {
+															items.removeAt(index);
+														});
+														return true;
+													},
+												),
+												onPressed: (item) => print(item),
+												onLongPressed: (item) => print(item),
+											);
+										}
+								),
+							),
+
+
+
+							RaisedButton(
+								child: Text(widget.reminder == null
+										? S
+										.of(context)
+										.create
+										: S
+										.of(context)
+										.save),
+								onPressed: (){
+									if(_formKey.currentState.validate()){
+										Reminder next;
+
+										int afterMilage = int.parse(_afterMilageTextEditingController.text);
+
+										if(widget.reminder != null){
+											next = Reminder.from(
+												widget.reminder,
+												name: _nameTextEditingController.text,
+												description: _descriptionTextEditingController.text,
+												date: date,
+												items: items,
+												startMilage: startMilage,
+												afterMilage: afterMilage,
+												afterDays: afterDays,
+												completed: completed,
+
+											);
+											print("NEW ID: ${next.id}");
+										}else{
+											next = Reminder.create(
+												id: Uuid().v4(),
+												name: _nameTextEditingController.text,
+												description: _descriptionTextEditingController.text,
+												date: date,
+												items: items,
+												startMilage: startMilage,
+												afterMilage: afterMilage,
+												afterDays: afterDays,
+												completed: completed,
+											);
+										}
+										widget.callback(next);
+									}
+								},
+							),
+						],
 					),
 				),
 			),

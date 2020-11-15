@@ -108,5 +108,6 @@
   "remind_about_e_vignette": "Do you want to create a reminder when the E-Vignette expires?",
   "e_vignette_expiration_reminder": "[E-Vignette] {area} will expire",
   "automatically_generated": "Automatically generated",
-  "both": "Both"
+  "both": "Both",
+  "refuel": "Refuel"
 }
