@@ -1,5 +1,6 @@
 import 'package:duszamobile2020/blocs/google_bloc/bloc/google_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
+import 'package:duszamobile2020/notification_service.dart';
 import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/widgets/google_sync.dart';
 import 'package:duszamobile2020/widgets/language_changer.dart';
@@ -19,6 +20,12 @@ class SettingsPage extends StatelessWidget {
           create: (context) => GoogleBloc(),
           child: Column(
             children: [
+
+              RaisedButton(
+                child: Text("Test notification"),
+                onPressed: () => NotificationService.showNotificationWithReminders(),
+              ),
+
               Text("TItle"),
               Text("Egy kis leírás"),
               GoogleSync(),

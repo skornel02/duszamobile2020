@@ -1,3 +1,4 @@
+import 'package:duszamobile2020/notification_service.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/cubits/locale.dart';
@@ -19,6 +20,8 @@ Locale preferredLocale;
 final router = FluroRouter();
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await NotificationService.init();
   defineRoutes(router);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -26,6 +29,21 @@ void main() async {
   final defaultDarkMode = await getDarkMode();
   final startingPage = await getStartingPage();
   print("Initial route: $startingPage");
+
+  CarRepository carRepository = new CarRepository();
+
+
+  carRepository.getCars().then((value) => debugPrint("ca212r: " + value.length.toString()));
+
+  (await carRepository.getCars()).forEach((car) {
+    debugPrint("car: " + car.name);
+    car.getNotifications.forEach((reminder) {
+      debugPrint("SAdasnd: " + reminder.name);
+      NotificationService.showNotificationWithReminder(reminder);
+    });
+  });
+
+  NotificationService.showNotification();
 
   runApp(App(
     defaultLocale: defaultLocale,
