@@ -57,8 +57,10 @@ class RepairsPage extends StatelessWidget {
                     animate: true,
                   ),
                 ),
-                Expanded(
-                  child: ListView.builder(
+                (car.repairs.isEmpty)
+                  ? Center(child: Text(S.of(context).empty(S.of(context).repair)),)
+                  : Expanded(
+                    child: ListView.builder(
                     itemCount: car.repairs.length,
                     itemBuilder: (context, index) {
                       return RepairItem(car.repairs[index]);
