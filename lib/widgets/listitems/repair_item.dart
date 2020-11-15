@@ -4,6 +4,7 @@ import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/repair.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tags/flutter_tags.dart';
 import 'package:intl/intl.dart';
 
 class RepairItem extends StatelessWidget {
@@ -48,46 +49,34 @@ class RepairItem extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       width: MediaQuery.of(context).size.width - 60,
-                      child: Wrap(
-                          alignment: WrapAlignment.start,
-                          runSpacing: 1.4,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          spacing: 2,
-                          children: [
-                            for (String item in repair.items)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 2, left: 1),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
-                                    color: Colors.red,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 6, right: 6),
-                                    child: Text(
-                                      item.toString(),
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                  ),
-                                ),
-                              )
-                          ]),
+                      child: Tags(
+                          itemCount: repair.items.length,
+                          itemBuilder: (int index) {
+                            final item = repair.items[index];
+                            return ItemTags(
+                              key: Key(index.toString()),
+                              index: index,
+                              title: item,
+                              active: true,
+                              textStyle: TextStyle(
+                                fontSize: 16,
+                              ),
+                              onPressed: (item) => print(item),
+                              onLongPressed: (item) => print(item),
+                            );
+                          }),
                     ),
                   ],
                 ),
-
-                Text("${S.of(context).currency(repair.price.toStringAsFixed(2))}"),
+                Text(
+                    "${S.of(context).currency(repair.price.toStringAsFixed(2))}"),
                 Text(repair.milage.toString() + " km"),
-
               ],
             ),
             Align(
               alignment: Alignment.topRight,
-              child: Text(DateFormat(S.of(context).date_format_to_show).format(repair.date)),
+              child: Text(DateFormat(S.of(context).date_format_to_show)
+                  .format(repair.date)),
             )
           ],
         ),

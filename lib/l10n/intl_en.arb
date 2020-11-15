@@ -59,6 +59,7 @@
   "cant_be_over": "{item} can't be over {amount} of characters",
   "cant_be_not_int": "{item} must be a valid integer",
   "cant_be_not_double": "{item} must be a valid number",
+  "cant_be_invalid_date": "{item} must have a valid date",
   "create": "Create",
   "time_format": "yyyy-MM-dd – kk:mm",
   "last_change": "Last {area} change: {time}",
@@ -79,8 +80,7 @@
   "notify_on_date": "Notify on date",
   "notify_after_kilometers": "Notify after kilometers",
   "reason": "Reason",
-  "warranty": "Warranty",
-  "not_warranty": "Not warranty ? ezt át kell írni",
+  "warranty": "Under warranty",
   "refuels_page_title": "Refuels - {carName}",
   "refuels_page_menuitem": "Refuels",
   "consumption_label": "Consumption in liter/100km",
@@ -94,6 +94,4 @@
   "currency": "{efficiency} $",
   "expiration_date": "Valid until {date}",
   "cancel": "Cancel"
-
-
 }

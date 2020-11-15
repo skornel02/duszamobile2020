@@ -103,7 +103,10 @@ class RefuelsPage extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: car.refuels.length,
                       itemBuilder: (context, index) {
-                        return RefuelItem(car.refuels[index]);
+                        return RefuelItem(
+                          car.refuels[index],
+                          index: index,
+                        );
                       },
                     ),
                   )
