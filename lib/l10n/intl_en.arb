@@ -125,6 +125,8 @@
   "petrol_price_over_time": "Petrol price change",
   "filter": "Filter",
   "general_statistics": "General statistics",
+  "days_left": "{day} days left",
+  "km_left": "{km} km left",
   "test_notification": "Test notification",
   "export_json": "My JSON export"
 }

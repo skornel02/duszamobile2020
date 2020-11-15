@@ -71,7 +71,7 @@ class Reminder extends Equatable {
   }
 
   int get milageLeft {
-    return startMilage;
+    return startMilage + afterMilage;
   }
 
   int get daysLeft {
@@ -79,7 +79,7 @@ class Reminder extends Equatable {
     return date
         .add(Duration(days: afterDays))
         .difference(DateTime.now())
-        .inDays;
+        .inDays+1;
   }
 
   bool _isDueToDate(DateTime date) {
