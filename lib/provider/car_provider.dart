@@ -15,16 +15,20 @@ abstract class CarProvider {
 
   @visibleForTesting
   List<Car> parseStringToCars(String str) {
-    List<dynamic> jsonData = json.decode(str);
-    List<Car> cars = List<Car>();
-    for (var item in jsonData) {
-      try {
-        cars.add(Car.fromJson(item));
-      } catch (ex) {
-        print('ERROR!!! Failed to parse car reason: $ex');
+    try {
+      List<dynamic> jsonData = json.decode(str);
+      List<Car> cars = List<Car>();
+      for (var item in jsonData) {
+        try {
+          cars.add(Car.fromJson(item));
+        } catch (ex) {
+          print('ERROR!!! Failed to parse car reason: $ex');
+        }
       }
+      return cars;
+    } catch (err) {
+      return [];
     }
-    return cars;
   }
 }
 

@@ -12,6 +12,7 @@ class CarsCubit extends Cubit<List<Car>> {
 class CarRepository {
   CarProvider _provider;
   CarsCubit carsCubit;
+  Future firstLoad;
 
   CarRepository() {
     if (kIsWeb) {
@@ -21,10 +22,12 @@ class CarRepository {
     }
 
     carsCubit = CarsCubit();
-    _provider.loadCars().then((value) => carsCubit.nextState(value));
+    firstLoad =
+        _provider.loadCars().then((value) => carsCubit.nextState(value));
   }
 
   Future<List<Car>> getCars() async {
+    await firstLoad;
     return carsCubit.state;
   }
 
