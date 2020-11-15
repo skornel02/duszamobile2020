@@ -210,6 +210,30 @@ class _ReminderFormState extends State<ReminderForm> {
 								    				child: Text("${afterMilage.toInt()} km")
 								    		),
 
+												Padding(
+													padding: const EdgeInsets.only(top: 10),
+													child: TextFormField(
+														style: TextStyle(fontSize: 18),
+														maxLines: 1,
+														inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+														keyboardType: TextInputType.number,
+												//		controller: _priceTextEditingController,
+														textInputAction: TextInputAction.next,
+														decoration: InputDecoration(
+															labelText: S.of(context).price,
+															alignLabelWithHint: true,
+															labelStyle: TextStyle(),
+															filled: true,
+															fillColor: Colors.grey.withAlpha(120),
+														),
+														validator: (value) {
+															if (value.isEmpty) {
+																return S.of(context).cant_be_empty(S.of(context).price);
+															}
+															return null;
+														},
+													),
+												),
 
 								    		Slider(
 								    			min: 0,

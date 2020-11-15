@@ -2,6 +2,7 @@ import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/car.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/resources/e_vignette.dart';
 import 'package:duszamobile2020/widgets/car_drawer.dart';
 import 'package:duszamobile2020/widgets/listitems/evignette_item.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +33,52 @@ class EVignettesPage extends StatelessWidget {
           builder: (context, state) {
             if (state is ReadyState) {
               final car = state.car;
-              return ListView.builder(
-                itemCount: state.car.eVignettes.length,
-                itemBuilder: (context, index) {
-                  return EVignetteItem(car.eVignettes[index]);
-                },
+
+              List<EVignette> active = List();
+              List<EVignette> expired = List();
+
+              car.eVignettes.forEach((eVignette) {
+                if (eVignette.isActive(DateTime.now())) {
+                  active.add(eVignette);
+                } else {
+                  expired.add(eVignette);
+                }
+              });
+
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Center(
+                      child: Text(
+                        S.of(context).active,
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: active.length,
+                      itemBuilder: (context, index) {
+                        return EVignetteItem(active[index]);
+                      },
+                    ),
+                    Divider(),
+                    Center(
+                      child: Text(
+                        S.of(context).expired,
+                        style: TextStyle(fontSize: 30),
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: expired.length,
+                      itemBuilder: (context, index) {
+                        return EVignetteItem(expired[index]);
+                      },
+                    ),
+                  ],
+                ),
               );
             }
             return CircularProgressIndicator();

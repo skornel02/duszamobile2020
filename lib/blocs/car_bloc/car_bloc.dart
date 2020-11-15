@@ -94,11 +94,15 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       _repo.updateCar(next);
     } else if (event is RemoveRefuelItem) {
       Car original = await _repo.getCar(_carId);
+      print("ORIGINAL CAR: $original");
+      print("ORIGINAL REFUEL: ${original.refuels}");
       List<Refuel> nextRefuels = List();
       for (int i = 0; i < original.refuels.length; i++) {
         Refuel refuel = original.refuels[i];
         if (refuel.id != event.id) nextRefuels.add(refuel);
       }
+      Car next = Car.from(original, refuels: nextRefuels);
+      _repo.updateCar(next);
     } else if (event is SaveRepairItem) {
       Car original = await _repo.getCar(_carId);
       int index = -1;
@@ -124,6 +128,8 @@ class CarBloc extends Bloc<CarEvent, CarState> {
         Repair repair = original.repairs[i];
         if (repair.id != event.id) nextRepairs.add(repair);
       }
+      Car next = Car.from(original, repairs: nextRepairs);
+      _repo.updateCar(next);
     } else if (event is SaveEVignetteItem) {
       Car original = await _repo.getCar(_carId);
       int index = -1;
@@ -149,6 +155,8 @@ class CarBloc extends Bloc<CarEvent, CarState> {
         EVignette eVignette = original.eVignettes[i];
         if (eVignette.id != event.id) nextEVignettes.add(eVignette);
       }
+      Car next = Car.from(original, eVignettes: nextEVignettes);
+      _repo.updateCar(next);
     } else if (event is SaveReminderItem) {
       Car original = await _repo.getCar(_carId);
       int index = -1;
@@ -174,6 +182,8 @@ class CarBloc extends Bloc<CarEvent, CarState> {
         Reminder reminder = original.reminds[i];
         if (reminder.id != event.id) nextReminders.add(reminder);
       }
+      Car next = Car.from(original, reminds: nextReminders);
+      _repo.updateCar(next);
     }
   }
 }

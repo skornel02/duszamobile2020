@@ -17,7 +17,8 @@ class EVignetteItem extends StatelessWidget {
   void _onOpen(BuildContext context) {
     ReadyState state = BlocProvider.of<CarBloc>(context).state;
     print("Opening eVignette #${eVignette.id}");
-    Navigator.pushNamed(context, "/cars/${state.car.id}/evignette/${eVignette.id}");
+    Navigator.pushNamed(
+        context, "/cars/${state.car.id}/evignette/${eVignette.id}");
   }
 
   void _onRemove(BuildContext context) {
@@ -26,7 +27,8 @@ class EVignetteItem extends StatelessWidget {
       title: S.of(context).are_you_sure,
       description: "",
       onAccept: () {
-        BlocProvider.of<CarBloc>(context).add(RemoveEVignetteItem(eVignette.id));
+        BlocProvider.of<CarBloc>(context)
+            .add(RemoveEVignetteItem(eVignette.id));
       },
     );
   }
@@ -67,8 +69,9 @@ class EVignetteItem extends StatelessWidget {
         return 'images/icon_veszprem.png';
       case "Zala megye":
         return 'images/icon_zala.png';
+      default:
+        return 'images/icon_orszagos.png';
     }
-    return 'images/icon_orszagos.png';
   }
 
   @override
@@ -84,18 +87,24 @@ class EVignetteItem extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                    eVignette.area == "Országos" ? "Országos matrica" : "Megyei matrica"),
+                Text(eVignette.area == "Országos"
+                    ? "Országos matrica"
+                    : "Megyei matrica"),
                 if (eVignette.area != "Országos") Text(eVignette.area),
-                Text(eVignette.duration == 365 ? "Éves" : "${eVignette.duration} napos"),
+                Text(eVignette.duration == 365
+                    ? "Éves"
+                    : "${eVignette.duration} napos"),
               ],
             ),
             Spacer(),
             Column(
               children: [
                 Text(S.of(context).expiration_date(
-                    DateFormat(S.of(context).date_format_to_show).format(
-                        eVignette.start.add(Duration(days: eVignette.duration))))),
+                    (eVignette.start == null || eVignette.duration == null)
+                        ? "NULL"
+                        : DateFormat(S.of(context).date_format_to_show).format(
+                            eVignette.start
+                                .add(Duration(days: eVignette.duration))))),
                 SizedBox(
                   height: 50,
                   width: 50,

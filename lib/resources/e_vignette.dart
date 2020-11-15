@@ -37,6 +37,7 @@ class EVignette extends Equatable {
   }
 
   bool isActive(DateTime date) {
+    if (duration == null || start == null) return false;
     var dueDateTime = this.start.add(Duration(days: duration));
     var dateDate = DateTime.utc(date.year, date.month, date.day);
     var dueDate =
