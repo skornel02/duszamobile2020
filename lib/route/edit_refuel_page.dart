@@ -9,39 +9,36 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 
 class EditRefuelPage extends StatelessWidget {
-	final String carId;
-	final String refuelId;
-	EditRefuelPage(this.carId, this.refuelId);
+  final String carId;
+  final String refuelId;
+  EditRefuelPage(this.carId, this.refuelId);
 
-	@override
-	Widget build(BuildContext context) {
-		return BlocProvider(
-			create: (_) => CarBloc(
-					carId: carId, repo: RepositoryProvider.of<CarRepository>(context)),
-			child: Scaffold(
-					key: _profileScaffoldKey,
-					appBar: AppBar(
-						title: Text(S.of(context).edit_refuel),
-					),
-					body: BlocBuilder<CarBloc, CarState>(
-						builder: (context, state){
-							if(state is ReadyState){
-								return RefuelForm(
-									refuel: state.car.getRefuelById(refuelId),
-									callback: (Refuel refuel) async {
-										BlocProvider.of<CarBloc>(context).add(SaveRefuelItem(refuel));
-										Navigator.pop(context);
-									},
-								);
-							}
-							return Center(child: CircularProgressIndicator(),);
-						},
-					)
-			),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        key: _profileScaffoldKey,
+        appBar: AppBar(
+          title: Text(S.of(context).edit_refuel),
+        ),
+        body: BlocBuilder<CarBloc, CarState>(
+          builder: (context, state) {
+            if (state is ReadyState) {
+              return RefuelForm(
+                refuel: state.car.getRefuelById(refuelId),
+                callback: (Refuel refuel) async {
+                  BlocProvider.of<CarBloc>(context).add(SaveRefuelItem(refuel));
+                  Navigator.pop(context);
+                },
+              );
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        ));
+  }
 
-	@override
+  @override
   List<DiagnosticsNode> debugDescribeChildren() {
 //
   }

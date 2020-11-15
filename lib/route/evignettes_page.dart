@@ -21,75 +21,71 @@ class EVignettesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CarBloc(
-          carId: id, repo: RepositoryProvider.of<CarRepository>(context)),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(S.of(context).evignettes),
-        ),
-        drawer: carDrawer(context, id, selectedMenu: DrawerItem.E_VIGNETTE),
-        body: BlocBuilder<CarBloc, CarState>(
-          builder: (context, state) {
-            if (state is ReadyState) {
-              final car = state.car;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(S.of(context).evignettes),
+      ),
+      drawer: carDrawer(context, id, selectedMenu: DrawerItem.E_VIGNETTE),
+      body: BlocBuilder<CarBloc, CarState>(
+        builder: (context, state) {
+          if (state is ReadyState) {
+            final car = state.car;
 
-              List<EVignette> active = List();
-              List<EVignette> expired = List();
+            List<EVignette> active = List();
+            List<EVignette> expired = List();
 
-              car.eVignettes.forEach((eVignette) {
-                if (eVignette.isActive(DateTime.now())) {
-                  active.add(eVignette);
-                } else {
-                  expired.add(eVignette);
-                }
-              });
+            car.eVignettes.forEach((eVignette) {
+              if (eVignette.isActive(DateTime.now())) {
+                active.add(eVignette);
+              } else {
+                expired.add(eVignette);
+              }
+            });
 
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        S.of(context).active,
-                        style: TextStyle(fontSize: 30),
-                      ),
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Center(
+                    child: Text(
+                      S.of(context).active,
+                      style: TextStyle(fontSize: 30),
                     ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: active.length,
-                      itemBuilder: (context, index) {
-                        return EVignetteItem(active[index]);
-                      },
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: active.length,
+                    itemBuilder: (context, index) {
+                      return EVignetteItem(active[index]);
+                    },
+                  ),
+                  Divider(),
+                  Center(
+                    child: Text(
+                      S.of(context).expired,
+                      style: TextStyle(fontSize: 30),
                     ),
-                    Divider(),
-                    Center(
-                      child: Text(
-                        S.of(context).expired,
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: expired.length,
-                      itemBuilder: (context, index) {
-                        return EVignetteItem(expired[index]);
-                      },
-                    ),
-                  ],
-                ),
-              );
-            }
-            return CircularProgressIndicator();
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(FontAwesomeIcons.plus),
-          onPressed: () {
-            Navigator.pushNamed(context, "/cars/$id/evignettes/add");
-          },
-        ),
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: expired.length,
+                    itemBuilder: (context, index) {
+                      return EVignetteItem(expired[index]);
+                    },
+                  ),
+                ],
+              ),
+            );
+          }
+          return CircularProgressIndicator();
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(FontAwesomeIcons.plus),
+        onPressed: () {
+          Navigator.pushNamed(context, "/cars/$id/evignettes/add");
+        },
       ),
     );
   }

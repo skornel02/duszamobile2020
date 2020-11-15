@@ -9,36 +9,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 
 class EditReminderPage extends StatelessWidget {
-	final String carId;
-	final String reminderId;
-	EditReminderPage(this.carId, this.reminderId);
+  final String carId;
+  final String reminderId;
+  EditReminderPage(this.carId, this.reminderId);
 
-	@override
-	Widget build(BuildContext context) {
-		return BlocProvider(
-			create: (_) => CarBloc(
-					carId: carId, repo: RepositoryProvider.of<CarRepository>(context)),
-			child: Scaffold(
-					key: _profileScaffoldKey,
-					appBar: AppBar(
-						title: Text(S.of(context).add_reminder),
-					),
-					body: BlocBuilder<CarBloc, CarState>(
-						builder: (context, state){
-							debugPrint("Current state of carbloc: " + state.toString());
-							if(state is ReadyState){
-								return ReminderForm(
-									reminder: state.car.getReminderById(reminderId),
-									callback: (Reminder reminder) async {
-										BlocProvider.of<CarBloc>(context).add(SaveReminderItem(reminder));
-										Navigator.pop(context);
-									},
-								);
-							}
-							return Center(child: CircularProgressIndicator(),);
-						},
-					)
-			),
-		);
-	}
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: _profileScaffoldKey,
+      appBar: AppBar(
+        title: Text(S.of(context).add_reminder),
+      ),
+      body: BlocBuilder<CarBloc, CarState>(
+        builder: (context, state) {
+          debugPrint("Current state of carbloc: " + state.toString());
+          if (state is ReadyState) {
+            return ReminderForm(
+              reminder: state.car.getReminderById(reminderId),
+              callback: (Reminder reminder) async {
+                BlocProvider.of<CarBloc>(context)
+                    .add(SaveReminderItem(reminder));
+                Navigator.pop(context);
+              },
+            );
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
+    );
+  }
 }
