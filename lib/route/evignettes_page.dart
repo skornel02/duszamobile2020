@@ -24,17 +24,19 @@ class EVignettesPage extends StatelessWidget {
         body: BlocBuilder<CarBloc, CarState>(
           builder: (context, state) {
             if (state is ReadyState) {
-              return Column(
-                children: [
-                  // statistics widgets
-                ],
+              final car = state.car;
+              return ListView.builder(
+                itemCount: state.car.eVignettes.length,
+                itemBuilder: (context, index) {
+                  return Text(car.eVignettes[index].area);
+                },
               );
             }
             return CircularProgressIndicator();
           },
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: Icon(FontAwesomeIcons.plus),
           onPressed: () {
             Navigator.pushNamed(context, "/cars/add");
           },

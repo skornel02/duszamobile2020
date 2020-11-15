@@ -1,7 +1,7 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/refuel.dart';
-import 'package:duszamobile2020/widgets/refuel_form.dart';
+import 'package:duszamobile2020/widgets/forms/refuel_form.dart';
 import 'package:flutter/material.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,14 +9,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 
 class AddRefuelPage extends StatelessWidget {
-  final String id;
-  AddRefuelPage(this.id);
+  final String carId;
+  AddRefuelPage(this.carId);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => CarBloc(
-          carId: id, repo: RepositoryProvider.of<CarRepository>(context)),
+          carId: carId, repo: RepositoryProvider.of<CarRepository>(context)),
       child: Scaffold(
         key: _profileScaffoldKey,
         appBar: AppBar(
