@@ -41,7 +41,7 @@ class _ReminderFormState extends State<ReminderForm> {
 			_descriptionTextEditingController.text = widget.reminder.description;
 			_afterMilageTextEditingController.text = widget.reminder.afterMilage.toString();
 			
-			items = widget.reminder.items;
+			items = widget.reminder.items ?? [];
 			date = widget.reminder.date;
 			afterDays = widget.reminder.afterDays;
 			startMilage = widget.reminder.startMilage;
