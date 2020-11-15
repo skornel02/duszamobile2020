@@ -1134,6 +1134,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Refuel`
+  String get refuel {
+    return Intl.message(
+      'Refuel',
+      name: 'refuel',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

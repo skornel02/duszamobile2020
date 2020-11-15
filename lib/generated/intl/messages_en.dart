@@ -145,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "other_regions" : MessageLookupByLibrary.simpleMessage("Other regions"),
     "price" : MessageLookupByLibrary.simpleMessage("Price"),
     "reason" : MessageLookupByLibrary.simpleMessage("Reason"),
+    "refuel" : MessageLookupByLibrary.simpleMessage("Refuel"),
     "refuels" : MessageLookupByLibrary.simpleMessage("Refuels"),
     "refuels_page_menuitem" : MessageLookupByLibrary.simpleMessage("Refuels"),
     "refuels_page_title" : m21,

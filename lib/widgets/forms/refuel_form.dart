@@ -20,6 +20,7 @@ class RefuelForm extends StatefulWidget {
 class _RefuelFormState extends State<RefuelForm> {
   final _formKey = GlobalKey<FormState>();
 
+  TextEditingController _refuelTextEditingController = TextEditingController();
   TextEditingController _priceTextEditingController = TextEditingController();
   TextEditingController _milageTextEditingController = TextEditingController();
   TextEditingController _lastMilageTextEditingController =
@@ -144,6 +145,31 @@ class _RefuelFormState extends State<RefuelForm> {
                     SizedBox(
                         width: 50,
                         child: Text(refuelAmount.toStringAsFixed(1) + " l")),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: TextFormField(
+                        style: TextStyle(fontSize: 18),
+                        maxLines: 1,
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                        keyboardType: TextInputType.number,
+                        controller: _refuelTextEditingController,
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          labelText: S.of(context).refuel,
+                          alignLabelWithHint: true,
+                          labelStyle: TextStyle(),
+                          filled: true,
+                          fillColor: Colors.grey.withAlpha(120),
+                        ),
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return S.of(context).cant_be_empty(S.of(context).refuel);
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+
                     Slider(
                         min: 0,
                         max: 100,
