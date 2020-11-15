@@ -192,9 +192,7 @@ class _RefuelFormState extends State<RefuelForm> {
                     controller: _milageTextEditingController,
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
-                      labelText: S
-                          .of(context)
-                          .milometer, // helperText: "Oktatási azonositó",
+                      labelText: S.of(context).milage,
                       alignLabelWithHint: true,
                       labelStyle: TextStyle(),
                       filled: true,
@@ -206,6 +204,16 @@ class _RefuelFormState extends State<RefuelForm> {
                             .of(context)
                             .cant_be_empty(S.of(context).milage);
                       }
+                      if (int.tryParse(value) != null &&
+                          int.tryParse(_lastMilageTextEditingController.text) !=
+                              null &&
+                          int.parse(value) <=
+                              int.parse(
+                                  _lastMilageTextEditingController.text)) {
+                        return S.of(context).cant_be_smaller(
+                            S.of(context).milage, S.of(context).last_milage);
+                      }
+
                       return null;
                     },
                   ),
@@ -234,7 +242,7 @@ class _RefuelFormState extends State<RefuelForm> {
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: "Valami",
+                      labelText: S.of(context).last_milage,
                       alignLabelWithHint: true,
                       labelStyle: TextStyle(),
                       filled: true,

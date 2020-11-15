@@ -645,6 +645,16 @@ class S {
     );
   }
 
+  /// `{item} must be bigger than {otherItem}`
+  String cant_be_smaller(Object item, Object otherItem) {
+    return Intl.message(
+      '$item must be bigger than $otherItem',
+      name: 'cant_be_smaller',
+      desc: '',
+      args: [item, otherItem],
+    );
+  }
+
   /// `Create`
   String get create {
     return Intl.message(

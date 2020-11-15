@@ -60,6 +60,7 @@
   "cant_be_not_int": "{item} must be a valid integer",
   "cant_be_not_double": "{item} must be a valid number",
   "cant_be_invalid_date": "{item} must have a valid date",
+  "cant_be_smaller": "{item} must be bigger than {otherItem}",
   "create": "Create",
   "time_format": "yyyy-MM-dd – kk:mm",
   "last_change": "Last {area} change: {time}",
