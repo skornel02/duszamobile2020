@@ -1235,6 +1235,26 @@ class S {
     );
   }
 
+  /// `Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!`
+  String get settings_description {
+    return Intl.message(
+      'Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!',
+      name: 'settings_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No {s} added yet`
+  String empty(Object s) {
+    return Intl.message(
+      'No $s added yet',
+      name: 'empty',
+      desc: '',
+      args: [s],
+    );
+  }
+
   /// `Total spending`
   String get total_spending {
     return Intl.message(
@@ -1250,6 +1270,26 @@ class S {
     return Intl.message(
       'Petrol price change',
       name: 'petrol_price_over_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Filter`
+  String get filter {
+    return Intl.message(
+      'Filter',
+      name: 'filter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General statistics`
+  String get general_statistics {
+    return Intl.message(
+      'General statistics',
+      name: 'general_statistics',
       desc: '',
       args: [],
     );

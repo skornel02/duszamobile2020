@@ -1,17 +1,24 @@
+import 'package:flutter/material.dart';
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/widgets/car_drawer.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:intl/intl.dart';
 
-class StatisticsPage extends StatelessWidget {
+class StatisticsPage extends StatefulWidget {
   final String id;
 
   StatisticsPage(this.id, {Key key}) : super(key: key) {
     debugPrint("Created StatisticsPage");
   }
+  @override
+  _StatisticsPageState createState()=> _StatisticsPageState();
+}
+
+class _StatisticsPageState extends State<StatisticsPage> {
+
+  String filterValue = "general_statistics";
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +26,7 @@ class StatisticsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(S.of(context).statistics),
       ),
-      drawer: carDrawer(context, id, selectedMenu: DrawerItem.STATISTICS),
+      drawer: carDrawer(context, widget.id, selectedMenu: DrawerItem.STATISTICS),
       body: BlocBuilder<CarBloc, CarState>(
         builder: (context, state) {
           if (state is ReadyState) {
@@ -42,14 +49,14 @@ class StatisticsPage extends StatelessWidget {
               charts.Series<MapEntry<String, double>, String>(
                 id: 'Spent on stuff',
                 domainFn: (MapEntry<String, double> spending, _) =>
-                    spending.key,
+                spending.key,
                 measureFn: (MapEntry<String, double> spending, _) =>
-                    spending.value,
+                spending.value,
                 data: moneySpent.entries.toList(),
                 labelAccessorFn: (MapEntry<String, double> spending, _) => S
                     .of(context)
                     .spending_format(
-                        spending.key, spending.value.toStringAsFixed(0)),
+                    spending.key, spending.value.toStringAsFixed(0)),
               )
             ];
 
@@ -64,9 +71,9 @@ class StatisticsPage extends StatelessWidget {
               charts.Series<MapEntry<String, double>, String>(
                 id: 'Petrol price over time',
                 domainFn: (MapEntry<String, double> spending, _) =>
-                    spending.key,
+                spending.key,
                 measureFn: (MapEntry<String, double> spending, _) =>
-                    spending.value,
+                spending.value,
                 data: petrolPrice.entries.toList(),
               )
             ];
@@ -74,6 +81,43 @@ class StatisticsPage extends StatelessWidget {
             return SingleChildScrollView(
               child: Column(
                 children: [
+
+                  Card(
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(S.of(context).filter + ":"),
+                        ),
+                        Builder(builder: (c){
+
+                          List<DropdownMenuItem> items = [
+                            DropdownMenuItem(
+
+                              child: Text(S.of(context).general_statistics),
+                              value: "general_statistics",
+                            ),
+                          ];
+
+
+                          state.car.knownTags.forEach((e) {
+                            items.add(DropdownMenuItem(child: Text(e)));
+                          });
+
+                          return DropdownButton(
+                              value: filterValue,
+                              items: items,
+                              onChanged: (v){
+                                setState(() {
+                                  filterValue = v;
+                                });
+                              }
+                          );
+                        })
+                      ],
+                    ),
+                  ),
+
                   Center(
                     child: Text(
                       S.of(context).total_spending,

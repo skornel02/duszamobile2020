@@ -119,6 +119,10 @@
   "repeat_this_reminder_again": "Do you want to repeat this reminder?",
   "both": "Both",
   "refuel": "Refuel",
+  "settings_description": "Everything from syncing to the cloud to dark mode can be accessed here. Mash some buttons and see what happens!",
+  "empty": "No {s} added yet",
   "total_spending": "Total spending",
-  "petrol_price_over_time": "Petrol price change"
+  "petrol_price_over_time": "Petrol price change",
+  "filter": "Filter",
+  "general_statistics": "General statistics"
 }

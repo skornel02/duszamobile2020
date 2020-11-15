@@ -101,7 +101,7 @@ class Reminder extends Equatable {
   }
 
   bool isDue(DateTime date, int milage) {
-    if (completed) return false;
+    if (completed ?? false) return false;
     return _isDueToDate(date) || _isDueToMilage(milage);
   }
 

@@ -18,67 +18,41 @@ class SettingsPage extends StatelessWidget {
       body: Center(
         child: BlocProvider(
           create: (context) => GoogleBloc(),
-          child: Column(
-            children: [
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              children: [
 
-              RaisedButton(
-                child: Text("Test notification"),
-                onPressed: () => NotificationService.showNotificationWithReminders(),
-              ),
+                RaisedButton(
+                  child: Text("Test notification"),
+                  onPressed: () => NotificationService.showNotificationWithReminders(),
+                ),
 
-              Text("TItle"),
-              Text("Egy kis leírás"),
-              GoogleSync(),
-              LanguageChanger(),
-              SwitchListTile(
-                value: DynamicTheme.of(context).brightness == Brightness.dark,
-                title: Text(S.of(context).dark_theme),
-                onChanged: (val) async {
-                  setDarkMode(val);
-                  DynamicTheme.of(context)
-                      .setBrightness(val ? Brightness.dark : Brightness.light);
-                },
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, bottom: 10),
+                  child: Text(S.of(context).title),
+                ),
+
+                Text(S.of(context).settings_description, textAlign: TextAlign.center,),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: GoogleSync(),
+                ),
+                LanguageChanger(),
+                SwitchListTile(
+                  value: DynamicTheme.of(context).brightness == Brightness.dark,
+                  title: Text(S.of(context).dark_theme),
+                  onChanged: (val) async {
+                    setDarkMode(val);
+                    DynamicTheme.of(context)
+                        .setBrightness(val ? Brightness.dark : Brightness.light);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-/*
-class _SettingsPageState extends State<SettingsPage> {
-
-	bool calendarSync = true;
-	bool darkTheme = false;
-
-	String langVal = "en";
-
-	@override
-	Widget build(BuildContext context){
-		return Scaffold(
-			appBar: AppBar(title: Text(S.of(context).user_settings),),
-			body: Center(
-				child: Column(
-					children: [
-						RaisedButton(
-								child: Text(S.of(context).synchronise),
-								onPressed: (){
-
-								}),
-						SwitchListTile(value: calendarSync,
-							title: Text(S.of(context).calendar_synchronisation),
-							onChanged: (val){
-								setState(() {
-									calendarSync = val;
-								});
-							},
-						),
-					],
-				),
-			),
-		);
-	}
-}
-*/

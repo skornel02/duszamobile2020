@@ -6,6 +6,7 @@ import 'package:duszamobile2020/widgets/listitems/refuel_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RefuelsPage extends StatelessWidget {
   final String id;
@@ -112,8 +113,7 @@ class RefuelsPage extends StatelessWidget {
                 ],
               );
             } else {
-              //TODO: ERIK, JOBB FELIRAT!!!
-              return Text("_____________");
+              return Center(child: Text(S.of(context).empty(S.of(context).refuel)));
             }
           }
           return Center(
@@ -122,7 +122,7 @@ class RefuelsPage extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(FontAwesomeIcons.plus),
         onPressed: () => _onAdd(context),
       ),
     );

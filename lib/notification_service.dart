@@ -15,8 +15,6 @@ void callbackDispatcher() {
 				 NotificationService.showNotificationWithReminder(reminder);
 			 });
 		 }));
-		NotificationService.showNotification();
-
 
 		return Future.value(true);
 	});
@@ -26,8 +24,6 @@ class NotificationService{
 
 	static final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 	FlutterLocalNotificationsPlugin();
-
-
 
 	static Future<void> init() async {
 		// initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
@@ -47,15 +43,14 @@ class NotificationService{
 
 		Workmanager.initialize(
 				callbackDispatcher, // The top level function, aka callbackDispatcher
+				// TODO EZT SZEDD KI
 				isInDebugMode: true // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
 		);
 		Workmanager.registerPeriodicTask("uniqueName", "taskName",
-				frequency: Duration(minutes: 1),
+				frequency: Duration(days: 1),
 				existingWorkPolicy: ExistingWorkPolicy.replace,
 				initialDelay: Duration(days: 0)
 		);
-
-
 	}
 
 	static Future<void> showNotificationWithReminders() async {
@@ -71,16 +66,15 @@ class NotificationService{
 	static Future<void> showNotificationWithReminder(Reminder reminder) async {
 		const AndroidNotificationDetails androidPlatformChannelSpecifics =
 		AndroidNotificationDetails(
-				'your channel id', 'your channel name', 'your channel description',
+				'reminderNotification', 'Reminder notification channel', "Notification channel for the car's reminders",
 				importance: Importance.max,
 				priority: Priority.high,
 				showWhen: false);
 		const NotificationDetails platformChannelSpecifics =
 		NotificationDetails(android: androidPlatformChannelSpecifics);
 
-
 		await flutterLocalNotificationsPlugin.show(
-				0, reminder.name, reminder.description, platformChannelSpecifics,
+				0, reminder.name, reminder.notificationText(DateTime.now(), 0), platformChannelSpecifics,
 				payload: 'item x');
 	}
 

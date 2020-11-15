@@ -35,7 +35,16 @@ Widget carDrawer(BuildContext context, String carId,
             return DrawerHeader(
               child: Column(
                 children: [
-                  Text(carName, style: TextStyle(fontSize: 18)),
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: Icon(FontAwesomeIcons.arrowLeft),
+                        onPressed: () => Navigator.pop(context),
+                      ),
+                      Text(carName, style: TextStyle(fontSize: 18)),
+                      Container(),
+                    ],
+                  ),
                   ConstrainedBox(
                     constraints: BoxConstraints(maxHeight: 150, minHeight: 10),
                     child: imageBytes != null

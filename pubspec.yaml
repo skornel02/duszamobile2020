@@ -72,6 +72,20 @@ flutter:
     - assets/langs/en.json
     - assets/langs/hu.json
     - assets/images/
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope/Manrope-Regular.ttf
+        - asset: assets/fonts/Manrope/Manrope-SemiBold.ttf
+          weight: 500
+
+    - family: Sura
+      fonts:
+        - asset: assets/fonts/Sura/Sura-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/Sura/Sura-Regular.ttf
+
+
 
 flutter_intl:
   enabled: true

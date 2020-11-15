@@ -30,6 +30,21 @@ void main() async {
   final startingPage = await getStartingPage();
   print("Initial route: $startingPage");
 
+  CarRepository carRepository = new CarRepository();
+
+  carRepository
+      .getCars()
+      .then((value) => debugPrint("ca212r: " + value.length.toString()));
+
+  (await carRepository.getCars()).forEach((car) {
+    debugPrint("car: " + car.name);
+    car.getNotifications.forEach((reminder) {
+      debugPrint("SAdasnd: " + reminder.name);
+      NotificationService.showNotificationWithReminder(reminder);
+    });
+  });
+
+
   runApp(App(
     defaultLocale: defaultLocale,
     defaultDarkMode: defaultDarkMode,
@@ -136,7 +151,8 @@ class DesignWrapper extends StatelessWidget {
             defaultBrightness:
                 defaultDarkMode ? Brightness.dark : Brightness.light,
             data: (brightness) => new ThemeData(
-                  appBarTheme: AppBarTheme(centerTitle: true, textTheme: null),
+              fontFamily: 'Manrope',
+                  appBarTheme: AppBarTheme(centerTitle: true),
                   floatingActionButtonTheme: null,
                   brightness: brightness,
                 ),
