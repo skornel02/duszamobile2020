@@ -126,7 +126,7 @@
   "filter": "Filter",
   "general_statistics": "General statistics",
   "days_left": "{day} days left",
-  "km_left": "{km} km left",
+  "km_left": "after {km} km",
   "test_notification": "Test notification",
   "export_json": "My JSON export"
 }

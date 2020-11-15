@@ -59,7 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m19(date) => "Valid until ${date}";
 
-  static m20(km) => "${km} km left";
+  static m20(km) => "after ${km} km";
 
   static m21(area, time) => "Last ${area} change: ${time}";
 

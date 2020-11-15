@@ -64,9 +64,7 @@ class ReminderItem extends StatelessWidget {
     showConfirmAlert(
       context,
       title: S.of(context).are_you_sure,
-      description: S
-          .of(context)
-          .do_remove_reminder(reminder.name),
+      description: S.of(context).do_remove_reminder(reminder.name),
       onAccept: () {
         BlocProvider.of<CarBloc>(context).add(RemoveReminderItem(reminder.id));
       },
@@ -80,66 +78,73 @@ class ReminderItem extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       elevation: 5,
       child: InkWell(
-          onTap: () => _onOpen(context),
-          child: Padding(
-            padding: const EdgeInsets.all(3),
-            child: Stack(
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width - 60,
-                      child: Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: Tags(
-                            alignment: WrapAlignment.start,
-                            itemCount: reminder.items.length,
-                            itemBuilder: (int index) {
-                              final item = reminder.items[index];
-                              return ItemTags(
-                                pressEnabled: false,
-                                key: Key(index.toString()),
-                                index: index,
-                                title: item,
-                                active: true,
-                                textStyle: TextStyle(
-                                  fontSize: 12,
-                                ),
-                                onPressed: (item) => print(item),
-                                onLongPressed: (item) => print(item),
-                              );
-                            }),
-                      ),
+        onTap: () => _onOpen(context),
+        child: Padding(
+          padding: const EdgeInsets.all(3),
+          child: Stack(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width - 60,
+                    child: Padding(
+                      padding: const EdgeInsets.all(2),
+                      child: Tags(
+                          alignment: WrapAlignment.start,
+                          itemCount: reminder.items.length,
+                          itemBuilder: (int index) {
+                            final item = reminder.items[index];
+                            return ItemTags(
+                              pressEnabled: false,
+                              key: Key(index.toString()),
+                              index: index,
+                              title: item,
+                              active: true,
+                              textStyle: TextStyle(
+                                fontSize: 12,
+                              ),
+                              onPressed: (item) => print(item),
+                              onLongPressed: (item) => print(item),
+                            );
+                          }),
                     ),
-                    Text(reminder.name),
-                    Text(reminder.description),
+                  ),
+                  Text(reminder.name),
+                  Text(reminder.description),
 
-                    if(reminder.afterDays != null) Text(S.of(context).days_left(reminder.daysLeft), style: TextStyle(fontSize: 17),),
-                    if(reminder.afterMilage != null)Text(S.of(context).km_left(reminder.milageLeft), style: TextStyle(fontSize: 17),),
+                  if (reminder.afterDays != null)
+                    Text(
+                      S.of(context).days_left(reminder.daysLeft),
+                      style: TextStyle(fontSize: 17),
+                    ),
+                  if (reminder.afterMilage != null)
+                    Text(
+                      S.of(context).km_left(reminder.milageLeft),
+                      style: TextStyle(fontSize: 17),
+                    ),
 
-                    //  Text(reminder?.daysLeft?.toString() ?? ""),
-                    //   Text(reminder?.milageLeft?.toString() ?? ""),
+                  //  Text(reminder?.daysLeft?.toString() ?? ""),
+                  //   Text(reminder?.milageLeft?.toString() ?? ""),
+                ],
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(reminder.date != null
+                        ? DateFormat(S.of(context).date_format_to_show)
+                            .format(reminder.date)
+                        : ""),
+                    IconButton(
+                      icon: Icon(FontAwesomeIcons.times),
+                      onPressed: () => _onRemove(context),
+                    ),
                   ],
                 ),
-
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(reminder.date != null
-                          ? DateFormat(S.of(context).date_format_to_show)
-                          .format(reminder.date)
-                          : ""),
-                      IconButton(
-                        icon: Icon(FontAwesomeIcons.times),
-                        onPressed: () => _onRemove(context),
-                      ),
-                    ],
-                  ),
-                ),
-                /*
+              ),
+              /*
                 Align(
                   alignment: Alignment.topRight,
                   child: Text(reminder.date != null
@@ -155,9 +160,10 @@ class ReminderItem extends StatelessWidget {
                   ),
                 ),
                 */
-              ],
-            ),
-          ),),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

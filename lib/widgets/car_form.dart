@@ -208,7 +208,8 @@ class _CarFormState extends State<CarForm> {
                       double cost;
                       int year;
                       try {
-                        img = base64Encode(file.readAsBytesSync());
+                        if (file != null)
+                          img = base64Encode(file.readAsBytesSync());
                       } catch (_) {}
                       try {
                         cost = double.parse(_priceTextEditingController.text);
@@ -224,7 +225,8 @@ class _CarFormState extends State<CarForm> {
                           widget.car,
                           name: _nameTextEditController.value.text,
                           tire: tireType,
-                          settings: CarSettings.create(
+                          settings: CarSettings.from(
+                            widget.car.settings,
                             image: img,
                             cost: cost,
                             year: year,

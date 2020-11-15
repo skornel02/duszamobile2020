@@ -1305,10 +1305,10 @@ class S {
     );
   }
 
-  /// `{km} km left`
+  /// `after {km} km`
   String km_left(Object km) {
     return Intl.message(
-      '$km km left',
+      'after $km km',
       name: 'km_left',
       desc: '',
       args: [km],

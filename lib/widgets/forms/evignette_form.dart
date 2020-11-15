@@ -24,7 +24,6 @@ class _EVignetteFormState extends State<EVignetteForm> {
   final _formKey = GlobalKey<FormState>();
 
   DateTime startDate;
-  int duration = 7;
   String area;
 
   String currentExpiration = "expiration_weekly_country";
@@ -45,7 +44,6 @@ class _EVignetteFormState extends State<EVignetteForm> {
           currentExpiration = "expiration_weekly_country";
           break;
       }
-      duration = widget.eVignette.duration;
       area = widget.eVignette.area;
     } else {
       area = "Országos";
@@ -209,7 +207,7 @@ class _EVignetteFormState extends State<EVignetteForm> {
                                   "/${S.of(context).automatically_generated}/",
                               items: ["E-Vignette"],
                               date: startDate,
-                              afterDays: duration,
+                              afterDays: realDuration,
                               startMilage: 0,
                               completed: false,
                             );

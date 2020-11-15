@@ -33,6 +33,9 @@ class RefuelsPage extends StatelessWidget {
           if (state is ReadyState) {
             final car = state.car;
             if (car.refuels.isNotEmpty) {
+              List<Refuel> refuelsToShow = List.from(car.refuels);
+              refuelsToShow.sort((a, b) => b.milage.compareTo(a.milage));
+
               List<Refuel> chartRefuels = List.from(car.refuels);
               chartRefuels.sort((a, b) => a.date.compareTo(b.date));
 
@@ -101,9 +104,9 @@ class RefuelsPage extends StatelessWidget {
                   Divider(),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: car.refuels.length,
+                      itemCount: refuelsToShow.length,
                       itemBuilder: (context, index) {
-                        return RefuelItem(car.refuels[index]);
+                        return RefuelItem(refuelsToShow[index]);
                       },
                     ),
                   )

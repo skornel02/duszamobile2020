@@ -77,9 +77,10 @@ class Reminder extends Equatable {
   int get daysLeft {
     if (date == null) return null;
     return date
-        .add(Duration(days: afterDays))
-        .difference(DateTime.now())
-        .inDays+1;
+            .add(Duration(days: afterDays))
+            .difference(DateTime.now())
+            .inDays +
+        1;
   }
 
   bool _isDueToDate(DateTime date) {

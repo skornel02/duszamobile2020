@@ -35,7 +35,6 @@ class RefuelItem extends StatelessWidget {
     return Container(
       height: 100,
       child: Card(
-
         margin: EdgeInsets.only(left: 7, right: 7, top: 3, bottom: 3),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         elevation: 5,
@@ -51,30 +50,36 @@ class RefuelItem extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
-                      child: Text(refuel.refueled.toString() + " l", style: TextStyle(fontSize: 16),),
+                      child: Text(
+                        refuel.refueled.toString() + " l",
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(4),
                       child: Text("-", style: TextStyle(fontSize: 16)),
                     ),
-                    Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}", style: TextStyle(fontSize: 16)),
+                    Text(
+                        "${S.of(context).currency(refuel.paid.toStringAsFixed(2))}",
+                        style: TextStyle(fontSize: 16)),
                     Spacer(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(DateFormat(S.of(context).date_format_to_show).format(refuel.date)),
-                        Text(refuel.milage.toString() + " km"),
+                        Text(DateFormat(S.of(context).date_format_to_show)
+                            .format(refuel.date)),
+                        Text(refuel.lastMilage.toString() +
+                            " - " +
+                            refuel.milage.toString() +
+                            " km"),
                       ],
                     )
                   ],
                 ),
               ),
-
-
             ],
           ),
-
         ),
       ),
     );
