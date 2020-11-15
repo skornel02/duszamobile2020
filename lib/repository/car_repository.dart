@@ -1,5 +1,5 @@
 import 'package:duszamobile2020/provider/car_provider.dart';
-import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/resources/car.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

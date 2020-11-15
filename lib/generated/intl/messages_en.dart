@@ -25,11 +25,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(car_name) => "remove car \'${car_name}\'";
 
-  static m3(do_something) => "You dou want to ${do_something}?";
+  static m3(date) => "remove E-Vignette valid from ${date}";
 
-  static m4(area, time) => "Last ${area} change: ${time}";
+  static m4(date) => "remove refuel log at ${date}";
 
-  static m5(name) => "Welcome ${name}!";
+  static m5(date) => "remove repair log at ${date}";
+
+  static m6(do_something) => "You dou want to ${do_something}?";
+
+  static m7(area, time) => "Last ${area} change: ${time}";
+
+  static m8(date, title) => "Your reminder set for ${date} has expired! ${title}";
+
+  static m9(title) => "Check your reminder: ${title}";
+
+  static m10(milage, title) => "Your milage goal ${milage} is over! ${title}";
+
+  static m11(name) => "Welcome ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -49,14 +61,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "consumption" : MessageLookupByLibrary.simpleMessage("Consumption"),
     "create" : MessageLookupByLibrary.simpleMessage("Create"),
     "dark_theme" : MessageLookupByLibrary.simpleMessage("Dark theme"),
+    "date_format" : MessageLookupByLibrary.simpleMessage("dd-MM-yyyy"),
     "do_remove_car" : m2,
-    "do_you_want_to" : m3,
+    "do_remove_e_vignette" : m3,
+    "do_remove_refuel" : m4,
+    "do_remove_repair" : m5,
+    "do_you_want_to" : m6,
     "edit" : MessageLookupByLibrary.simpleMessage("Edit"),
     "edit_car" : MessageLookupByLibrary.simpleMessage("Edit car"),
     "evignettes" : MessageLookupByLibrary.simpleMessage("EVignettes"),
     "export" : MessageLookupByLibrary.simpleMessage("Export"),
     "google_login" : MessageLookupByLibrary.simpleMessage("Google login"),
-    "last_change" : m4,
+    "last_change" : m7,
     "last_refuel_was_recorded" : MessageLookupByLibrary.simpleMessage("Last refuel was recorded"),
     "liter_price" : MessageLookupByLibrary.simpleMessage("Liter price"),
     "local_area" : MessageLookupByLibrary.simpleMessage("local"),
@@ -66,6 +82,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "more_regions" : MessageLookupByLibrary.simpleMessage("More regions"),
     "my_cars" : MessageLookupByLibrary.simpleMessage("My cars"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
+    "notification_date" : m8,
+    "notification_date_and_milage" : m9,
+    "notification_milage" : m10,
     "other_regions" : MessageLookupByLibrary.simpleMessage("Other regions"),
     "price" : MessageLookupByLibrary.simpleMessage("Price"),
     "refuels" : MessageLookupByLibrary.simpleMessage("Refuels"),
@@ -87,7 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "type" : MessageLookupByLibrary.simpleMessage("Type"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("User settings"),
     "weekly" : MessageLookupByLibrary.simpleMessage("Weekly"),
-    "welcome" : m5,
+    "welcome" : m11,
     "year" : MessageLookupByLibrary.simpleMessage("Year"),
     "yearly_countrywide" : MessageLookupByLibrary.simpleMessage("Yearly countrywide"),
     "yearly_regional" : MessageLookupByLibrary.simpleMessage("Weekly")

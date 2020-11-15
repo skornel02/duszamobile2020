@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:duszamobile2020/generated/l10n.dart';
-import 'package:duszamobile2020/resources/pojos/car.dart';
-import 'package:duszamobile2020/resources/pojos/car_settings.dart';
-import 'package:duszamobile2020/resources/pojos/tire_type.dart';
+import 'package:duszamobile2020/resources/car.dart';
+import 'package:duszamobile2020/resources/car_settings.dart';
+import 'package:duszamobile2020/resources/tire_type.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

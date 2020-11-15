@@ -614,6 +614,76 @@ class S {
       args: [car_name],
     );
   }
+
+  /// `remove repair log at {date}`
+  String do_remove_repair(Object date) {
+    return Intl.message(
+      'remove repair log at $date',
+      name: 'do_remove_repair',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `remove refuel log at {date}`
+  String do_remove_refuel(Object date) {
+    return Intl.message(
+      'remove refuel log at $date',
+      name: 'do_remove_refuel',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `remove E-Vignette valid from {date}`
+  String do_remove_e_vignette(Object date) {
+    return Intl.message(
+      'remove E-Vignette valid from $date',
+      name: 'do_remove_e_vignette',
+      desc: '',
+      args: [date],
+    );
+  }
+
+  /// `dd-MM-yyyy`
+  String get date_format {
+    return Intl.message(
+      'dd-MM-yyyy',
+      name: 'date_format',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your reminder set for {date} has expired! {title}`
+  String notification_date(Object date, Object title) {
+    return Intl.message(
+      'Your reminder set for $date has expired! $title',
+      name: 'notification_date',
+      desc: '',
+      args: [date, title],
+    );
+  }
+
+  /// `Your milage goal {milage} is over! {title}`
+  String notification_milage(Object milage, Object title) {
+    return Intl.message(
+      'Your milage goal $milage is over! $title',
+      name: 'notification_milage',
+      desc: '',
+      args: [milage, title],
+    );
+  }
+
+  /// `Check your reminder: {title}`
+  String notification_date_and_milage(Object title) {
+    return Intl.message(
+      'Check your reminder: $title',
+      name: 'notification_date_and_milage',
+      desc: '',
+      args: [title],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

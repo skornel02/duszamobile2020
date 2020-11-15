@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:duszamobile2020/provider/car_provider.dart';
-import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/resources/car.dart';
 import 'package:http/http.dart';
 
 class GoogleCarProvider extends CarProvider {

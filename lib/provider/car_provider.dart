@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/resources/car.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';

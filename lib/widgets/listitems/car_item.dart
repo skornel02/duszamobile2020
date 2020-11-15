@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:duszamobile2020/alerts.dart';
 import 'package:duszamobile2020/blocs/cars_bloc/cars_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
-import 'package:duszamobile2020/resources/pojos/car.dart';
+import 'package:duszamobile2020/resources/car.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,6 +14,23 @@ class CarItem extends StatelessWidget {
 
   CarItem({this.car});
 
+  void _onOpen(BuildContext context) {
+    print("Opening car #${car.id}");
+    Navigator.pushNamed(context, "/cars/${car.id}");
+  }
+
+  void _onRemove(BuildContext context) {
+    showConfirmAlert(
+      context,
+      title: S.of(context).are_you_sure,
+      description:
+          S.of(context).do_you_want_to(S.of(context).do_remove_car(car.name)),
+      onAccept: () {
+        BlocProvider.of<CarsBloc>(context).add(RemoveCar(car.id));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Uint8List imageBytes =
@@ -21,10 +39,7 @@ class CarItem extends StatelessWidget {
     return Card(
       elevation: 5,
       child: InkWell(
-        onTap: () {
-          print("Opening car #${car.id}");
-          Navigator.pushNamed(context, "/cars/${car.id}");
-        },
+        onTap: () => _onOpen(context),
         child: Wrap(
           children: [
             ConstrainedBox(
@@ -42,39 +57,7 @@ class CarItem extends StatelessWidget {
               ),
               trailing: IconButton(
                 icon: Icon(FontAwesomeIcons.removeFormat),
-                onPressed: () {
-                  Widget cancelButton = FlatButton(
-                    child: Text("Cancel"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  );
-                  Widget continueButton = FlatButton(
-                    child: Text("Continue"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      BlocProvider.of<CarsBloc>(context).add(RemoveCar(car.id));
-                    },
-                  );
-
-                  AlertDialog alert = AlertDialog(
-                    title: Text(S.of(context).are_you_sure),
-                    content: Text(S
-                        .of(context)
-                        .do_you_want_to(S.of(context).do_remove_car(car.name))),
-                    actions: [
-                      cancelButton,
-                      continueButton,
-                    ],
-                  );
-
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return alert;
-                    },
-                  );
-                },
+                onPressed: () => _onRemove(context),
               ),
             ),
           ],
