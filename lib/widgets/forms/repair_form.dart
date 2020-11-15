@@ -205,14 +205,12 @@ class _RepairFormState extends State<RepairForm> {
                   ),
                 ),
                 Tags(
-                    itemCount: items.length, // required
+                    itemCount: items.length,
                     itemBuilder: (int index) {
                       final item = items[index];
                       return ItemTags(
-                        // Each ItemTags must contain a Key. Keys allow Flutter to
-                        // uniquely identify widgets.
                         key: Key(index.toString()),
-                        index: index, // required
+                        index: index,
                         title: item,
                         active: true,
                         textStyle: TextStyle(
