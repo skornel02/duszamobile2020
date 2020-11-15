@@ -8,7 +8,6 @@ import 'package:duszamobile2020/resources/e_vignette.dart';
 import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:duszamobile2020/resources/reminder.dart';
 import 'package:duszamobile2020/resources/repair.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +31,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
         this.add(CarNotFound());
       }
     }).catchError((err) {
-      printError("Couldn't load car because: $err");
+      print("ERROR Couldn't load car because: $err");
       this.add(CarNotFound());
     });
 
@@ -72,6 +71,9 @@ class CarBloc extends Bloc<CarEvent, CarState> {
       _repo.updateCar(next);
     } else if (event is SaveRefuelItem) {
       Car original = await _repo.getCar(_carId);
+
+      print("ORIGINAL REFUELS ${original.refuels.toString()}");
+
       int index = -1;
       for (int i = 0; i < original.refuels.length; i++) {
         Refuel refuel = original.refuels[i];
@@ -80,12 +82,19 @@ class CarBloc extends Bloc<CarEvent, CarState> {
           break;
         }
       }
+
+      print("input: ${event.refuel}");
+      print("index: $index");
+
       List<Refuel> nextRefuels = List.from(original.refuels);
       if (index == -1) {
         nextRefuels.add(event.refuel);
       } else {
         nextRefuels.replaceRange(index, index + 1, [event.refuel]);
       }
+
+      print("NEXT REFUELS ${nextRefuels.toString()}");
+
       Car next = Car.from(original, refuels: nextRefuels);
       _repo.updateCar(next);
     } else if (event is RemoveRefuelItem) {

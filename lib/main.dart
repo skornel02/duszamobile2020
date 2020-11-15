@@ -1,6 +1,6 @@
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/repository/preference_repository.dart';
-import 'package:duszamobile2020/widgets/locale.dart';
+import 'package:duszamobile2020/cubits/locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'dart:async';
@@ -12,13 +12,7 @@ import 'package:dynamic_theme/dynamic_theme.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-String startPage;
-
 ThemeData themeData;
-
-bool newComer = false;
-bool isLoggedIn = true;
-bool isFromNotification = false;
 
 Locale preferredLocale;
 
@@ -29,31 +23,28 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   final defaultLocale = await getCurrentLocale();
-  setCurrentLocale(defaultLocale);
-
-  if (isLoggedIn) {
-    if (!isFromNotification) {
-      startPage = "/";
-    } else {
-      startPage = "/tasksTomorrow";
-    }
-  } else if (newComer) {
-    startPage = "intro";
-  } else {
-    startPage = "login";
-  }
-
-  startPage = "/cars";
+  final defaultDarkMode = await getDarkMode();
+  final startingPage = await getStartingPage();
+  print("Initial route: $startingPage");
 
   runApp(App(
     defaultLocale: defaultLocale,
+    defaultDarkMode: defaultDarkMode,
+    initialRoute: startingPage,
   ));
 }
 
 class App extends StatefulWidget {
   final String defaultLocale;
+  final String initialRoute;
+  final bool defaultDarkMode;
 
-  const App({Key key, this.defaultLocale}) : super(key: key);
+  const App(
+      {Key key,
+      @required this.defaultLocale,
+      @required this.initialRoute,
+      @required this.defaultDarkMode})
+      : super(key: key);
 
   @override
   _App createState() => _App();
@@ -62,6 +53,11 @@ class App extends StatefulWidget {
 class _App extends State<App> with WidgetsBindingObserver {
   DateTime currentBackPressTime;
   CarRepository _repository = CarRepository();
+
+  _fixLocale() async {
+    final locale = await getCurrentLocale();
+    await setCurrentLocale(locale);
+  }
 
   @override
   initState() {
@@ -85,13 +81,18 @@ class _App extends State<App> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    _fixLocale();
+
     return RepositoryProvider(
       create: (context) => _repository,
-      child: BlocProvider(
-        create: (context) => LocaleCubit(widget.defaultLocale),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => LocaleCubit(widget.defaultLocale)),
+        ],
         child: DesignWrapper(
+          defaultDarkMode: widget.defaultDarkMode,
           builder: (theme) => MaterialApp(
-            initialRoute: startPage,
+            initialRoute: widget.initialRoute,
             onGenerateRoute: router.generator,
             title: S.current?.title ?? "Duszamobile2020",
             showPerformanceOverlay: false,
@@ -117,15 +118,20 @@ class LocaleWrapper extends StatelessWidget {
 }
 
 class DesignWrapper extends StatelessWidget {
+  final bool defaultDarkMode;
   final Function builder;
 
-  const DesignWrapper({Key key, @required this.builder}) : super(key: key);
+  const DesignWrapper(
+      {Key key, @required this.builder, @required this.defaultDarkMode})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LocaleCubit, String>(
       builder: (context, locale) {
         return DynamicTheme(
+            defaultBrightness:
+                defaultDarkMode ? Brightness.dark : Brightness.light,
             data: (brightness) => new ThemeData(
                   appBarTheme: AppBarTheme(centerTitle: true, textTheme: null),
                   floatingActionButtonTheme: null,

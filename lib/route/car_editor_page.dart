@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/resources/car.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,11 @@ class _CarEditorPageState extends State<CarEditorPage> {
   File file;
   String tireType;
 
+  void _goBackToCarSelector(BuildContext context) async {
+    clearSelectedCar();
+    Navigator.pushNamedAndRemoveUntil(context, "/cars", (a) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,10 +54,7 @@ class _CarEditorPageState extends State<CarEditorPage> {
                 children: [
                   RaisedButton(
                       child: Text(S.of(context).change_car),
-                      onPressed: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, "/cars", (a) => false);
-                      }),
+                      onPressed: () => _goBackToCarSelector(context)),
                   Divider(),
                   Builder(builder: (context) {
                     if (file != null) {
@@ -222,13 +225,14 @@ class _CarEditorPageState extends State<CarEditorPage> {
                   Spacer(),
                   RaisedButton(
                     child: Text(S.of(context).create),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         final repository =
                             RepositoryProvider.of<CarRepository>(context);
                         Car car =
                             Car.fromName(_nameTextEditController.value.text);
-                        repository.updateCar(car);
+                        await repository.updateCar(car);
+                        await setSelectedCar(car.id);
                         Navigator.pushNamedAndRemoveUntil(
                             context, "/cars/" + car.id, (a) => false);
                       }

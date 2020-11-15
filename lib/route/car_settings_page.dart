@@ -1,5 +1,6 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/resources/car.dart';
 import 'package:duszamobile2020/widgets/car_form.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +13,7 @@ GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 class CarSettingsPage extends StatelessWidget {
   final String id;
 
-  CarSettingsPage(this.id, {Key key}) : super(key: key) ;
+  CarSettingsPage(this.id, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +37,7 @@ class CarSettingsPage extends StatelessWidget {
                     final repository =
                         RepositoryProvider.of<CarRepository>(context);
                     await repository.updateCar(car);
+                    await setSelectedCar(car.id);
                     Navigator.pushNamedAndRemoveUntil(
                         context, "/cars/" + car.id, (a) => false);
                   },

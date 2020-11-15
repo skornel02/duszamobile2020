@@ -19,16 +19,24 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'hu';
 
-  static m11(name) => "Üdvözlünk ${name}!";
+  static m12(name) => "Üdvözlünk ${name}!";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add" : MessageLookupByLibrary.simpleMessage("Hozzáadás"),
+    "back_to_cars_menuitem" : MessageLookupByLibrary.simpleMessage("Másik autó választása"),
+    "car_settings_page_menuitem" : MessageLookupByLibrary.simpleMessage("Autó beállítások"),
     "cheese" : MessageLookupByLibrary.simpleMessage("Sajt"),
+    "e_vignette_page_menuitem" : MessageLookupByLibrary.simpleMessage("Autópálya matricáks"),
     "export" : MessageLookupByLibrary.simpleMessage("Exportálás"),
     "main_page" : MessageLookupByLibrary.simpleMessage("Főoldal"),
+    "refuels_page_menuitem" : MessageLookupByLibrary.simpleMessage("Tankolások"),
+    "reminders_page_menuitem" : MessageLookupByLibrary.simpleMessage("Értesitők"),
+    "repairs_page_menuitem" : MessageLookupByLibrary.simpleMessage("Szervizek"),
+    "statistics_page_menuitem" : MessageLookupByLibrary.simpleMessage("Statisztikák"),
     "title" : MessageLookupByLibrary.simpleMessage("Dusza mobil 2020"),
     "user_settings" : MessageLookupByLibrary.simpleMessage("Felhasználói beállítások"),
-    "welcome" : m11
+    "user_settings_page_menuitem" : MessageLookupByLibrary.simpleMessage("Felhasználói beállitás"),
+    "welcome" : m12
   };
 }

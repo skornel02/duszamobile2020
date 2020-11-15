@@ -1,4 +1,5 @@
 import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/resources/car.dart';
 import 'package:duszamobile2020/widgets/car_form.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class AddCarPage extends StatelessWidget {
           debugPrint("CALLBACK");
           final repository = RepositoryProvider.of<CarRepository>(context);
           await repository.updateCar(car);
+          await setSelectedCar(car.id);
           Navigator.pushNamedAndRemoveUntil(
               context, "/cars/" + car.id, (a) => false);
         },

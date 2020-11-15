@@ -74,7 +74,15 @@
   "notify_on_date": "Notify on date",
   "notify_after_kilometers": "Notify after kilometers",
   "reason": "Reason",
-
   "warranty": "Warranty",
-  "not_warranty": "Not warranty ? ezt át kell írni"
+  "not_warranty": "Not warranty ? ezt át kell írni",
+  "refuels_page_title": "Refuels - {carName}",
+  "refuels_page_menuitem": "Refuels",
+  "repairs_page_menuitem": "Repairs",
+  "reminders_page_menuitem": "Reminders",
+  "e_vignette_page_menuitem": "E-Vignettes",
+  "statistics_page_menuitem": "Statistics",
+  "car_settings_page_menuitem": "Car settings",
+  "user_settings_page_menuitem": "User/App settings",
+  "back_to_cars_menuitem": "Choose different car"
 }
