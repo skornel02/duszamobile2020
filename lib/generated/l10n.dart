@@ -475,6 +475,16 @@ class S {
     );
   }
 
+  /// `Edit refuel`
+  String get edit_refuel {
+    return Intl.message(
+      'Edit refuel',
+      name: 'edit_refuel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `My cars`
   String get my_cars {
     return Intl.message(
@@ -682,6 +692,16 @@ class S {
       name: 'notification_date_and_milage',
       desc: '',
       args: [title],
+    );
+  }
+
+  /// `Date`
+  String get date {
+    return Intl.message(
+      'Date',
+      name: 'date',
+      desc: '',
+      args: [],
     );
   }
 }

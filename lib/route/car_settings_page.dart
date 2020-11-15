@@ -12,7 +12,7 @@ GlobalKey<ScaffoldState> _profileScaffoldKey = new GlobalKey<ScaffoldState>();
 class CarSettingsPage extends StatelessWidget {
   final String id;
 
-  CarSettingsPage(this.id);
+  CarSettingsPage(this.id, {Key key}) : super(key: key) ;
 
   @override
   Widget build(BuildContext context) {

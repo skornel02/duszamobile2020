@@ -5,6 +5,7 @@ import 'package:duszamobile2020/route/car_settings_page.dart';
 import 'package:duszamobile2020/route/car_page.dart';
 import 'package:duszamobile2020/route/car_editor_page.dart';
 import 'package:duszamobile2020/route/cars_page.dart';
+import 'package:duszamobile2020/route/edit_refuel_page.dart';
 import 'package:duszamobile2020/route/settings_page.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
@@ -43,11 +44,19 @@ void defineRoutes(FluroRouter router) {
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/repairs/add", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
-    return AddRefuelPage();
+    return AddRefuelPage(params["car_id"][0]);
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/refuels", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return CarPage(id: params["car_id"][0], path: "refuels");
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/refuels/add", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return AddRefuelPage(params["car_id"][0]);
+  }), transitionType: TransitionType.none);
+  router.define("/cars/:car_id/refuels/:refuel_id", handler:
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return EditRefuelPage(params["car_id"][0], params["refuel_id"][0]);
   }), transitionType: TransitionType.none);
   router.define("/cars/:car_id/reminders", handler:
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {

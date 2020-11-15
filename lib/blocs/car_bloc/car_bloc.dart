@@ -38,7 +38,7 @@ class CarBloc extends Bloc<CarEvent, CarState> {
     _carsSubscription = repo.carsCubit.listen((cars) {
       Car car;
       for (Car matching in cars) {
-        if (matching.id == car.id) {
+        if (matching.id == _carId) {
           car = matching;
           break;
         }

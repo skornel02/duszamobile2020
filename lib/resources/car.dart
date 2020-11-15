@@ -86,6 +86,10 @@ class Car extends Equatable {
     return notifications;
   }
 
+  Refuel getRefuelById(String id){
+    return refuels.firstWhere((e) => e.id == id);
+  }
+
   double get runningCost {
     double totalRepairs = 0;
     for (var repair in repairs) {

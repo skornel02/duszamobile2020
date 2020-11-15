@@ -1,6 +1,8 @@
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
+import 'package:duszamobile2020/route/add_refuel_page.dart';
+import 'package:duszamobile2020/route/refuels_page.dart';
 import 'package:duszamobile2020/route/reminder_page.dart';
 import 'package:duszamobile2020/route/repairs_page.dart';
 import 'package:duszamobile2020/route/statistics_page.dart';
@@ -123,15 +125,25 @@ class CarPage extends StatelessWidget {
                     debugPrint("asdsadsad: " + path);
                     switch (path) {
                       case "statistics":
-                        return StatisticsPage();
+                        return StatisticsPage(id);
+                      case "statistics/add":
+                        return StatisticsPage(id);
                       case "repairs":
-                        return RepairsPage();
+                        return RepairsPage(id);
+                      case "repairs/add":
+                        return RepairsPage(id);
                       case "refuels":
-                        return RepairsPage(); //RefuelsPage();
+                        return RefuelsPage(id); //RefuelsPage();
+                      case "refuels/add":
+                        return AddRefuelPage(id); //RefuelsPage();
                       case "reminders":
-                        return RemindersPage();
+                        return RemindersPage(id);
+                      case "reminders/add":
+                        return AddRefuelPage(id);
                       case "evignettes":
-                        return EVignettesPage();
+                        return EVignettesPage(id);
+                      case "evignettes/add":
+                        return EVignettesPage(id);
                     }
                     return null;
                   },
