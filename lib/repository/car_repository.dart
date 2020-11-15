@@ -57,7 +57,6 @@ class CarRepository {
       }
     }
     List<Car> newCars;
-    print("INDEX: $index");
     if (index == -1) {
       newCars = List<Car>.from(cars)..add(car);
     } else {
