@@ -19,7 +19,7 @@ class EditRepairPage extends StatelessWidget {
     return Scaffold(
       key: _profileScaffoldKey,
       appBar: AppBar(
-        title: Text(S.of(context).add_repair),
+        title: Text(S.of(context).edit_repair),
       ),
       body: BlocBuilder<CarBloc, CarState>(
         builder: (context, state) {

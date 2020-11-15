@@ -26,8 +26,6 @@ class _RefuelFormState extends State<RefuelForm> {
   TextEditingController _lastMilageTextEditingController =
       TextEditingController();
 
-  double refuelAmount = 15;
-
   double literPrice = 0;
   double consumption = 0;
 
@@ -39,11 +37,11 @@ class _RefuelFormState extends State<RefuelForm> {
     autoFillLastRecord = widget.refuels != null && widget.refuels.isNotEmpty;
 
     if (widget.refuel != null) {
+      _refuelTextEditingController.text = widget.refuel.refueled.toString();
       _priceTextEditingController.text = widget.refuel.paid.toString();
       _milageTextEditingController.text = widget.refuel.milage.toString();
       _lastMilageTextEditingController.text =
           widget.refuel.lastMilage.toString();
-      refuelAmount = widget.refuel.refueled;
       autoFillLastRecord = false;
       date = widget.refuel.date;
     }
@@ -52,6 +50,12 @@ class _RefuelFormState extends State<RefuelForm> {
       _doCalculateAutoFill();
     }
 
+    _refuelTextEditingController.addListener(() {
+      setState(() {
+        _doCalculateConsumption();
+        _doCalculateLiterPrice();
+      });
+    });
     _priceTextEditingController.addListener(() {
       setState(() {
         _doCalculateConsumption();
@@ -86,7 +90,7 @@ class _RefuelFormState extends State<RefuelForm> {
 
   _doCalculateLiterPrice() {
     double price = double.tryParse(_priceTextEditingController.text) ?? 0;
-    double fuel = refuelAmount ?? 0;
+    double fuel = double.tryParse(_refuelTextEditingController.text) ?? 0;
 
     literPrice = price / fuel;
   }
@@ -94,7 +98,7 @@ class _RefuelFormState extends State<RefuelForm> {
   _doCalculateConsumption() {
     int milage = int.tryParse(_milageTextEditingController.text) ?? 0;
     int lastMilage = int.tryParse(_lastMilageTextEditingController.text) ?? 0;
-    double fuel = refuelAmount ?? 0;
+    double fuel = double.tryParse(_refuelTextEditingController.text) ?? 0;
     consumption = fuel / ((milage - lastMilage) / 100);
   }
 
@@ -143,53 +147,32 @@ class _RefuelFormState extends State<RefuelForm> {
                     return null;
                   },
                 ),
-                Row(
-                  children: [
-                    SizedBox(
-                        width: 50,
-                        child: Text(refuelAmount.toStringAsFixed(1) + " l")),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: TextFormField(
-                        style: TextStyle(fontSize: 18),
-                        maxLines: 1,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                        keyboardType: TextInputType.number,
-                        controller: _refuelTextEditingController,
-                        textInputAction: TextInputAction.next,
-                        decoration: InputDecoration(
-                          labelText: S.of(context).refuel,
-                          alignLabelWithHint: true,
-                          labelStyle: TextStyle(),
-                          filled: true,
-                          fillColor: Colors.grey.withAlpha(120),
-                        ),
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return S
-                                .of(context)
-                                .cant_be_empty(S.of(context).refuel);
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    Slider(
-                        min: 0,
-                        max: 100,
-                        value: refuelAmount,
-                        onChanged: (val) {
-                          setState(() {
-                            refuelAmount = val;
-                            _doCalculateLiterPrice();
-                            _doCalculateConsumption();
-                          });
-                        })
-                  ],
-                ),
                 Divider(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 18),
+                    maxLines: 1,
+                    keyboardType: TextInputType.number,
+                    controller: _refuelTextEditingController,
+                    textInputAction: TextInputAction.next,
+                    decoration: InputDecoration(
+                      labelText: S.of(context).refuel,
+                      alignLabelWithHint: true,
+                      labelStyle: TextStyle(),
+                      filled: true,
+                      fillColor: Colors.grey.withAlpha(120),
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return S
+                            .of(context)
+                            .cant_be_empty(S.of(context).refuel);
+                      }
+                      return null;
+                    },
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: TextFormField(
@@ -311,6 +294,10 @@ class _RefuelFormState extends State<RefuelForm> {
                       double cost = 0;
                       int milage = 0;
                       int lastMilage = 0;
+                      double refuelAmount = double.parse(
+                          double.parse(_refuelTextEditingController.text)
+                              .toStringAsFixed(1));
+
                       try {
                         cost = double.parse(_priceTextEditingController.text);
                       } catch (_) {}

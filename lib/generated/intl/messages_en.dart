@@ -122,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "edit_car" : MessageLookupByLibrary.simpleMessage("Edit car"),
     "edit_refuel" : MessageLookupByLibrary.simpleMessage("Edit refuel"),
     "edit_reminder" : MessageLookupByLibrary.simpleMessage("Edit reminder"),
+    "edit_repair" : MessageLookupByLibrary.simpleMessage("Edit repair"),
     "evignettes" : MessageLookupByLibrary.simpleMessage("EVignettes"),
     "expiration" : MessageLookupByLibrary.simpleMessage("Expiration"),
     "expiration_date" : m17,

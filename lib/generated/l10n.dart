@@ -555,6 +555,16 @@ class S {
     );
   }
 
+  /// `Edit repair`
+  String get edit_repair {
+    return Intl.message(
+      'Edit repair',
+      name: 'edit_repair',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `My cars`
   String get my_cars {
     return Intl.message(

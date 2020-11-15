@@ -30,22 +30,6 @@ void main() async {
   final startingPage = await getStartingPage();
   print("Initial route: $startingPage");
 
-  CarRepository carRepository = new CarRepository();
-
-  carRepository
-      .getCars()
-      .then((value) => debugPrint("ca212r: " + value.length.toString()));
-
-  (await carRepository.getCars()).forEach((car) {
-    debugPrint("car: " + car.name);
-    car.getNotifications.forEach((reminder) {
-      debugPrint("SAdasnd: " + reminder.name);
-      NotificationService.showNotificationWithReminder(reminder);
-    });
-  });
-
-  NotificationService.showNotification();
-
   runApp(App(
     defaultLocale: defaultLocale,
     defaultDarkMode: defaultDarkMode,
