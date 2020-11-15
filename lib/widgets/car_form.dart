@@ -1,15 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
 import 'package:duszamobile2020/generated/l10n.dart';
 import 'package:duszamobile2020/resources/car.dart';
 import 'package:duszamobile2020/resources/car_settings.dart';
 import 'package:duszamobile2020/resources/tire_type.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:duszamobile2020/blocs/car_bloc/car_bloc.dart';
+import 'package:duszamobile2020/resources/car.dart';
 import 'package:duszamobile2020/resources/refuel.dart';
 import 'package:duszamobile2020/widgets/listitems/refuel_item.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,10 @@ class RefuelsPage extends StatelessWidget {
 
   RefuelsPage(this.id, {Key key}) : super(key: key) {
     debugPrint("Created RefuelsPage");
+  }
+
+  void _onAdd(BuildContext context, Car car) {
+    Navigator.pushNamed(context, "/cars/${car.id}/refuels/add");
   }
 
   @override
@@ -28,9 +33,7 @@ class RefuelsPage extends StatelessWidget {
             ),
             floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
-              onPressed: () {
-                Navigator.pushNamed(context, "/cars/add");
-              },
+              onPressed: () => _onAdd(context, car),
             ),
           );
         }

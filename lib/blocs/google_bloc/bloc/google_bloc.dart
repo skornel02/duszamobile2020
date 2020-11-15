@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -72,7 +71,7 @@ class GoogleBloc extends Bloc<GoogleEvent, GoogleState> {
             prefs.setBool("GoogleEnabled", true);
           }
         } catch (err) {
-          printWarning("Error while logging in: $err");
+          print("WARNING! Error while logging in: $err");
           yield GoogleReadyToLoginState();
         }
 

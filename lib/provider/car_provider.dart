@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:duszamobile2020/resources/car.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -22,7 +21,7 @@ abstract class CarProvider {
       try {
         cars.add(Car.fromJson(item));
       } catch (ex) {
-        printError('Failed to parse car reason: $ex');
+        print('ERROR!!! Failed to parse car reason: $ex');
       }
     }
     return cars;
@@ -62,7 +61,7 @@ class FileCarProvider extends CarProvider {
       String lastModified = prefs.getString("LastModified");
       return DateTime.parse(lastModified);
     } catch (err) {
-      printError("Couldn't load last modification date: $err");
+      print("ERROR!!! Couldn't load last modification date: $err");
       return DateTime.parse("1999-01-01T00:00:01Z");
     }
   }
@@ -91,7 +90,7 @@ class WebCarProvider extends CarProvider {
       String lastModified = prefs.getString("LastModified");
       return json.decode(lastModified);
     } catch (err) {
-      printError("Couldn't load last modification date: $err");
+      print("ERROR!!! Couldn't load last modification date: $err");
       return DateTime.parse("1999-01-01T00:00:01Z");
     }
   }

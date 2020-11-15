@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:duszamobile2020/repository/car_repository.dart';
 import 'package:duszamobile2020/resources/car.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 
 part 'cars_event.dart';
@@ -17,8 +16,8 @@ class CarsBloc extends Bloc<CarsEvent, CarsState> {
     _repository.getCars().then((cars) {
       this.add(CarsLoaded(cars));
     }).catchError((_err, stacktrace) {
-      printError("Car loading faled!!!");
-      printError(stacktrace);
+      print("ERROR! Car loading faled!!!");
+      print("ERROR! $stacktrace");
       this.add(CarsLoaded([]));
     });
 
