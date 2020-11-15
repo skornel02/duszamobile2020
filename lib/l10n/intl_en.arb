@@ -89,5 +89,7 @@
   "statistics_page_menuitem": "Statistics",
   "car_settings_page_menuitem": "Car settings",
   "user_settings_page_menuitem": "User/App settings",
-  "back_to_cars_menuitem": "Choose different car"
+  "back_to_cars_menuitem": "Choose different car",
+  "currency": "{efficiency} $"
+
 }

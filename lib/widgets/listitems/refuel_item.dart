@@ -58,8 +58,9 @@ class RefuelItem extends StatelessWidget {
                     ),
                   ],
                 ),
-                Text("${refuel.paid.toStringAsFixed(1)} "),
-                Text(refuel.milage.toString()),
+                Text(refuel.milage.toString() + " km"),
+                Text("${S.of(context).currency(refuel.paid.toStringAsFixed(2))}"),
+
               ],
             ),
             Align(

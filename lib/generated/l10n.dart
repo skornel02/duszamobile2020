@@ -944,6 +944,16 @@ class S {
       args: [],
     );
   }
+
+  /// `{efficiency} $`
+  String currency(Object efficiency) {
+    return Intl.message(
+      '$efficiency \$',
+      name: 'currency',
+      desc: '',
+      args: [efficiency],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
