@@ -44,7 +44,6 @@ void main() async {
     });
   });
 
-  NotificationService.showNotification();
 
   runApp(App(
     defaultLocale: defaultLocale,
@@ -152,7 +151,8 @@ class DesignWrapper extends StatelessWidget {
             defaultBrightness:
                 defaultDarkMode ? Brightness.dark : Brightness.light,
             data: (brightness) => new ThemeData(
-                  appBarTheme: AppBarTheme(centerTitle: true, textTheme: null),
+              fontFamily: 'Manrope',
+                  appBarTheme: AppBarTheme(centerTitle: true),
                   floatingActionButtonTheme: null,
                   brightness: brightness,
                 ),

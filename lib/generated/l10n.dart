@@ -1224,6 +1224,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No {s} added yet`
+  String empty(Object s) {
+    return Intl.message(
+      'No $s added yet',
+      name: 'empty',
+      desc: '',
+      args: [s],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

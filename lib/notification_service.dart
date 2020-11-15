@@ -43,6 +43,7 @@ class NotificationService{
 
 		Workmanager.initialize(
 				callbackDispatcher, // The top level function, aka callbackDispatcher
+				// TODO EZT SZEDD KI
 				isInDebugMode: true // If enabled it will post a notification whenever the task is running. Handy for debugging tasks
 		);
 		Workmanager.registerPeriodicTask("uniqueName", "taskName",

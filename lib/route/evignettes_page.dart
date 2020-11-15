@@ -23,7 +23,7 @@ class EVignettesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).evignettes),
+        title: Text(S.of(context).evignettes, style: TextStyle(fontFamily: 'Sura', fontSize: 20),),
       ),
       drawer: carDrawer(context, id, selectedMenu: DrawerItem.E_VIGNETTE),
       body: BlocBuilder<CarBloc, CarState>(
