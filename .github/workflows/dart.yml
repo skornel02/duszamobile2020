@@ -1,0 +1,30 @@
+name: Build and Deploy
+on:
+  push:
+    branches: master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'beta'
+
+      - name: Config
+        run: flutter config --enable-web
+
+      - name: Update
+        run: flutter pub get
+
+      - name: Build 🔧
+        run: flutter build web --release
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: build/web # The folder the action should deploy.
