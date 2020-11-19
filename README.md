@@ -1,7 +1,5 @@
 # Dusza mobile 2020
 
-![alt text][logo]
-
 Made for Dusza Árpád 2020 mobile hackathon in 60 hours timespan.
 
 ## Getting Started
@@ -15,8 +13,7 @@ Made for Dusza Árpád 2020 mobile hackathon in 60 hours timespan.
 
 
 ## Documentation WIP
-For users: [Hungarian (pdf)](Felhasznaloi_kezikonyv.pdf)
-For developers: [Hungarian (docx)](Fejlesztoi_dokumentacio.docx)
+For users and developers (half-baked): [Hungarian (pdf)](Dokumentáció.pdf)
 
 ## Third party sources used:
 ### See the [pubspec.yaml](pubspec.yaml) for used packages
@@ -27,5 +24,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ![alt text][end]
 
-[logo]: logo "TBD
-[end]: end "TBD"
+[logo]: assets/images/háttér.png "TBD"
+[end]: assets/images/háttér.png "TBD"
