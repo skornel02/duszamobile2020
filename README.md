@@ -1,4 +1,6 @@
-# Dusza mobile 2020
+# My Little Auto
+
+![alt text][logo]
 
 Made for Dusza Árpád 2020 mobile hackathon in 60 hours timespan.
 
@@ -24,5 +26,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ![alt text][end]
 
-[logo]: assets/images/háttér.png "TBD"
+[logo]: assets/images/icon.png "TBD"
 [end]: assets/images/háttér.png "TBD"

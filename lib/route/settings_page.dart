@@ -9,6 +9,7 @@ import 'package:duszamobile2020/repository/preference_repository.dart';
 import 'package:duszamobile2020/widgets/google_sync.dart';
 import 'package:duszamobile2020/widgets/language_changer.dart';
 import 'package:dynamic_theme/dynamic_theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
@@ -53,8 +54,10 @@ class SettingsPage extends StatelessWidget {
                 ),
                 RaisedButton(
                   child: Text(S.of(context).test_notification),
-                  onPressed: () =>
-                      NotificationService.showNotificationWithReminders(),
+                  onPressed: kIsWeb
+                      ? null
+                      : () =>
+                          NotificationService.showNotificationWithReminders(),
                 ),
                 RaisedButton(
                   child: Text(S.of(context).export_json),
